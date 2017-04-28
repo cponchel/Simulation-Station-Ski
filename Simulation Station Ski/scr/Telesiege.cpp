@@ -23,6 +23,6 @@ int Telesiege::calculerTempsAttente()
 
 int Telesiege::calculerTempsTrajet()
 {
-	return tempsMoyen;
+	return getTempsMoyen();
 }
 
