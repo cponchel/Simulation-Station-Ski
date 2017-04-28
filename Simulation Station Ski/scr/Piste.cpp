@@ -25,7 +25,7 @@ void Piste::setNiveau(int niv){
 	niveau=niv;
 }
 
-int Piste::calculerTemps(int niveauSkieur)
+int Piste::calculerTemps(int niveauSkieur) //calculer temps en fonction du niveau
 {
 	if(niveauSkieur==2)
 	{
