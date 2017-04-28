@@ -17,6 +17,7 @@ public:
 	void setNiveau(int);
 	Piste(int);
 	virtual ~Piste();
+	int calculerTemps(int);
 };
 
 #endif /* SCR_PISTE_HPP_ */

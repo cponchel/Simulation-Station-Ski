@@ -6,6 +6,7 @@
  */
 
 #include "Piste.hpp"
+#include "cstdlib"
 
 Piste::Piste(int niv) {
 	niveau=niv;
@@ -22,4 +23,24 @@ int Piste::getNiveau(){
 
 void Piste::setNiveau(int niv){
 	niveau=niv;
+}
+
+int Piste::calculerTemps(int niveauSkieur)
+{
+	if(niveauSkieur==2)
+	{
+		return 2*piste.getTempsMoyen()+rand()%80;
+	}
+	else if(niveauSkieur==3)
+	{
+		return (3*piste.getTempsMoyen())/2+rand()%80;
+	}
+	else if(niveauSkieur==4)
+	{
+		return (6*piste.getTempsMoyen())/5+rand()%80;
+	}
+	else if(niveauSkieur==5)
+	{
+		return piste.getTempsMoyen()+rand()%80;
+	}
 }
