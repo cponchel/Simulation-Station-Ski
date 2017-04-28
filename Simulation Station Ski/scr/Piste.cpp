@@ -29,18 +29,18 @@ int Piste::calculerTempsTrajet(int niveauSkieur) //calculer temps en fonction du
 {
 	if(niveauSkieur==2)
 	{
-		return 2*piste.getTempsMoyen()+rand()%80;
+		return 2*getTempsMoyen()+rand()%80;
 	}
 	else if(niveauSkieur==3)
 	{
-		return (3*piste.getTempsMoyen())/2+rand()%80;
+		return (3*getTempsMoyen())/2+rand()%80;
 	}
 	else if(niveauSkieur==4)
 	{
-		return (6*piste.getTempsMoyen())/5+rand()%80;
+		return (6*getTempsMoyen())/5+rand()%80;
 	}
 	else
 	{
-		return piste.getTempsMoyen()+rand()%80;
+		return getTempsMoyen()+rand()%80;
 	}
 }
