@@ -25,7 +25,7 @@ void Piste::setNiveau(int niv){
 	niveau=niv;
 }
 
-int Piste::calculerTemps(int niveauSkieur) //calculer temps en fonction du niveau
+int Piste::calculerTempsTrajet(int niveauSkieur) //calculer temps en fonction du niveau
 {
 	if(niveauSkieur==2)
 	{
@@ -39,7 +39,7 @@ int Piste::calculerTemps(int niveauSkieur) //calculer temps en fonction du nivea
 	{
 		return (6*piste.getTempsMoyen())/5+rand()%80;
 	}
-	else if(niveauSkieur==5)
+	else
 	{
 		return piste.getTempsMoyen()+rand()%80;
 	}
