@@ -39,6 +39,7 @@ int main(){
 	cout<< "**station->accueil()**";
 	station->accueil();
 	cout << station->getMode() << endl;
+	//
 
 	return 0;
 }
