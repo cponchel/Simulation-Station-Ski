@@ -46,7 +46,7 @@ void Station::lancerSimulation(){
 }
 
 void Station::deplacerSkieurs(){
-
+//
 }
 
 void Station::accueil(){
