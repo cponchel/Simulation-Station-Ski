@@ -50,6 +50,12 @@ public:
 	 */
 
 	int calculerTempsTrajet(int);
+	/**
+	 * \fn int calculerTempsAttente()
+	 * return int
+	 * renvoie 0 car temps attente pour une piste est nul
+	 */
+	int calculerTempsAttente();
 };
 
 #endif /* SCR_PISTE_HPP_ */
