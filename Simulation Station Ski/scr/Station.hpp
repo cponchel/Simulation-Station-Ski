@@ -11,6 +11,7 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include "Arc.hpp"
 
 namespace std {
 /**
@@ -30,15 +31,14 @@ class Station {
 
 public:
 	/**
-	 * \fn Station()
+	 * \fn Station(string, int,int)
 	 * Constructeur par défaut de Station
 	 */
-	Station(string unMode, int nbSkieurs, int d, int t);
+	Station(string, int,int);
 	/**
 	 * \fn virtual ~Station()
 	 * Destructeur de Station
 	 */
-	Station(string, int,int,int);
 	virtual ~Station();
 	/**
 	 * \fn string getMode() const
@@ -55,7 +55,7 @@ public:
 	/**
 	 * \fn int getDureeOuverture() const
 	 * \return int
-	 * Retourne la durée d'ouverture totale de la station exprimée en secondes
+	 * Retourne la durée d'ouverture totale de la station exprimee en secondes
 	 */
 	int getDureeOuverture() const;
 	/**
@@ -63,9 +63,6 @@ public:
 	 * \return int
 	 * Retourne le temps actuel de la station exprimé en secondes
 	 */
-
-	int getDureeOuverture() const;
-
 	int getTempsActuel() const;
 	/**
 	 * \fn void modeUtilisateur()
@@ -84,20 +81,25 @@ public:
 	void lancerSimulation();
 	/**
 	 * \fn depalcerSkieurs()
-	 * Appelle la fonction déplacer le skieur sur chaque Skieur de la station, s’il est arrivé et s’il n’est pas reparti
+	 * Appelle la fonction déplacer le skieur sur chaque Skieur de la station, s’il est arrive et s’il n’est pas reparti
 	 */
 	void deplacerSkieurs();
 	/**
 	 * \fn demarrer()
-	 * Se lance en début de programme et permet à l'utilisateur/administrateur de lancer une simulation
+	 * Affiche le menu d'acceuil
 	 */
-	void demarrer();
+	void accueil();
 	/**
 	 * \fn afficheTitre(string)
 	 * \param string
 	 * Vide la console et affiche un titre entre en paramètre
 	 */
 	void afficheTitre(string);
+	/**
+	 * \fn run()
+	 * Se lance en début de programme et permet à l'utilisateur/administrateur de lancer une simulation
+	 */
+	void run();
 };
 
 } /* namespace std */
