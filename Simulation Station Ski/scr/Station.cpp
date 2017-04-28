@@ -14,7 +14,6 @@ Station::Station(string unMode, int nbSkieurs, int d, int t) {
 	nombreDeSkieurs=nbSkieurs;
 	dureeOuverture=d;
 	tempsActuel=t;
-	// TODO Auto-generated constructor stub
 
 }
 
@@ -34,6 +33,32 @@ int Station::getTempsActuel() const{
 	return tempsActuel;
 }
 
+void Station::modeUtilisateur() {
+
+}
+
+void Station::modeAdministrateur(){
+
+}
+
+void Station::lancerSimulation(){
+
+}
+
+void Station::deplacerSkieurs(){
+
+}
+
+void Station::demarrer(){
+
+
+}
+
+void Station::afficheTitre(string titre){
+	std::system("clear");
+	cout << "**** \t" << titre << "\t ****"<< endl;
+}
+
 
 
 
@@ -42,3 +67,5 @@ Station::~Station() {
 }
 
 } /* namespace std */
+
+
