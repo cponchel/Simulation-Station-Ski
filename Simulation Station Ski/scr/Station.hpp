@@ -100,6 +100,7 @@ public:
 	 * Se lance en début de programme et permet à l'utilisateur/administrateur de lancer une simulation
 	 */
 	void run();
+	//
 };
 
 } /* namespace std */
