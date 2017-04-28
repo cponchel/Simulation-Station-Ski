@@ -44,3 +44,8 @@ int Piste::calculerTempsTrajet(int niveauSkieur) //calculer temps en fonction du
 		return getTempsMoyen()+rand()%80;
 	}
 }
+
+int Piste::calculerTempsAttente()
+{
+	return 0;
+}

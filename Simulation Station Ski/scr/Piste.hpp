@@ -50,6 +50,7 @@ public:
 	 */
 
 	int calculerTempsTrajet(int);
+	int calculerTempsAttente();
 };
 
 #endif /* SCR_PISTE_HPP_ */

@@ -41,6 +41,8 @@ public:
 	 * modifie la valeur capaciteResto
 	 */
 	void setCapaciteResto(int);
+	int calculerTempsTrajet()
+	int calculerTempsAttente();
 };
 
 #endif /* SCR_LIEURESTAURATION_H_ */

@@ -13,6 +13,8 @@ class Teleski : public RemonteMecanique {
 public:
 	Teleski();
 	virtual ~Teleski();
+	int calculerTempsAttente();
+	int calculerTempsTrajet();
 };
 
 #endif /* TELESKI_HPP_ */

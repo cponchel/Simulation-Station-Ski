@@ -16,3 +16,13 @@ Teleski::~Teleski() {
 	// TODO Auto-generated destructor stub
 }
 
+int Teleski::calculerTempsAttente()
+{
+	return nbPersonneEnAttente*frequence;
+}
+
+int Teleski::calculerTempsTrajet()
+{
+	return tempsMoyen;
+}
+
