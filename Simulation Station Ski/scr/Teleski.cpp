@@ -8,10 +8,12 @@
 #include "Teleski.hpp"
 
 Teleski::Teleski() {
+	// TODO Auto-generated constructor stub
 
 }
 
 Teleski::~Teleski() {
+	// TODO Auto-generated destructor stub
 }
 
 int Teleski::calculerTempsAttente()
