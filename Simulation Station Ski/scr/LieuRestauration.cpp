@@ -5,7 +5,7 @@
  *      Author: cchevalier
  */
 
-#include "LieuRestauration.h"
+#include "LieuRestauration.hpp"
 
 LieuRestauration::LieuRestauration(int cap) {
 	// TODO Auto-generated constructor stub
