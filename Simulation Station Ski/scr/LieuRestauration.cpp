@@ -25,3 +25,8 @@ void LieuRestauration::setCapaciteResto(int cap)
 {
 	capaciteResto=cap;
 }
+
+int LieuRestauration::calculerTempsTrajet()
+{
+	return 600 +rand()%1800; //temps entre 10 et 40 min
+}

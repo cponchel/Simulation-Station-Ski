@@ -12,7 +12,13 @@ Arc::Arc() {
 
 }
 
+
 Arc::~Arc() {
 	// TODO Auto-generated destructor stub
+}
+
+int Arc::getTempsMoyen()
+{
+	return tempsMoyen;
 }
 

@@ -25,22 +25,27 @@ void Piste::setNiveau(int niv){
 	niveau=niv;
 }
 
-int Piste::calculerTemps(int niveauSkieur) //calculer temps en fonction du niveau
+int Piste::calculerTempsTrajet(int niveauSkieur) //calculer temps en fonction du niveau
 {
 	if(niveauSkieur==2)
 	{
-		return 2*piste.getTempsMoyen()+rand()%80;
+		return 2*getTempsMoyen()+rand()%80;
 	}
 	else if(niveauSkieur==3)
 	{
-		return (3*piste.getTempsMoyen())/2+rand()%80;
+		return (3*getTempsMoyen())/2+rand()%80;
 	}
 	else if(niveauSkieur==4)
 	{
-		return (6*piste.getTempsMoyen())/5+rand()%80;
+		return (6*getTempsMoyen())/5+rand()%80;
 	}
-	else if(niveauSkieur==5)
+	else
 	{
-		return piste.getTempsMoyen()+rand()%80;
+		return getTempsMoyen()+rand()%80;
 	}
+}
+
+int Piste::calculerTempsAttente()
+{
+	return 0;
 }

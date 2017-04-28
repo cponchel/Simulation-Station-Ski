@@ -16,3 +16,13 @@ Telesiege::~Telesiege() {
 	// TODO Auto-generated destructor stub
 }
 
+int Telesiege::calculerTempsAttente()
+{
+	return (nbPersonneEnAttente%capaciteSiege)*frequence;
+}
+
+int Telesiege::calculerTempsTrajet()
+{
+	return tempsMoyen;
+}
+

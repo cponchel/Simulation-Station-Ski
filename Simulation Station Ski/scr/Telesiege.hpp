@@ -16,6 +16,8 @@ public:
 public:
 	Telesiege();
 	virtual ~Telesiege();
+	int calculerTempsAttente();
+	int calculerTempsTrajet();
 };
 
 #endif /* TELESIEGE_HPP_ */
