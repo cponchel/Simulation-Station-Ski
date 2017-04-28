@@ -11,7 +11,7 @@ using namespace std;
 
 int main(){
 
-	Station * station = new Station("Utilisateur", 50, 1000);
+	Station * station = new Station("Utilisateur", 50, 1000, 1800);
 
 
 
@@ -39,7 +39,9 @@ int main(){
 	cout<< "**station->accueil()**";
 	station->accueil();
 	cout << station->getMode() << endl;
-	//
 
+	//TEST run()
+	cout << "**station->run()**";
+	station->run();
 	return 0;
 }

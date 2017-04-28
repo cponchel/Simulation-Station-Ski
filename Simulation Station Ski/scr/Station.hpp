@@ -11,7 +11,9 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <vector>
 #include "Arc.hpp"
+#include "Skieur.hpp"
 
 namespace std {
 /**
@@ -28,13 +30,17 @@ class Station {
 	int nombreDeSkieurs;
 	int dureeOuverture;
 	int tempsActuel;
+	int frequenceAffichage;
+	vector<Skieur> skieurs;
+	vector<Arc> arcs;
+
 
 public:
 	/**
-	 * \fn Station(string, int,int)
+	 * \fn Station(string, int,int,int)
 	 * Constructeur par défaut de Station
 	 */
-	Station(string, int,int);
+	Station(string, int,int,int);
 	/**
 	 * \fn virtual ~Station()
 	 * Destructeur de Station
@@ -64,6 +70,30 @@ public:
 	 * Retourne le temps actuel de la station exprimé en secondes
 	 */
 	int getTempsActuel() const;
+	/**
+	 * \fn int getFrequenceAffichage() const
+	 * \return int
+	 * Retourne la frequence d'affichage
+	 */
+	int getFrequenceAffichage() const;
+	/**
+	 * \fn vector<Skieur> getSkieurs() const
+	 * \return vector<Skieur>
+	 * Retourne la liste des skieurs
+	 */
+	vector<Skieur> getSkieurs() const;
+	/**
+	 * \fn Skieur getSkieur(int) const
+	 * \return Skieur
+	 * Retourne le ième Skieur de la liste skieurs
+	 */
+	Skieur getSkieur(int) const;
+	/**
+	 * \fn vector<Arc> getArcs() const
+	 * \return vector<Skieur>
+	 * Retourne la liste des Arcs
+	 */
+	vector<Arc> getArcs() const;
 	/**
 	 * \fn void modeUtilisateur()
 	 * Lance le mode Utilisateur
