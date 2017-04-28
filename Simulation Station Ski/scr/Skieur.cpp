@@ -49,10 +49,10 @@ void Skieur::setPrenomS(string lePrenom) {
 void Skieur::setNiveauS(int leNiveau) {
 	niveauS=leNiveau;
 }
-void Skieur::setheureArrivee(int lHeureArrivee){
+void Skieur::setHeureArrivee(int lHeureArrivee){
 	heureArrivee=lHeureArrivee;
 }
-void Skieur::setheureDepart(int lHeureDepart){
+void Skieur::setHeureDepart(int lHeureDepart){
 	heureDepart=lHeureDepart;
 }
 void Skieur::setTempsTrajet(int tTrajet){
@@ -82,11 +82,11 @@ int Skieur::getNiveauS(){
 	return niveauS;
 }
 
-int Skieur:: getheureArrivee(){
+int Skieur:: getHeureArrivee(){
 	return heureArrivee;
 }
 
-int Skieur:: getheureDepart(){
+int Skieur:: getHeureDepart(){
 	return heureDepart;
 }
 int Skieur::getTempsTrajet(){
@@ -106,6 +106,11 @@ int Skieur:: getTempsTotalRemontee(){
 int Skieur:: getTempsTotalRepos(){
 	return tempsTotalRepos;
 }
+
+void Skieur::determinerArcSuivant(){
+
+}
+
 
 Skieur::~Skieur() {
 	// TODO Auto-generated destructor stub
