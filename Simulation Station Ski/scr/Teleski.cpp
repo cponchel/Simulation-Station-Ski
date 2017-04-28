@@ -23,6 +23,6 @@ int Teleski::calculerTempsAttente()
 
 int Teleski::calculerTempsTrajet()
 {
-	return tempsMoyen;
+	return getTempsMoyen();
 }
 
