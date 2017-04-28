@@ -18,10 +18,11 @@ class Station {
 	int tempsActuel;
 
 public:
-	Station();
+	Station(string, int,int,int);
 	virtual ~Station();
 	string getMode() const;
 	int getNombreDeSkieurs() const;
+	int getDureeOuverture() const;
 	int getTempsActuel() const;
 	void modeUtilisateur();
 	void modeAdministrateur();
