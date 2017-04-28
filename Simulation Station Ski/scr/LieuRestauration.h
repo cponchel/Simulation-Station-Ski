@@ -41,7 +41,17 @@ public:
 	 * modifie la valeur capaciteResto
 	 */
 	void setCapaciteResto(int);
-	int calculerTempsTrajet()
+	/**
+	 * \fn int calculerTempsTrajet()
+	 * return int
+	 * calcule temps de trajt en renvoyant un nombre aleatoire entre 10 et 40 min
+	 */
+	int calculerTempsTrajet();
+	/**
+	 * \fn int calculerTempsAttente
+	 * return int
+	 * renvoie 0 car si LieuRestauration complet le skieur fait une piste
+	 */
 	int calculerTempsAttente();
 };
 
