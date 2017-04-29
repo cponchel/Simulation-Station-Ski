@@ -36,9 +36,11 @@ int main(){
 	station->afficheTitre("Bienvenue");
 
 	//TEST accueil()
+	/*
 	cout<< "**station->accueil()**";
 	station->accueil();
 	cout << station->getMode() << endl;
+	*/
 
 	//TEST run()
 	cout << "**station->run()**";

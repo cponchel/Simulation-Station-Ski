@@ -33,6 +33,10 @@ class Station {
 	int frequenceAffichage;
 	vector<Skieur> skieurs;
 	vector<Arc> arcs;
+	int static const NB_MAX_SKIEURS = 1000;
+	int static const DUREE_MIN = 1000; //16'40''
+	int static const DUREE_MAX = 43200; //12h0'0''
+	int static const FREQUENCE_MIN = 1; //1sec
 
 
 public:
@@ -136,6 +140,41 @@ public:
 	 * Initialise la Station de manière arbitraire
 	 */
 	void init();
+	/**
+	 * \fn void modifierNombreDeSkieurs()
+	 * Demande à l'utilisateur/admin de choisir un nouveau nombre de skieurs
+	 */
+	void modifierNombreDeSkieurs();
+	/**
+	 * \fn void modifierDureeOuverture()
+	 * Demande à l'utilisateur/admin de choisir une nouvelle durée d'ouverture
+	 */
+	void modifierDureeOuverture();
+	/**
+	 * \fn void modifierFrequenceAffichage()
+	 * Demande à l'utilisateur/admin de choisir une nouvelle fréquence d'affichage
+	 */
+	void modifierFrequenceAffichage();
+	/**
+	 * \fn void gererArcs()
+	 * Demande à l'admin de gérer l'ouverture et la fermeture des arcs
+	 */
+	void gererArcs();
+	/**
+	 * \fn void static tempsEnSecondes(int,int,int)
+	 * \return int
+	 * Convertit un temps h m s en secondes
+	 */
+	int static tempsEnSecondes(int,int,int);
+	/**
+	 * \fn vector<int> static secondesEnTemps(int)
+	 * \return vector<int>
+	 * Convertit des secondes en temps h m s stocké dans un vecteur : [0] = h, [1] = m, [2] = s
+	 */
+	vector<int> static secondesEnTemps(int);
+
+
+
 };
 
 } /* namespace std */

@@ -59,8 +59,8 @@ void Station::modeAdministrateur(){
 
 	cout << "Vous voulez :" << endl;
 	cout << "1) Modifier le nombre de skieurs (Actuellement : " << getNombreDeSkieurs() << ")" << endl;
-	cout << "2) Modifier la duree d'ouverture (Actuellement : " << getDureeOuverture() << ")" << endl;
-	cout << "3) Modifier la fréquence d'affichage (Actuellement :" << getFrequenceAffichage() << ")" << endl;
+	cout << "2) Modifier la duree d'ouverture (Actuellement : " << secondesEnTemps(getDureeOuverture())[0] << "h" << secondesEnTemps(getDureeOuverture())[1] << "'" << secondesEnTemps(getDureeOuverture())[2] << "'', soit " << getDureeOuverture() <<" secondes)" << endl;
+	cout << "3) Modifier la fréquence d'affichage (Actuellement : toutes les " << secondesEnTemps(getFrequenceAffichage())[0] << "h" << secondesEnTemps(getFrequenceAffichage())[1] << "'" << secondesEnTemps(getFrequenceAffichage())[2] << "'', soit " << getFrequenceAffichage() <<" secondes)" << endl;
 	cout << "4) Gérer l'ouverture des installations" << endl;
 	cout << "5) Lancer la simulation" << endl;
 	cout << "\n0) Retour" << endl;
@@ -73,11 +73,11 @@ void Station::modeAdministrateur(){
 	switch(choix){
 	case 0 :	run();
 				break;
-	case 1 :	//modifierNombreSkieurs();
+	case 1 :	modifierNombreDeSkieurs();
 				break;
-	case 2 :	//modifierDureeOuverture();
+	case 2 :	modifierDureeOuverture();
 				break;
-	case 3 :	//modifierFrequenceAffichage();
+	case 3 :	modifierFrequenceAffichage();
 				break;
 	case 4 :	//gererArcs();
 				break;
@@ -125,6 +125,9 @@ void Station::afficheTitre(string titre){
 }
 
 void Station::run(){
+	/*
+	 * Affichage de l'accueil et lancement du menu suivant selon le mode choisi
+	 */
 	if(accueil()){
 		if(mode=="Utilisateur"){
 			modeUtilisateur();
@@ -136,6 +139,125 @@ void Station::run(){
 }
 
 void Station::init(){
+
+}
+
+int Station::tempsEnSecondes(int h, int m, int s){
+	return 60*(60*h+m)+s;
+}
+
+vector<int> Station::secondesEnTemps(int s){
+	vector<int> res;
+	res.push_back(s/3600);
+	s %= 3600;
+	res.push_back(s/60);
+	s %= 60;
+	res.push_back(s);
+	return res;
+}
+
+void Station::modifierNombreDeSkieurs(){
+	/*
+	 * Affichage
+	 */
+	string titre = "Mode " + mode + " : Modifier le nombre de skieurs";
+	afficheTitre(titre);
+	cout << "Veuillez rentrer le nouveau nombre de skieurs (<" << NB_MAX_SKIEURS <<") dans la station (Actuellement : " << getNombreDeSkieurs() << ")" << endl;
+	int nb = -1;
+	/*
+	 * Demande du nouveau nombre et mise à jour dans la station
+	 */
+	while(nb<0 || nb>NB_MAX_SKIEURS){
+		cin>>nb;
+	}
+	nombreDeSkieurs = nb;
+	/*
+	 * Retour au menu précédent
+	 */
+	if(mode=="Utilisateur"){
+		modeUtilisateur();
+	}
+	else{
+		modeAdministrateur();
+	}
+}
+
+void Station::modifierDureeOuverture(){
+	/*
+	 * Affichage
+	 */
+	string titre = "Mode " + mode + " : Modifier la durée d'ouverture";
+	afficheTitre(titre);
+	cout << "Veuillez rentrer la nouvelle durée d'ouverture (entre " << DUREE_MIN/3600 << "h et " << DUREE_MAX/3600 << "h) de la station (Actuellement : " << secondesEnTemps(getDureeOuverture())[0] << "h" << secondesEnTemps(getDureeOuverture())[1] << "'" << secondesEnTemps(getDureeOuverture())[2] << "'', soit " << getDureeOuverture() <<" secondes)" << endl;
+
+	int h = -1;
+	int m = -1;
+	int s = -1;
+	/*
+	 * Demande de la nouvelle durée et mise à jour dans la station
+	 */
+	// Heures
+	cout << "Nombre d'heures :" << endl;
+	while(h<0 || h>DUREE_MAX/3600){
+		cin>>h;
+	}
+	// Minutes
+	cout << "Nombre de minutes :" << endl;
+	while(m<0 || m>DUREE_MAX/60 + h*60){
+		cin>>m;
+	}
+	// Secondes
+	cout << "Nombre de secondes :" << endl;
+		while(s<0 || s<DUREE_MIN - (h*60+m)*60 || s>DUREE_MAX + (h*60+m)*60){
+			cin>>s;
+		}
+	dureeOuverture = tempsEnSecondes(h,m,s);
+	/*
+	 * Retour au menu précédent
+	 */
+	if(mode=="Utilisateur"){
+		modeUtilisateur();
+	}
+	else{
+		modeAdministrateur();
+	}
+
+}
+
+void Station::modifierFrequenceAffichage(){
+	/*
+	 * Affichage
+	 */
+	string titre = "Mode " + mode + " : Modifier la fréquence d'affichage";
+	afficheTitre(titre);
+	cout << "Veuillez rentrer la nouvelle fréquence d'affichage (>" << FREQUENCE_MIN << " secondes) de la station (Actuellement : toutes les " << secondesEnTemps(getFrequenceAffichage())[0] << "h" << secondesEnTemps(getFrequenceAffichage())[1] << "'" << secondesEnTemps(getFrequenceAffichage())[2] << "'', soit " << getFrequenceAffichage() <<" secondes)" << endl;
+
+	int h = -1;
+	int m = -1;
+	int s = -1;
+	/*
+	 * Demande de la nouvelle durée et mise à jour dans la station
+	 */
+	// Heures
+	cout << "Nombre d'heures :" << endl;
+	while(h<0){
+		cin>>h;
+	}
+	// Minutes
+	cout << "Nombre de minutes :" << endl;
+	while(m<0){
+		cin>>m;
+	}
+	// Secondes
+	cout << "Nombre de secondes :" << endl;
+		while(s<0 || s<FREQUENCE_MIN - (h*60+m)*60){
+			cin>>s;
+		}
+	frequenceAffichage = tempsEnSecondes(h,m,s);
+	/*
+	 * Retour au menu précédent
+	 */
+	modeAdministrateur();
 
 }
 
