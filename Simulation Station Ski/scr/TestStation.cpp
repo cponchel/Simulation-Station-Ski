@@ -43,5 +43,6 @@ int main(){
 	//TEST run()
 	cout << "**station->run()**";
 	station->run();
+	delete station;
 	return 0;
 }

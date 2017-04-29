@@ -40,7 +40,7 @@ public:
 	 * \fn Station(string, int,int,int)
 	 * Constructeur par défaut de Station
 	 */
-	Station(string, int,int,int);
+	Station(string unMode, int nbSkieurs, int d, int f);
 	/**
 	 * \fn virtual ~Station()
 	 * Destructeur de Station
@@ -116,9 +116,10 @@ public:
 	void deplacerSkieurs();
 	/**
 	 * \fn demarrer()
-	 * Affiche le menu d'acceuil
+	 * \return bool
+	 * Affiche le menu d'accueil, retourne false si on quitte le programme, true sinon
 	 */
-	void accueil();
+	bool accueil();
 	/**
 	 * \fn afficheTitre(string)
 	 * \param string
@@ -130,7 +131,11 @@ public:
 	 * Se lance en début de programme et permet à l'utilisateur/administrateur de lancer une simulation
 	 */
 	void run();
-	//
+	/**
+	 * \fn void init()
+	 * Initialise la Station de manière arbitraire
+	 */
+	void init();
 };
 
 } /* namespace std */

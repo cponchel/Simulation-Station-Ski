@@ -96,7 +96,7 @@ void Station::deplacerSkieurs(){
 	}
 }
 
-void Station::accueil(){
+bool Station::accueil(){
 	afficheTitre("Bienvenue");
 
 	cout << "\nVous êtes :\n1) Administrateur \n2) Utilisateur \n\n0) Quitter" << endl;
@@ -112,9 +112,10 @@ void Station::accueil(){
 				break;
 	case 2 :	mode = "Utilisateur";
 				break;
-	case 0 :	exit(0);
+	case 0 :	return false;
 				break;
 	}
+	return true;
 
 }
 
@@ -124,13 +125,18 @@ void Station::afficheTitre(string titre){
 }
 
 void Station::run(){
-	accueil();
-	if(mode=="Utilisateur"){
-		modeUtilisateur();
+	if(accueil()){
+		if(mode=="Utilisateur"){
+			modeUtilisateur();
+		}
+		else{
+			modeAdministrateur();
+		}
 	}
-	else{
-		modeAdministrateur();
-	}
+}
+
+void Station::init(){
+
 }
 
 
@@ -138,7 +144,7 @@ void Station::run(){
 
 
 Station::~Station() {
-	// TODO Auto-generated destructor stub
+	cout << "Station supprimee" << endl;
 }
 
 } /* namespace std */
