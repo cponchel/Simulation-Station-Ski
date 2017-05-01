@@ -9,7 +9,61 @@
 
 namespace std {
 
-Station::Station(string unMode, int nbSkieurs, int d, int f) {
+
+
+Station::Station(){
+
+	try{
+		ifstream fichier("fichiers/parametres_par_defaut.txt", ios::in);
+		if(!fichier){
+			throw string("Impossible d'ouvrir le fichier des parametres par defaut. D'autres parametres ont ete choisis pour les remplacer.");
+		}
+
+
+		vector<int> param;
+
+		string input;
+		const char* inputchar;
+		//Tant qu'on lit une ligne dans le fichier
+        while(getline(fichier, input))
+        {
+        	//On vérifie que chaque caractère est un chiffre avant de l'affecter
+        	for (int i=0; i<input.size(); i++){
+				if (!isdigit(input[i])){
+					fichier.close(); //sinon il ne sera jamais ferme
+					throw string("Erreur dans le fichier des parametres par defaut. D'autres parametres ont ete choisis pour les remplacer.");
+				}
+			}
+        	//On caste le string en char* pour utiliser atoi()
+			//En effet stoi(...) ne fonctionne pas bien sous Eclipse
+			inputchar = input.c_str();
+			//On ajoute l'entier au vecteur des parametres
+			param.push_back(atoi(inputchar));
+        }
+        if (param.size()<3){
+			throw string("Fichier des parametres par defaut incomplet. D'autres parametres ont ete choisis pour les remplacer.");
+		}
+        fichier.close();
+        //Maj des parametres selon ce qu'on a recolte dans le fichier
+        nombreDeSkieurs = param[0];
+        dureeOuverture = param[1];
+        frequenceAffichage = param[2];
+	}
+	catch(string & s){
+		cout << "ERREUR : " << s << endl;
+		mode="Utilisateur";
+		nombreDeSkieurs=50;
+		dureeOuverture=10000;
+		tempsActuel=0;
+		frequenceAffichage=1800;
+	}
+
+
+
+
+}
+
+Station::Station(string unMode, int nbSkieurs, int d, int f){
 	mode=unMode;
 	nombreDeSkieurs=nbSkieurs;
 	dureeOuverture=d;
@@ -50,8 +104,145 @@ vector<Arc> Station::getArcs() const{
 	return arcs;
 }
 
+int Station::demanderInt(int min, int max){
+	string input = "";
+	const char* inputchar;
+	int res = min-1;
+	try{
+		//On demande une chaine de caractère
+		cin >> input;
+		//On vérifie que chaque caractère est un chiffre avant de l'affecter à res
+		for (int i=0; i<input.size(); i++){
+			if (!isdigit(input[i])){
+				throw string("Entrée erronée");
+			}
+		}
+		//On caste le string en char* pour utiliser atoi()
+		//En effet stoi(...) ne fonctionne pas bien sous Eclipse
+		inputchar = input.c_str();
+		res = atoi(inputchar);
+		//Test pour les limites
+		if(res<min || res >max){
+			throw string("Valeur hors-limite");
+		}
+	}
+	catch(string & s){
+		cout << "ERREUR : " << s << endl;
+	}
+	return res;
+}
+
+int Station::demanderInt(){
+	string input = "";
+	const char* inputchar;
+	int res = -1;
+	try{
+		//On demande une chaine de caractère
+		cin >> input;
+		//On vérifie que chaque caractère est un chiffre avant de l'affecter à res
+		for (int i=0; i<input.size(); i++){
+			if (!isdigit(input[i])){
+				throw string("Entrée erronée");
+			}
+		}
+		//On caste le string en char* pour utiliser atoi()
+		//En effet stoi(...) ne fonctionne pas bien sous Eclipse
+		inputchar = input.c_str();
+		res = atoi(inputchar);
+		if(res<0){
+			res = -1; //pour retourner toujours -1 en cas d'erreur
+			throw string("Valeur negative");
+		}
+
+	}
+	catch(string & s){
+		cout << "ERREUR : " << s << endl;
+	}
+	return res;
+}
+
 void Station::modeUtilisateur() {
 	afficheTitre("Mode Utilisateur");
+	string input = "";
+	const char* inputchar;
+	string nom = "";
+	string prenom = "";
+	int niveau = 0;
+	int h = -1;
+	int m = -1;
+	int s = -1;
+
+	cout << "Veuillez rentrer le nom du skieur :" << endl;
+	while(nom.empty()){
+		cin >> nom;
+	}
+
+	cout << "Veuillez rentrer le prénom du skieur :" << endl;
+	while(prenom.empty()){
+		cin >> prenom;
+	}
+
+	cout << "Veuillez rentrer le niveau du skieur (entre 1 et 4) :" << endl;
+	while(niveau<1 || niveau >4){
+		niveau = demanderInt(1,4);
+	}
+
+	cout << "Veuillez rentrer l'heure d'arrivee du skieur (0h0'0'' correspond à l'ouverture de la station) :" << endl;
+	vector<int> duree = secondesEnTemps(getDureeOuverture());
+	cout << "La station ouvrira pendant " << duree[0] << "h" << duree[1] << "'" << duree[2] << "''" << endl;
+	do{
+		try{
+			cout << "Nombre d'heures :" << endl;
+			h = demanderInt();
+			cout << "Nombre de minutes :" << endl;
+			m = demanderInt();
+			cout << "Nombre de secondes :" << endl;
+			s = demanderInt();
+			if(tempsEnSecondes(h,m,s)>getDureeOuverture()){
+				throw string("C'est un peu tard pour arriver !");
+			}
+			else if(h<0 || m<0 || s<0){
+				throw string("Valeur(s) incorrecte(s)");
+			}
+		}
+		catch(string & s){
+			cout << "ERREUR : " << s << endl;
+		}
+
+
+	}while(tempsEnSecondes(h,m,s)>getDureeOuverture() || h<0 || m<0 || s<0);
+
+	Skieur monSkieur(nom,prenom,niveau,tempsEnSecondes(h,m,s));
+	skieurs.push_back(monSkieur);
+	cout << "Bienvenue sur les pistes "<< skieurs[0].getPrenomS() << " !"<< endl;
+
+	menuModifUtilisateur();
+}
+
+void Station::menuModifUtilisateur(){
+	afficheTitre("Mode Utilisateur");
+
+	cout << "Vous voulez :" << endl;
+	cout << "1) Modifier le nombre de skieurs (Actuellement : " << getNombreDeSkieurs() << ")" << endl;
+	cout << "2) Modifier la duree d'ouverture (Actuellement : " << secondesEnTemps(getDureeOuverture())[0] << "h" << secondesEnTemps(getDureeOuverture())[1] << "'" << secondesEnTemps(getDureeOuverture())[2] << "'', soit " << getDureeOuverture() <<" secondes)" << endl;
+	cout << "3) Lancer la simulation" << endl;
+	cout << "\n0) Retour" << endl;
+
+	int choix = -1;
+		while(choix<0 || choix>3){
+			choix = demanderInt(0,3);
+		}
+
+		switch(choix){
+		case 0 :	run();
+					break;
+		case 1 :	modifierNombreDeSkieurs();
+					break;
+		case 2 :	modifierDureeOuverture();
+					break;
+		case 3 : 	lancerSimulation();
+					break;
+		}
 }
 
 void Station::modeAdministrateur(){
@@ -67,7 +258,7 @@ void Station::modeAdministrateur(){
 
 	int choix = -1;
 	while(choix<0 || choix>5){
-		cin >> choix;
+		choix = demanderInt(0,5);
 	}
 
 	switch(choix){
@@ -103,7 +294,7 @@ bool Station::accueil(){
 
 	int choix = -1;
 	while(choix!=1 && choix!=2 && choix!=0){
-		cin >> choix;
+		choix = demanderInt(0,2);
 	}
 
 
@@ -162,22 +353,24 @@ void Station::modifierNombreDeSkieurs(){
 	 */
 	string titre = "Mode " + mode + " : Modifier le nombre de skieurs";
 	afficheTitre(titre);
-	cout << "Veuillez rentrer le nouveau nombre de skieurs (<" << NB_MAX_SKIEURS <<") dans la station (Actuellement : " << getNombreDeSkieurs() << ")" << endl;
+	cout << "Veuillez rentrer le nouveau nombre de skieurs (entre " << NB_MIN_SKIEURS << " et "<< NB_MAX_SKIEURS <<") dans la station (Actuellement : " << getNombreDeSkieurs() << ")" << endl;
 	int nb = -1;
 	/*
 	 * Demande du nouveau nombre et mise à jour dans la station
 	 */
-	while(nb<0 || nb>NB_MAX_SKIEURS){
-		cin>>nb;
+	while(nb<NB_MIN_SKIEURS || nb>NB_MAX_SKIEURS){
+		nb = demanderInt(NB_MIN_SKIEURS,NB_MAX_SKIEURS);
 	}
 	nombreDeSkieurs = nb;
 	/*
 	 * Retour au menu précédent
 	 */
 	if(mode=="Utilisateur"){
-		modeUtilisateur();
+		menuModifUtilisateur();
 	}
 	else{
+		//On enregistre les modifications de l'admin dans le fichier des parametres
+		sauvegarderParamFichier();
 		modeAdministrateur();
 	}
 }
@@ -199,26 +392,36 @@ void Station::modifierDureeOuverture(){
 	// Heures
 	cout << "Nombre d'heures :" << endl;
 	while(h<0 || h>DUREE_MAX/3600){
-		cin>>h;
+		h = demanderInt(0,DUREE_MAX/3600);
 	}
 	// Minutes
 	cout << "Nombre de minutes :" << endl;
-	while(m<0 || m>DUREE_MAX/60 + h*60){
-		cin>>m;
+	while(m<0 || m>DUREE_MAX/60 - h*60){
+		m = demanderInt(0,DUREE_MAX/60 - h*60);
 	}
 	// Secondes
 	cout << "Nombre de secondes :" << endl;
-		while(s<0 || s<DUREE_MIN - (h*60+m)*60 || s>DUREE_MAX + (h*60+m)*60){
-			cin>>s;
+	while(s<0 || s<DUREE_MIN - (h*60+m)*60 || s>DUREE_MAX - (h*60+m)*60){
+		try{
+			s = demanderInt(DUREE_MIN - (h*60+m)*60,DUREE_MAX - (h*60+m)*60);
+			if(s<0){
+				throw string("Valeur incorrecte");
+			}
 		}
+		catch(string & s){
+			cout << "ERREUR : " << s << endl;
+		}
+	}
 	dureeOuverture = tempsEnSecondes(h,m,s);
 	/*
 	 * Retour au menu précédent
 	 */
 	if(mode=="Utilisateur"){
-		modeUtilisateur();
+		menuModifUtilisateur();
 	}
 	else{
+		//On enregistre les modifications de l'admin dans le fichier des parametres
+		sauvegarderParamFichier();
 		modeAdministrateur();
 	}
 
@@ -241,23 +444,39 @@ void Station::modifierFrequenceAffichage(){
 	// Heures
 	cout << "Nombre d'heures :" << endl;
 	while(h<0){
-		cin>>h;
+		h = demanderInt();
 	}
 	// Minutes
 	cout << "Nombre de minutes :" << endl;
 	while(m<0){
-		cin>>m;
+		m = demanderInt();
 	}
 	// Secondes
 	cout << "Nombre de secondes :" << endl;
 		while(s<0 || s<FREQUENCE_MIN - (h*60+m)*60){
-			cin>>s;
+			s = demanderInt();
 		}
 	frequenceAffichage = tempsEnSecondes(h,m,s);
 	/*
 	 * Retour au menu précédent
 	 */
+	//On enregistre les modifications de l'admin dans le fichier des parametres
+	sauvegarderParamFichier();
 	modeAdministrateur();
+
+}
+
+void Station::sauvegarderParamFichier(){
+	ofstream fichier("fichiers/parametres_par_defaut.txt",ios::out | ios::trunc);
+	if(fichier){
+		fichier << getNombreDeSkieurs() << endl;
+		fichier << getDureeOuverture() << endl;
+		fichier << getFrequenceAffichage() << endl;
+		fichier.close();
+	}
+	else{
+		cout << "ERREUR : Impossible d'acceder au fichier des parametres" << endl;
+	}
 
 }
 

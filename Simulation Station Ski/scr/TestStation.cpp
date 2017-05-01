@@ -11,7 +11,8 @@ using namespace std;
 
 int main(){
 
-	Station * station = new Station("Utilisateur", 50, 1000, 1800);
+
+	Station station;
 
 
 
@@ -20,7 +21,7 @@ int main(){
 	 */
 	//TEST getDureeOuverture()
 	cout << "**station->getDureeOuverture()**";
-	if(station->getDureeOuverture()==1000){
+	if(station.getDureeOuverture()==1000){
 		cout << "OK" << endl;
 	}
 	else{
@@ -28,12 +29,12 @@ int main(){
 	}
 
 
-	/*
+	/*new Skieur(nom,prenom,niveau,tempsEnSecondes(h,m,s))
 	 * Vrais tests :
 	 */
 	//TEST afficheTitre(string)
 	cout << "**station->afficheTitre(\"Bienvenue\")*";
-	station->afficheTitre("Bienvenue");
+	station.afficheTitre("Bienvenue");
 
 	//TEST accueil()
 	/*
@@ -44,7 +45,6 @@ int main(){
 
 	//TEST run()
 	cout << "**station->run()**";
-	station->run();
-	delete station;
+	station.run();
 	return 0;
 }
