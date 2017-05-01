@@ -14,9 +14,32 @@ class Telesiege : public RemonteMecanique{
 public:
 	int capaciteSiege;
 public:
+	/**
+	 * \fn Telesiege()
+	 * constructeur par defaut de Telesiege
+	 * initialise capaciteSiege a 4
+	 */
 	Telesiege();
+	/**
+	 * \fn Telesiege(int,int,int)
+	 * constructeur de Telesige
+	 */
+
+	Telesiege(int,int,int);
 	virtual ~Telesiege();
+	/**
+	 * \fn int calculerTempsAttente()
+	 * return int
+	 * retourne le temps d'attente calcule en fonction du nb de personnes en attente, de la frequence et de la capcite des sieges
+	 *
+	 */
 	int calculerTempsAttente();
+	/**
+	 * \fn int calculerTempsTrajet()
+	 * return int
+	 * retourne le tempsMoyen
+	 *
+	 */
 	int calculerTempsTrajet();
 };
 

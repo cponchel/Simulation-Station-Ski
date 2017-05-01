@@ -8,8 +8,16 @@
 #include "Telesiege.hpp"
 
 Telesiege::Telesiege() {
-	// TODO Auto-generated constructor stub
+	RemonteMecanique();
+	capaciteSiege=4;
 
+	// TODO Auto-generated constructor stub
+}
+
+Telesiege::Telesiege(int niv,int freq, int capSiege)
+{
+	RemonteMecanique(niv,freq);
+	capaciteSiege=capSiege;
 }
 
 Telesiege::~Telesiege() {

@@ -11,9 +11,28 @@
 
 class Teleski : public RemonteMecanique {
 public:
+	/**
+	 * \fn Teleski()
+	 * constructeur par defaut de Teleski
+	 */
 	Teleski();
+	/**
+	 * \fn Teleski(int,int)
+	 * constructeur de Teleski
+	 */
+	Teleski(int,int);
 	virtual ~Teleski();
+	/**
+	 * \fn int calculerTempsAttente()
+	 * return int
+	 * retourne le temps d'attente calcule en fonction de la frequence et du nb de personnes en attentee
+	 */
 	int calculerTempsAttente();
+	/**
+	 * \fn int calculerTempsTrajet()
+	 * return int
+	 * retourne le temps moyen
+	 */
 	int calculerTempsTrajet();
 };
 

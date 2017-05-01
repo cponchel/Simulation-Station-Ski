@@ -8,8 +8,14 @@
 #include "Teleski.hpp"
 
 Teleski::Teleski() {
+	RemonteMecanique();
 	// TODO Auto-generated constructor stub
 
+}
+
+Teleski::Teleski(int niv,int freq)
+{
+	RemonteMecanique(niv,freq);
 }
 
 Teleski::~Teleski() {
