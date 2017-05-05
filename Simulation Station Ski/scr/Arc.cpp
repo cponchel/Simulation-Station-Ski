@@ -17,12 +17,12 @@ Arc::Arc() {
 
 }
 
-Arc::Arc(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int nbPers) {
+Arc::Arc(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant) {
 	nom=leNom;
 	ouvert=ouverture;
 	tempsMoyen=tm;
 	suivants=lesArcsSuivant;
-	nbPersonneA=nbPers;
+	nbPersonneA=0;
 }
 string Arc:: getNom(){
 	return nom;
