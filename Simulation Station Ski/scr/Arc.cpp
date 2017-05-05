@@ -9,7 +9,6 @@
 
 
 
-
 Arc::Arc() {
 	nom="";
 	ouvert=false;

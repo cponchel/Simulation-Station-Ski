@@ -13,7 +13,6 @@
 #include <string>
 namespace std{
 
-
 /*!
  * \class Skieur
  * \brief Gestion du type skieur

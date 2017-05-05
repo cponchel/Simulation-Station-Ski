@@ -129,7 +129,6 @@ void Skieur::determinerArcSuivant(){
 	// mise à jour de l'arc actuel
 	setArcActuel(getArcActuel().getSuivants()[proba[temp]]); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
 
-
 }
 
 void Skieur::emprunterArcSuivant()
