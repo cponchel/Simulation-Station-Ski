@@ -9,18 +9,19 @@
 #define SCR_ARC_HPP_
 
 #include <string>
-#include <list>
+#include <vector>
+#include <string.h>
 using namespace std;
 
 class Arc {
 	string nom;
 	bool ouvert;
 	int tempsMoyen;
-	list <Arc> Suivants;
+	vector <Arc> suivants;
 
 public:
 	Arc();
-	Arc(string,bool, int, vector <Arc>);
+	Arc(string,bool, int,vector<Arc>);
 
 	virtual ~Arc();
 	string getNom();
@@ -32,7 +33,6 @@ public:
 	void setTempsMoyen(int);
 	void setSuivants(vector<Arc>);
 };
-
 
 
 #endif /* SCR_ARC_HPP_ */

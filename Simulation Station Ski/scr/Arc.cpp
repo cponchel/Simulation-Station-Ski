@@ -8,10 +8,9 @@
 #include "Arc.hpp"
 
 Arc::Arc() {
-	nom='';
+	nom="";
 	ouvert=false;
 	tempsMoyen=0;
-	Suivants=NULL;
 
 }
 
@@ -19,7 +18,7 @@ Arc::Arc(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant) {
 	nom=leNom;
 	ouvert=ouverture;
 	tempsMoyen=tm;
-	Suivants=lesArcsSuivant;
+	suivants=lesArcsSuivant;
 }
 string Arc:: getNom(){
 	return nom;
@@ -32,7 +31,7 @@ int Arc:: getTempsMoyen(){
 	return tempsMoyen;
 }
 vector <Arc> Arc:: getSuivants(){
-	return Suivants;
+	return suivants;
 }
 
 void Arc::setNom(string leNom){
@@ -45,13 +44,8 @@ void Arc::setTempsMoyen(int tmoyen){
 	tempsMoyen=tmoyen;
 }
 void Arc::setSuivants(vector<Arc> lesArcsSuivants){
-	Suivants=lesArcsSuivants;
+	suivants=lesArcsSuivants;
 }
+
 Arc::~Arc() {
 }
-
-int Arc::getTempsMoyen()
-{
-	return tempsMoyen;
-}
-
