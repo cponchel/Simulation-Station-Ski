@@ -137,6 +137,16 @@ void Skieur::emprunterArcSuivant()
 	determinerArcSuivant();
 	setTempsTrajet(getArcActuel().calculerTempsTrajet());
 	setTempsAttente(getArcActuel().calculerTempsAttente());
+
+	//mise a jour du nb de personnes sur l'arc
+	if(getTempsAttente()>0)
+	{
+		getArcActuel().setNbPersonneEnAttente(getArcActuel().getNbPersonneEnAttente()+1);
+	}
+	else
+	{
+		getArcActuel().setNbPersonneA(getArcActuel().getNbPersonneA()+1);
+	}
 }
 
 

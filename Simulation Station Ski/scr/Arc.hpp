@@ -19,10 +19,11 @@ class Arc {
 	bool ouvert;
 	int tempsMoyen;
 	vector <Arc> suivants;
+	int nbPersonneA;
 
 public:
 	Arc();
-	Arc(string,bool, int,vector<Arc>);
+	Arc(string,bool, int,vector<Arc>,int);
 
 	virtual ~Arc();
 	string getNom();
@@ -33,7 +34,11 @@ public:
 	void setOuvert(bool);
 	void setTempsMoyen(int);
 	void setSuivants(vector<Arc>);
+	void setNbPersonneA(int);
+	void setNbPersonneEnAttente(int);
 	int getNiveau();
+	int getNbPersonneA();
+	int getNbPersonneEnAttente();
 	int calculerTempsTrajet();
 	int calculerTempsAttente();
 };

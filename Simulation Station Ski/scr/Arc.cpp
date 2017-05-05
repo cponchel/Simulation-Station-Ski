@@ -14,14 +14,16 @@ Arc::Arc() {
 	nom="";
 	ouvert=false;
 	tempsMoyen=0;
+	nbPersonneA=0;
 
 }
 
-Arc::Arc(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant) {
+Arc::Arc(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int nbPers) {
 	nom=leNom;
 	ouvert=ouverture;
 	tempsMoyen=tm;
 	suivants=lesArcsSuivant;
+	nbPersonneA=nbPers;
 }
 string Arc:: getNom(){
 	return nom;
@@ -37,6 +39,10 @@ vector <Arc>& Arc:: getSuivants(){
 	return suivants;
 }
 
+int Arc::getNbPersonneA(){
+	return nbPersonneA;
+}
+
 void Arc::setNom(string leNom){
 	nom=leNom;
 }
@@ -49,6 +55,11 @@ void Arc::setTempsMoyen(int tmoyen){
 void Arc::setSuivants(vector<Arc> lesArcsSuivants){
 	suivants=lesArcsSuivants;
 }
+
+void Arc::setNbPersonneA(int nbPers){
+	nbPersonneA=nbPers;
+}
+
 
 Arc::~Arc() {
 }
