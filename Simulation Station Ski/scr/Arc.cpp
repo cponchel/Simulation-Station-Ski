@@ -48,6 +48,7 @@ void Arc::setSuivants(vector<Arc> lesArcsSuivants){
 	Suivants=lesArcsSuivants;
 }
 Arc::~Arc() {
+
 }
 
 int Arc::getTempsMoyen()
