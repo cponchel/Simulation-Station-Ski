@@ -20,15 +20,16 @@ class Arc {
 
 public:
 	Arc();
+	Arc(string,bool, int, vector <Arc>);
 	virtual ~Arc();
 	string getNom();
 	bool getOuvert();
 	int getTempsMoyen();
-	list <Arc> getSuivants();
+	vector <Arc> getSuivants();
 	void setNom(string);
 	void setOuvert(bool);
 	void setTempsMoyen(int);
-	void setSuivants(list<Arc>);
+	void setSuivants(vector<Arc>);
 };
 
 #endif /* SCR_ARC_HPP_ */
