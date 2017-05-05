@@ -92,7 +92,7 @@ public:
 	 * \return vector<Skieur>
 	 * Retourne la liste des skieurs
 	 */
-	vector<Skieur> getSkieurs() const;
+	vector<Skieur>& getSkieurs() const;
 	/**
 	 * \fn Skieur getSkieur(int) const
 	 * \return Skieur
@@ -104,7 +104,7 @@ public:
 	 * \return vector<Skieur>
 	 * Retourne la liste des Arcs
 	 */
-	vector<Arc> getArcs() const;
+	vector<Arc>& getArcs() const;
 	/**
 	 * \fn int demanderInt()
 	 * \return int
@@ -141,6 +141,11 @@ public:
 	 * Lance la simulation de la station en fonction du mode
 	 */
 	void lancerSimulation();
+	/**
+	 * \fn void initArcs()
+	 * Initialise les arcs selon un plan de station précis
+	 */
+	void initArcs();
 	/**
 	 * \fn depalcerSkieurs()
 	 * Appelle la fonction déplacer le skieur sur chaque Skieur de la station, s’il est arrive et s’il n’est pas reparti

@@ -92,7 +92,7 @@ int Station::getFrequenceAffichage() const{
 	return frequenceAffichage;
 }
 
-vector<Skieur> Station::getSkieurs() const{
+vector<Skieur>& Station::getSkieurs() const{
 	return skieurs;
 }
 
@@ -100,7 +100,7 @@ Skieur Station::getSkieur(int i) const{
 	return skieurs[i];
 }
 
-vector<Arc> Station::getArcs() const{
+vector<Arc>& Station::getArcs() const{
 	return arcs;
 }
 
@@ -281,8 +281,27 @@ void Station::lancerSimulation(){
 
 	int premier; //premier skieur a créer aléatoirement
 	if(mode=="Utilisateur"){
-
+		premier = 1;
 	}
+	else{
+		premier = 0;
+	}
+
+	/*
+	 * Création des skieurs
+	 */
+	for(int i=premier;i<nombreDeSkieurs;i++){
+		skieurs[i](this);
+	}
+
+	/*
+	 * Création des arcs
+	 */
+	initArcs();
+
+}
+
+void Station::initArcs(){
 
 }
 
