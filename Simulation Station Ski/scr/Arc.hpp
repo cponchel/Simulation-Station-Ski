@@ -32,4 +32,6 @@ public:
 	void setSuivants(vector<Arc>);
 };
 
+
+
 #endif /* SCR_ARC_HPP_ */

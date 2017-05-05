@@ -48,7 +48,6 @@ void Arc::setSuivants(vector<Arc> lesArcsSuivants){
 	Suivants=lesArcsSuivants;
 }
 Arc::~Arc() {
-	// TODO Auto-generated destructor stub
 }
 
 int Arc::getTempsMoyen()
