@@ -6,6 +6,9 @@
  */
 
 #include "Station.hpp"
+#include "RemonteMecanique.hpp"
+#include "LieuRestauration.hpp"
+#include <typeinfo>
 
 using namespace std;
 
@@ -13,8 +16,6 @@ int main(){
 
 
 	Station station;
-
-
 
 	/*
 	 * A titre d'exemple :
@@ -46,5 +47,7 @@ int main(){
 	//TEST run()
 	cout << "**station->run()**";
 	station.run();
+
+
 	return 0;
 }

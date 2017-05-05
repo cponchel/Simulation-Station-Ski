@@ -164,11 +164,6 @@ public:
 	 */
 	void run();
 	/**
-	 * \fn void init()
-	 * Initialise la Station de manière arbitraire
-	 */
-	void init();
-	/**
 	 * \fn void modifierNombreDeSkieurs()
 	 * Demande à l'utilisateur/admin de choisir un nouveau nombre de skieurs
 	 */
