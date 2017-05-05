@@ -35,7 +35,7 @@ class Skieur {
 	int tempsTotalPistes;
 	int tempsTotalRemontee;
 	int tempsTotalRepos;
-	Station s;
+	Station station;
 
 public:
 
@@ -54,7 +54,7 @@ public:
 	*/
 	Skieur(string,string,int,int);
 
-	Skieur(Station s);
+	Skieur(Station station);
 
 	/**
 	* \fn string getNomS()
