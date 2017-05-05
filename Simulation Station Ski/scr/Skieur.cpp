@@ -7,7 +7,6 @@
 
 #include "Skieur.hpp"
 
-
 namespace std{
 
 Skieur::Skieur() {

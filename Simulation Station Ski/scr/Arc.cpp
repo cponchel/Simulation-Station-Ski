@@ -8,6 +8,8 @@
 #include "Arc.hpp"
 
 
+
+
 Arc::Arc() {
 	nom="";
 	ouvert=false;

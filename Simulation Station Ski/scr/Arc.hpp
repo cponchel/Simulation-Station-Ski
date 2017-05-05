@@ -13,6 +13,7 @@
 #include <string.h>
 using namespace std;
 
+
 class Arc {
 	string nom;
 	bool ouvert;
