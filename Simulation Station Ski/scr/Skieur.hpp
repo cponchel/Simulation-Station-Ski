@@ -8,6 +8,7 @@
 #ifndef SKIEUR_HPP_
 #define SKIEUR_HPP_
 #include "Arc.hpp"
+#include "Station.hpp"
 #include "time.h"
 #include <cstdlib>
 #include <string>
@@ -34,7 +35,7 @@ class Skieur {
 	int tempsTotalPistes;
 	int tempsTotalRemontee;
 	int tempsTotalRepos;
-
+	Station s;
 
 public:
 
@@ -52,6 +53,8 @@ public:
 	*
 	*/
 	Skieur(string,string,int,int);
+
+	Skieur(Station s);
 
 	/**
 	* \fn string getNomS()
