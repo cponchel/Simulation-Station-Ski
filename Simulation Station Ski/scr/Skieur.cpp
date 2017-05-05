@@ -148,6 +148,15 @@ void Skieur::emprunterArcSuivant()
 	}
 }
 
+void Skieur::seDeplacer(){
+	if (getTempsAttente()==0){
+		getArcActuel().setNbPersonneEnAttente(getArcActuel().getNbPersonneEnAttente()-1);
+		if (getTempsTrajet==0){
+			emprunterArcSuivant();
+		}
+
+	}
+}
 
 Skieur::~Skieur() {
 	// TODO Auto-generated destructor stub
