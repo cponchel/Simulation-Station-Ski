@@ -27,11 +27,14 @@ public:
 	string getNom();
 	bool getOuvert();
 	int getTempsMoyen();
-	vector <Arc> getSuivants();
+	vector <Arc>& getSuivants();
 	void setNom(string);
 	void setOuvert(bool);
 	void setTempsMoyen(int);
 	void setSuivants(vector<Arc>);
+	int getNiveau();
+	int calculerTempsTrajet();
+	int calculerTempsAttente();
 };
 
 

@@ -7,6 +7,9 @@
 
 #ifndef SKIEUR_HPP_
 #define SKIEUR_HPP_
+#include "Arc.hpp"
+#include "time.h"
+#include <cstdlib>
 #include <string>
 namespace std{
 
@@ -25,6 +28,7 @@ class Skieur {
 	int niveauS;
 	int heureArrivee;
 	int heureDepart;
+	Arc arcActuel;
 	int tempsTrajet;
 	int tempsAttente;
 	int tempsTotalPistes;
@@ -84,7 +88,12 @@ public:
 	* Retourne l'heure a laquelle le Skieur part, l'heure est exprime en seconde
 	*/
 	int getHeureDepart();
-
+	/**
+	 * \fn Arc getArcActuel()
+	 * \return Arc
+	 * Retourne l'arc sur lequel se trouve le Skieur
+	 */
+	Arc getArcActuel();
 	/**
 	* \fn int getTempsTrajet()
 	* \return int
@@ -143,6 +152,12 @@ public:
 	* Modifie l'heure a laquelle le Skieur part
 	*/
 	void setHeureDepart(int) ;
+	/**
+	 * \fn void setArcActuel(Arc)
+	 * \param Arc
+	 * Modifie l'arc surquel se trouve le Skieur
+	 */
+	void setArcActuel(Arc);
 
 	/**
 	* \fn void setTempsTrajet(int)

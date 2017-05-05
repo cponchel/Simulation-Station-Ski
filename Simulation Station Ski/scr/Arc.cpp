@@ -7,6 +7,7 @@
 
 #include "Arc.hpp"
 
+
 Arc::Arc() {
 	nom="";
 	ouvert=false;
@@ -30,7 +31,7 @@ bool Arc::getOuvert(){
 int Arc:: getTempsMoyen(){
 	return tempsMoyen;
 }
-vector <Arc> Arc:: getSuivants(){
+vector <Arc>& Arc:: getSuivants(){
 	return suivants;
 }
 
