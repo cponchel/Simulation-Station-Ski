@@ -7,6 +7,7 @@
 
 #include "Skieur.hpp"
 
+
 namespace std{
 
 Skieur::Skieur() {
@@ -37,7 +38,9 @@ Skieur::Skieur(string leNom,string lePrenom,int leNiveau,int lHeureArrivee){
 	tempsTotalRepos=0;
 }
 
-Skieur::Skieur(Station station){}
+
+
+//Skieur::Skieur(Station station){}
 
 void Skieur::setNomS(string leNom) {
 	nomS=leNom;
@@ -50,6 +53,7 @@ void Skieur::setPrenomS(string lePrenom) {
 void Skieur::setNiveauS(int leNiveau) {
 	niveauS=leNiveau;
 }
+
 void Skieur::setHeureArrivee(int lHeureArrivee){
 	heureArrivee=lHeureArrivee;
 }

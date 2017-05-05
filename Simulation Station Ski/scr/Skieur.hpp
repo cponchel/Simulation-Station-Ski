@@ -8,10 +8,12 @@
 #ifndef SKIEUR_HPP_
 #define SKIEUR_HPP_
 #include "Arc.hpp"
-#include "Station.hpp"
-#include "time.h"
+//#include "time.h"
 #include <cstdlib>
 #include <string>
+
+
+
 namespace std{
 
 /*!
@@ -19,6 +21,8 @@ namespace std{
  * \brief Gestion du type skieur
  *
  * \author Cynthia Rasamimanananivo
+ * \author Clémentine Chevalier
+ * \author Xuan Liu
  * \version 1.0
  * \date avril 2017
  */
@@ -35,7 +39,6 @@ class Skieur {
 	int tempsTotalPistes;
 	int tempsTotalRemontee;
 	int tempsTotalRepos;
-	Station station;
 
 public:
 
@@ -54,7 +57,7 @@ public:
 	*/
 	Skieur(string,string,int,int);
 
-	Skieur(Station station);
+	Skieur(int dureeOuverture);
 
 	/**
 	* \fn string getNomS()
@@ -138,9 +141,9 @@ public:
 	int getTempsTotalRepos() ;
 
 
-	void setNomS(string) ;
-	void setPrenomS(string) ;
-	void setNiveauS(int) ;
+	void setNomS(string);
+	void setPrenomS(string);
+	void setNiveauS(int);
 
 	/**
 	* \fn void setHeureArrivee(int)
