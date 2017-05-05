@@ -37,6 +37,8 @@ Skieur::Skieur(string leNom,string lePrenom,int leNiveau,int lHeureArrivee){
 	tempsTotalRepos=0;
 }
 
+Skieur::Skieur(Station station){}
+
 void Skieur::setNomS(string leNom) {
 	nomS=leNom;
 }
@@ -148,10 +150,11 @@ void Skieur::emprunterArcSuivant()
 	}
 }
 
+
 void Skieur::seDeplacer(){
 	if (getTempsAttente()==0){
 		getArcActuel().setNbPersonneEnAttente(getArcActuel().getNbPersonneEnAttente()-1);
-		if (getTempsTrajet==0){
+		if (getTempsTrajet()==0){
 			emprunterArcSuivant();
 		}
 
