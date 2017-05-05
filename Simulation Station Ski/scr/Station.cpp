@@ -279,6 +279,11 @@ void Station::modeAdministrateur(){
 
 void Station::lancerSimulation(){
 
+	int premier; //premier skieur a créer aléatoirement
+	if(mode=="Utilisateur"){
+
+	}
+
 }
 
 void Station::deplacerSkieurs(){
@@ -329,9 +334,6 @@ void Station::run(){
 	}
 }
 
-void Station::init(){
-
-}
 
 int Station::tempsEnSecondes(int h, int m, int s){
 	return 60*(60*h+m)+s;
