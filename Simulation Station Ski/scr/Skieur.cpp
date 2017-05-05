@@ -119,7 +119,7 @@ int Skieur:: getTempsTotalRemontee(){
 int Skieur:: getTempsTotalRepos(){
 	return tempsTotalRepos;
 }
-
+/*
 void Skieur::determinerArcSuivant(){
 	vector<int> proba;
 
@@ -164,6 +164,7 @@ void Skieur::seDeplacer(){
 
 	}
 }
+*/
 
 Skieur::~Skieur() {
 	// TODO Auto-generated destructor stub

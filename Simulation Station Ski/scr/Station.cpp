@@ -7,8 +7,10 @@
 
 #include "Station.hpp"
 
-namespace std {
 
+
+
+namespace std {
 
 
 Station::Station(){
@@ -92,7 +94,7 @@ int Station::getFrequenceAffichage() const{
 	return frequenceAffichage;
 }
 
-vector<Skieur>& Station::getSkieurs() const{
+vector<Skieur> Station::getSkieurs() const{
 	return skieurs;
 }
 
@@ -100,7 +102,7 @@ Skieur Station::getSkieur(int i) const{
 	return skieurs[i];
 }
 
-vector<Arc>& Station::getArcs() const{
+vector<Arc> Station::getArcs() const{
 	return arcs;
 }
 
@@ -291,7 +293,7 @@ void Station::lancerSimulation(){
 	 * Création des skieurs
 	 */
 	for(int i=premier;i<nombreDeSkieurs;i++){
-		skieurs[i](this);
+		//skieurs[i](getDureeOuverture());
 	}
 
 	/*
@@ -303,6 +305,72 @@ void Station::lancerSimulation(){
 
 void Station::initArcs(){
 
+	ifstream fichier("fichiers/arcs.txt", ios::in);
+	string ligne;
+	string tmp;
+	string nomArc;
+	int niveau;
+	int frequence;
+	int capacite;
+	Arc arc;
+	/*
+	 * Pour les types :
+	 * 1 Piste
+	 * 2 Téléski
+	 * 3 Télésiège
+	 * 4 Lieu de restauration
+	 */
+	int type;
+
+
+	/*
+	 * Chaque ligne du fichier se compose ainsi :
+	 * 2 char pour son numéro, puis un espace
+	 * 25 char pour son nom, puis un espace
+	 * 1 char pour son type, puis un espace
+	 * 1 char pour son niveau, puis un espace
+	 * 2 char pour la fréquence, puis un espace
+	 * 2 char pour la capacité, puis un espace
+	 * 2 char pour chaque arc suivant (son numéro), puis un espace
+	 */
+	while(getline(fichier,ligne)){
+		// Lecture du nom de l'arc
+		nomArc = ligne.substr(3,25);
+
+		// Lecture du type
+		tmp = ligne.substr(29,1);
+		type = atoi(tmp.c_str());
+
+		// Lecture du niveau
+		tmp = ligne.substr(31,1);
+		niveau = atoi(tmp.c_str());
+
+		// Lecture de la frequence
+		tmp = ligne.substr(33,2);
+		frequence = atoi(tmp.c_str());
+
+		// Lecture de la capacite
+		tmp = ligne.substr(36,2);
+		capacite = atoi(tmp.c_str());
+
+		cout << nomArc << " " << type << " " << niveau << " " << frequence << " " << capacite << endl;
+
+
+		// Création de l'arc
+		switch(type){
+		//case 1 : Piste arc(nomArc,niveau);break;
+		//case 2 : Teleski arc(nomArc,niveau,frequence);break;
+		//case 3 : Telesiege arc(nomArc,niveau,frequence,capacite);break;
+		//case 4 : LieuRestauration arc(nomArc,capacite);break;
+		}
+
+
+
+
+
+	}
+
+	fichier.close();
 }
 
 void Station::deplacerSkieurs(){

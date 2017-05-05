@@ -7,26 +7,26 @@
 
 #ifndef SCR_STATION_HPP_
 #define SCR_STATION_HPP_
-
+#include "Skieur.hpp"
 #include <string>
 #include <iostream>
 #include <cstdlib>
 #include <vector>
 #include <fstream>
 #include "Arc.hpp"
-#include "Skieur.hpp"
+
+class Skieur;
+
 
 namespace std {
 /**
  * \class Station
  * \brief Gestion d'une Station de ski
- * \author Cynthia Rasamimanananivo
  * \author Colette Ponchel
  * \version 1.0
  * \date avril 2017
  */
 class Station {
-
 	string mode;
 	int nombreDeSkieurs;
 	int dureeOuverture;
@@ -39,7 +39,6 @@ class Station {
 	int static const DUREE_MIN = 1000; //16'40''
 	int static const DUREE_MAX = 43200; //12h0'0''
 	int static const FREQUENCE_MIN = 1; //1sec
-
 
 public:
 	/**
@@ -92,7 +91,7 @@ public:
 	 * \return vector<Skieur>
 	 * Retourne la liste des skieurs
 	 */
-	vector<Skieur>& getSkieurs() const;
+	vector<Skieur> getSkieurs() const;
 	/**
 	 * \fn Skieur getSkieur(int) const
 	 * \return Skieur
@@ -104,7 +103,7 @@ public:
 	 * \return vector<Skieur>
 	 * Retourne la liste des Arcs
 	 */
-	vector<Arc>& getArcs() const;
+	vector<Arc> getArcs() const;
 	/**
 	 * \fn int demanderInt()
 	 * \return int
