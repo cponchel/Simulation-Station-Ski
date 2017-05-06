@@ -15,7 +15,6 @@
 #include <cstdlib>
 #include <fstream>
 
-
 namespace std{
 
 /*!
@@ -59,6 +58,13 @@ public:
 	*/
 	Skieur(string,string,int,int);
 
+	/**
+	* \fn Station(int)
+	* \param int
+	* \brief Troisieme constructeur surcharge et permet de creer le skieur
+	* avec un nom au hasard, un prenom au hasard et un niveau au hasard et une heure d'arrivee et une heure depart exprimees en seconde au hasard
+	*
+	*/
 	Skieur(int dureeOuverture);
 
 	/**
