@@ -40,8 +40,54 @@ Skieur::Skieur(string leNom,string lePrenom,int leNiveau,int lHeureArrivee){
 
 
 
-//Skieur::Skieur(Station station){}
+//constructeur au hasard
+Skieur::Skieur(int dureeOuverture){
 
+	tempsTrajet=0;
+	tempsAttente=0;
+	tempsTotalPistes=0;
+	tempsTotalRemontee=0;
+	tempsTotalRepos=0;
+
+	//nomS au hasard
+	ifstream fichierNoms("fichiers/noms.txt", ios::in);
+	if(!fichierNoms){
+		throw string("Impossible d'ouvrir le fichier des noms. ");
+	}
+	string nbNomsFichierStr;
+	getline(fichierNoms, nbNomsFichierStr);
+
+	int nbNomsFichier=atoi(nbNomsFichierStr.c_str());
+	int nbHasard = rand()%nbNomsFichier + 1;
+	int i;
+	string nomHasard;
+	for (i=1; i<=nbHasard; i++){
+		getline(fichierNoms, nomHasard);
+	}
+	fichierNoms.close();
+	nomS=nomHasard;
+
+	//prenomS au hasard
+	ifstream fichierPrenoms("fichiers/prenoms.txt", ios::in);
+	if(!fichierPrenoms){
+		throw string("Impossible d'ouvrir le fichier des prenoms. ");
+	}
+
+	int j;
+	string prenomHasard;
+	for (j=1; j<=nbHasard+1; j++){
+		getline(fichierPrenoms, prenomHasard);
+	}
+	fichierPrenoms.close();
+	prenomS=prenomHasard;
+	//niveau au hasard
+	niveauS=rand()%4 + 1;
+
+	//heureDepart
+	heureDepart = rand()%dureeOuverture;
+	 heureArrivee = rand()%heureDepart;
+
+}
 void Skieur::setNomS(string leNom) {
 	nomS=leNom;
 }
