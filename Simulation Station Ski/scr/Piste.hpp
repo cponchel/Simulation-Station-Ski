@@ -9,6 +9,7 @@
 #define SCR_PISTE_HPP_
 
 #include "Arc.hpp"
+#include "cstdlib"
 /**
  * \class LieuRestauration
  * \brief
@@ -30,7 +31,7 @@ public:
 	 * Constructeur de Piste
 	 * initialise le niveau de la Piste
 	 */
-	Piste(int);
+	Piste(string,bool,int,vector<Arc>,int);
 	/**
 	 * \fn int getNiveau()
 	 * return int

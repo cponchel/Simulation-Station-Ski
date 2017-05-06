@@ -6,14 +6,16 @@
  */
 
 #include "Piste.hpp"
-#include "cstdlib"
 
-Piste::Piste(int niv) {
+
+Piste::Piste(string leNom, bool ouverture, int tm, vector<Arc> lesArcsSuivant, int niv) {
+	Arc(leNom,ouverture,tm,lesArcsSuivant);
 	niveau=niv;
 	// TODO Auto-generated constructor stub
 }
 
 Piste::~Piste() {
+	Arc();
 	// TODO Auto-generated destructor stub
 }
 
