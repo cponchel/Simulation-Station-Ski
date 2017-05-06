@@ -24,7 +24,7 @@ class Arc {
 
 public:
 	Arc();
-	Arc(string,bool, int,vector<Arc>);
+	Arc(string,bool,int,vector<Arc>);
 
 	virtual ~Arc();
 	string getNom();

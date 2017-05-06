@@ -20,7 +20,7 @@ public:
 	 * \fn Teleski(int,int)
 	 * constructeur de Teleski
 	 */
-	Teleski(int,int);
+	Teleski(string, bool, int, vector <Arc>,int,int);
 	virtual ~Teleski();
 	/**
 	 * \fn int calculerTempsAttente()

@@ -14,9 +14,9 @@ Telesiege::Telesiege() {
 	// TODO Auto-generated constructor stub
 }
 
-Telesiege::Telesiege(int niv,int freq, int capSiege)
+Telesiege::Telesiege(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int niv,int freq, int capSiege)
 {
-	RemonteMecanique(niv,freq);
+	RemonteMecanique(leNom,ouverture,tm,lesArcsSuivant,niv,freq);
 	capaciteSiege=capSiege;
 }
 
