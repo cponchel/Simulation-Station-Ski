@@ -49,43 +49,54 @@ Skieur::Skieur(int dureeOuverture){
 	tempsTotalRemontee=0;
 	tempsTotalRepos=0;
 
+
 	//nomS au hasard
 	ifstream fichierNoms("fichiers/noms.txt", ios::in);
 	if(!fichierNoms){
 		throw string("Impossible d'ouvrir le fichier des noms. ");
+		nomS = "Inconnu";
 	}
-	string nbNomsFichierStr;
-	getline(fichierNoms, nbNomsFichierStr);
+	else{
+		string nbNomsFichierStr;
+		getline(fichierNoms, nbNomsFichierStr);
 
-	int nbNomsFichier=atoi(nbNomsFichierStr.c_str());
-	int nbHasard = rand()%nbNomsFichier + 1;
-	int i;
-	string nomHasard;
-	for (i=1; i<=nbHasard; i++){
-		getline(fichierNoms, nomHasard);
+		int nbNomsFichier=atoi(nbNomsFichierStr.c_str());
+		int nbHasard = rand()%nbNomsFichier + 1;
+		int i;
+		string nomHasard;
+		for (i=1; i<=nbHasard; i++){
+			getline(fichierNoms, nomHasard);
+		}
+		fichierNoms.close();
+		nomS=nomHasard;
 	}
-	fichierNoms.close();
-	nomS=nomHasard;
 
 	//prenomS au hasard
 	ifstream fichierPrenoms("fichiers/prenoms.txt", ios::in);
 	if(!fichierPrenoms){
 		throw string("Impossible d'ouvrir le fichier des prenoms. ");
+		prenomS = "Inconnu";
 	}
+	else{
+		string nbPrenomsFichierStr;
+		getline(fichierPrenoms, nbPrenomsFichierStr);
+		int nbPrenomsFichier=atoi(nbPrenomsFichierStr.c_str());
+		int nbHasard = rand()%nbPrenomsFichier + 1;
 
-	int j;
-	string prenomHasard;
-	for (j=1; j<=nbHasard+1; j++){
-		getline(fichierPrenoms, prenomHasard);
+		int j;
+		string prenomHasard;
+		for (j=1; j<=nbHasard+1; j++){
+			getline(fichierPrenoms, prenomHasard);
+		}
+		fichierPrenoms.close();
+		prenomS=prenomHasard;
 	}
-	fichierPrenoms.close();
-	prenomS=prenomHasard;
 	//niveau au hasard
 	niveauS=rand()%4 + 1;
 
 	//heureDepart
-	heureDepart = rand()%dureeOuverture;
-	 heureArrivee = rand()%heureDepart;
+	heureDepart = dureeOuverture/2 + rand()%(dureeOuverture/2-1800);
+	heureArrivee = rand()%(heureDepart/2);
 
 }
 void Skieur::setNomS(string leNom) {

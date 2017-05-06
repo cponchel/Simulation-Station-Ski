@@ -46,11 +46,11 @@ int main(){
 
 	//TEST run()
 	cout << "**station->run()**";
-	//station.run();
+	station.run();
 
 	//TEST initArcs()
 	cout << "**initArcs()**";
-	station.initArcs();
+	//station.initArcs();
 
 	return 0;
 }

@@ -46,6 +46,7 @@ Sophie
 Alexandra
 Charlène
 Louise
+Xuan
 Clémentine
 Cynthia
 Colette
@@ -62,7 +63,6 @@ Assia
 Valentine
 Lya
 Lyna
-Emy
 Soline
 Mya
 Nour

@@ -281,9 +281,13 @@ void Station::modeAdministrateur(){
 
 void Station::lancerSimulation(){
 
+	ofstream fichier("fichiers/skieurs.txt",ios::out);
+
 	int premier; //premier skieur a créer aléatoirement
+
 	if(mode=="Utilisateur"){
 		premier = 1;
+
 	}
 	else{
 		premier = 0;
@@ -293,8 +297,11 @@ void Station::lancerSimulation(){
 	 * Création des skieurs
 	 */
 	for(int i=premier;i<nombreDeSkieurs;i++){
-		//skieurs[i](getDureeOuverture());
+		Skieur skieur(getDureeOuverture());
+		skieurs.push_back(skieur);
+		fichier << i << "\t" << skieurs[i].getNomS() << " " << skieurs[i].getPrenomS() << " \t \t Niveau " << skieurs[i].getNiveauS() << ", " << secondesEnTemps(skieurs[i].getHeureArrivee())[0] << "h" << secondesEnTemps(skieurs[i].getHeureArrivee())[1] << "'" << secondesEnTemps(skieurs[i].getHeureArrivee())[2] << "''" << "-" << secondesEnTemps(skieurs[i].getHeureDepart())[0] << "h" << secondesEnTemps(skieurs[i].getHeureDepart())[1] << "'" << secondesEnTemps(skieurs[i].getHeureDepart())[2] << "''"  << endl;
 	}
+	fichier.close();
 
 	/*
 	 * Création des arcs
@@ -353,7 +360,7 @@ void Station::initArcs(){
 		tmp = ligne.substr(36,2);
 		capacite = atoi(tmp.c_str());
 
-		cout << nomArc << " " << type << " " << niveau << " " << frequence << " " << capacite << endl;
+		//cout << nomArc << " " << type << " " << niveau << " " << frequence << " " << capacite << endl;
 
 
 		// Création de l'arc
