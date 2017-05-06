@@ -11,7 +11,9 @@
 #include "time.h"
 #include <cstdlib>
 #include <string>
-
+#include <iostream>
+#include <cstdlib>
+#include <fstream>
 
 
 namespace std{
