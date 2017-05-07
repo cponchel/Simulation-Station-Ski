@@ -59,6 +59,11 @@ void Arc::setNbPersonneA(int nbPers){
 	nbPersonneA=nbPers;
 }
 
+int Arc:: calculerTempsTrajet(){
+	//heure actuelle - heure de depart sur le début de l'arc
 
+
+
+}
 Arc::~Arc() {
 }

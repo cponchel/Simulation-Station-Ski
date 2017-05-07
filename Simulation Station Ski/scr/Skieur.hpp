@@ -52,8 +52,10 @@ public:
 	/**
 	* \fn Station(string,string,int,int)
 	* \param string, string, int,int
-	* \brief Deuxieme constructeur surcharge et permet de creer le skieur
-	* avec son nom, son prenom et son niveau et son heure d'arrivee exprimee en seconde
+	* \brief Deuxieme constructeur surcharge qui
+	* permet de creer le skieur et l'initialser
+	* avec son nom, son prenom et son niveau
+	* et son heure d'arrivee exprimee en seconde
 	*
 	*/
 	Skieur(string,string,int,int);
@@ -213,10 +215,33 @@ public:
 	*/
 	void setTempsTotalRepos(int);
 
-
+	/**
+	* \fn determinerArcSuivant()
+	* \param
+	* \brief Permet de determiner l'arc suivant a prendre
+	* selon le niveau et la position dans la station
+	*/
 	void determinerArcSuivant();
+
+	/**
+	* \fn emprunterArcSuivant()
+	* \param
+	* \brief Permet d'emprunter l'arc suivant
+	* en faisant appel a determinerArcSuivant()
+	*/
 	void emprunterArcSuivant();
+
+	/**
+	* \fn seDeplacer()
+	* \param
+	* \brief Permet de mettre a jour les temps totaux
+	* decrementer le nombre de personne en attente si le temps d'attente est nul
+	* on emprunte l'arc suivant si le temps de trajet est nul
+	*
+	*/
 	void seDeplacer();
+
+
 	void partir();
 	/**
 	* \fn Station()
