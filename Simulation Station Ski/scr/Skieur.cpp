@@ -226,7 +226,6 @@ void Skieur::seDeplacer(){
 		tempsTrajet--;
 	}
 	else if (getTempsTrajet()==0){
-			getArcActuel().setSuivant(getArcActuel().getSuivant())=null;
 			emprunterArcSuivant();
 		}
 
