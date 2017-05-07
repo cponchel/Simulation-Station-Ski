@@ -45,12 +45,25 @@ int main(){
 	*/
 
 	//TEST run()
-	cout << "**station->run()**";
+	cout << "**station->run()** " << endl;
 	station.run();
 
 	//TEST initArcs()
-	cout << "**initArcs()**";
+	//cout << "**initArcs()**" << endl;
 	//station.initArcs();
+
+	//TEST afficheTableauAdmin()
+
+	cout << "**afficheTableauAdmin()**" << endl;
+	vector<Arc> arcs;
+	Arc arc1("Premier Arc",true,0,arcs);
+	arcs.push_back(arc1);
+	Arc arc2("Second Arc",true,0,arcs);
+	arcs.push_back(arc2);
+	station.afficheTableauAdmin(arcs,50,12);
+	station.afficheTableauAdmin(arcs,50,12);
+	station.afficheTableauAdmin(arcs,50,12);
+
 
 	return 0;
 }

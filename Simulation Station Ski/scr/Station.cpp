@@ -15,6 +15,8 @@ namespace std {
 
 Station::Station(){
 
+	tempsActuel = 0;
+	mode = "Utilisateur";
 	try{
 		ifstream fichier("fichiers/parametres_par_defaut.txt", ios::in);
 		if(!fichier){
@@ -216,7 +218,7 @@ void Station::modeUtilisateur() {
 
 	Skieur monSkieur(nom,prenom,niveau,tempsEnSecondes(h,m,s));
 	skieurs.push_back(monSkieur);
-	cout << "Bienvenue sur les pistes "<< skieurs[0].getPrenomS() << " !"<< endl;
+	cout << "Bienvenue sur les pistes "<< getSkieur(0).getPrenomS() << " !"<< endl;
 
 	menuModifUtilisateur();
 }
@@ -299,7 +301,7 @@ void Station::lancerSimulation(){
 	for(int i=premier;i<nombreDeSkieurs;i++){
 		Skieur skieur(getDureeOuverture());
 		skieurs.push_back(skieur);
-		fichier << i << "\t" << skieurs[i].getNomS() << " " << skieurs[i].getPrenomS() << " \t \t Niveau " << skieurs[i].getNiveauS() << ", " << secondesEnTemps(skieurs[i].getHeureArrivee())[0] << "h" << secondesEnTemps(skieurs[i].getHeureArrivee())[1] << "'" << secondesEnTemps(skieurs[i].getHeureArrivee())[2] << "''" << "-" << secondesEnTemps(skieurs[i].getHeureDepart())[0] << "h" << secondesEnTemps(skieurs[i].getHeureDepart())[1] << "'" << secondesEnTemps(skieurs[i].getHeureDepart())[2] << "''"  << endl;
+		fichier << i << "\t" << getSkieur(i).getNomS() << " " << getSkieur(i).getPrenomS() << " \t \t Niveau " << getSkieur(i).getNiveauS() << ", " << secondesEnTemps(getSkieur(i).getHeureArrivee())[0] << "h" << secondesEnTemps(getSkieur(i).getHeureArrivee())[1] << "'" << secondesEnTemps(getSkieur(i).getHeureArrivee())[2] << "''" << "-" << secondesEnTemps(getSkieur(i).getHeureDepart())[0] << "h" << secondesEnTemps(getSkieur(i).getHeureDepart())[1] << "'" << secondesEnTemps(getSkieur(i).getHeureDepart())[2] << "''"  << endl;
 	}
 	fichier.close();
 
@@ -307,6 +309,7 @@ void Station::lancerSimulation(){
 	 * Création des arcs
 	 */
 	initArcs();
+	simulerStation();
 
 }
 
@@ -360,7 +363,7 @@ void Station::initArcs(){
 		tmp = ligne.substr(36,2);
 		capacite = atoi(tmp.c_str());
 
-		//cout << nomArc << " " << type << " " << niveau << " " << frequence << " " << capacite << endl;
+		cout << nomArc << " " << type << " " << niveau << " " << frequence << " " << capacite << endl;
 
 
 		// Création de l'arc
@@ -381,8 +384,9 @@ void Station::initArcs(){
 }
 
 void Station::deplacerSkieurs(){
+
 	for(int i=0;i<getNombreDeSkieurs();i++){
-		//getSkieur(i).seDeplacer();
+		//getSkieurs(i).seDeplacer();
 	}
 }
 
@@ -576,6 +580,114 @@ void Station::sauvegarderParamFichier(){
 
 }
 
+void Station::simulerStation(){
+
+	if(mode=="Utilisateur"){
+		afficheTitre("Mode Utilisateur : Incarner un skieur");
+	}
+	else{
+		afficheTitre("Mode Administrateur : Suivi de la station");
+		printf("======================================================================\n");
+		printf("|| %8.8s | %25.25s | %7.7s | %15.15s ||\n","Heure","Arcs satures","Skieurs","Attente moyenne");
+		printf("======================================================================\n");
+	}
+	// Tant que la station est ouverture ou qu'il y a encore des skieurs
+	while(tempsActuel<=getDureeOuverture()){
+		deplacerSkieurs();
+		gestionAffichage();
+		tempsActuel++;
+	}
+	printf("======================================================================\n");
+
+
+}
+
+void Station::gestionAffichage(){
+	/*
+	 * Si on est en mode Administrateur
+	 * Et si c'est le moment d'afficher (d'apres la frequence d'affichage choise)
+	 */
+
+	if(mode=="Administrateur" && tempsActuel%getFrequenceAffichage()==0){
+
+		// Detection des arcs satures
+		vector<Arc> arcsSatures;
+		for(int i=0;i<getArcs().size();i++){
+			cout << "ici" << endl;
+			/*
+			if(getArcs()[i].estSature()){
+				arcsSatures.push_back(getArcs()[i];
+			}*/
+		}
+		afficheTableauAdmin(arcsSatures,skieursEnStation(),tempsMoyenAttente());
+
+	}
+}
+
+int Station::skieursEnStation(){
+	int res = 0;
+	for(int i=0;i<getNombreDeSkieurs();i++){
+		/*
+		 * Si le skieur est sur un arc ferme, alors il n'est pas dans la station
+		 * Car le seul arc ferme sur lequel il peut se trouver est l'arc construit via le constructeur Arc()
+		 * Le skieur se voit atttribuer cet arc uniquement quand il n'est pas dans la station
+		 */
+		if(getSkieur(i).getArcActuel().getOuvert() != false){
+			res++;
+		}
+	}
+	return res;
+}
+
+int Station::tempsMoyenAttente(){
+	int somme = 0;
+	int compte = 0;
+	for(int i=0;i<getNombreDeSkieurs();i++){
+		// Si le skieur est deja arrivee
+		if(getSkieur(i).getHeureArrivee() < getTempsActuel()){
+			//somme += getSkieur(i).getTempsTotalAttente();
+			compte++;
+		}
+	}
+	if(compte==0){
+		return 0;
+	}
+	else{
+		return somme/compte;
+	}
+
+}
+
+void Station::afficheTableauAdmin(vector<Arc> arcsSatures,int nbSkieurs,int tempsMoyenAttente){
+
+	// Le nombre de ligne c'est le nombre d'arcs à écrire
+	int nbArcs = arcsSatures.size();
+
+	/*
+	 * Premiere ligne
+	 */
+	// L'heure qu'il est
+	printf("|| %02d:%02d:%02d | ",secondesEnTemps(getTempsActuel())[0],secondesEnTemps(getTempsActuel())[1],secondesEnTemps(getTempsActuel())[2]); // 8 caracteres
+	// Premier arc sature
+	if(nbArcs>0){
+		printf("%25.25s | ",arcsSatures[0].getNom().c_str());
+	}
+	else{
+		printf("%25.25s | ","");
+	}
+	// Nombre de skieurs et temps moyen attente
+	printf("%7d | %15d ||\n",nbSkieurs,tempsMoyenAttente);
+
+	/*
+	 * Lignes suivantes
+	 */
+	for(int i=1;i<nbArcs;i++){
+		printf("|| %8.8s | %25.25s | %7.7s | %15.15s ||\n","",arcsSatures[i].getNom().c_str(),"","");
+	}
+	printf("----------------------------------------------------------------------\n");
+
+
+}
 
 
 

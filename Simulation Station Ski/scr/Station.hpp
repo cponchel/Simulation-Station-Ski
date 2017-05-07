@@ -14,6 +14,7 @@
 #include <vector>
 #include <fstream>
 #include "Arc.hpp"
+#include <stddef.h>
 
 class Skieur;
 
@@ -204,6 +205,32 @@ public:
 	 * Sauvegarde les parametres actuels dans le fichier des parametres
 	 */
 	void sauvegarderParamFichier();
+	/**
+	 * \fn void simulerStation()
+	 * Simule la station après que est initialisé
+	 */
+	void simulerStation();
+	/**
+	 * \fn gestionAffichage(int moment)
+	 * Gere l'affichage relatif a la simulation de la station a un moment precis
+	 */
+	void gestionAffichage();
+	/**
+	 * \fn void afficheTableauAdmin(int temps,vector<Arc> arcsSatures,int nbSkieurs,int tempsMoyenAttente)
+	 * Affiche un (beau?) tableau pour pouvoir lire un bilan partiel de la station reprenant
+	 * l'heure qu'il est, les arcs satures, le nombre de skieurs qui sont dans la station, et le temps moyen qu'ils ont attendu jusque là
+	 */
+	void afficheTableauAdmin(vector<Arc> arcsSatures,int nbSkieurs,int tempsMoyenAttente);
+	/**
+	 * \fn int skieursEnStation()
+	 * Compte le nombre de skieur qui sont arrivés et pas encore partis (dont l'arc n'est pas null en fait)
+	 */
+	int skieursEnStation();
+	/**
+	 * \fn int tempsMoyenAttente()
+	 * Calcule le temps moyen qu'ont attendu les skieurs déjà arrivés (et peut-etre deja partis)
+	 */
+	int tempsMoyenAttente();
 
 };
 
