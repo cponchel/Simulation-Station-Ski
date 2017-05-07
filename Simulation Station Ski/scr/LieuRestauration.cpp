@@ -7,13 +7,19 @@
 
 #include "LieuRestauration.hpp"
 
-LieuRestauration::LieuRestauration(int cap) {
-	// TODO Auto-generated constructor stub
+LieuRestauration::LieuRestauration()
+{
+	Arc();
+	capaciteResto=30;
+}
+
+LieuRestauration::LieuRestauration(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int cap) {
+	Arc(leNom,ouverture,tm,lesArcsSuivant);
 	capaciteResto=cap;
 }
 
 LieuRestauration::~LieuRestauration() {
-	// TODO Auto-generated destructor stub
+
 }
 
 int LieuRestauration::getCapaciteResto()
@@ -28,5 +34,5 @@ void LieuRestauration::setCapaciteResto(int cap)
 
 int LieuRestauration::calculerTempsTrajet()
 {
-	return 600 +rand()%1800; //temps entre 10 et 40 min
+	return getTempsMoyen() +rand()%1800; //temps entre 10 et 40 min
 }

@@ -9,6 +9,7 @@
 #define SCR_LIEURESTAURATION_HPP_
 
 #include <cstdlib>
+#include "Arc.hpp"
 /**
  * \class LieuRestauration
  * \brief
@@ -17,7 +18,7 @@
  * \date avril 2017
  */
 
-class LieuRestauration {
+class LieuRestauration : public Arc{
 	int capaciteResto;
 public:
 	/**
@@ -30,7 +31,7 @@ public:
 	 * Constructeur LieuRestauration
 	 * initialise la capacite maximale du LieuRestauration
 	 */
-	LieuRestauration(int);
+	LieuRestauration(string,bool,int,vector<Arc>,int);
 	virtual ~LieuRestauration();
 	/**
 	 * \fn getCapaciteResto()
