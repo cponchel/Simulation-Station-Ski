@@ -212,16 +212,28 @@ void Skieur::emprunterArcSuivant()
 }
 
 
+
 void Skieur::seDeplacer(){
-	if (getTempsAttente()==0){
+	if (getTempsAttente()>0)
+	{
+		tempsAttente--;
+	}
+	else if (getTempsAttente()==0){
 		getArcActuel().setNbPersonneEnAttente(getArcActuel().getNbPersonneEnAttente()-1);
-		if (getTempsTrajet()==0){
+	}
+	if (getTempsTrajet()>0)
+	{
+		tempsTrajet--;
+	}
+	else if (getTempsTrajet()==0){
+			getArcActuel().setSuivant(getArcActuel().getSuivant())=null;
 			emprunterArcSuivant();
 		}
 
-	}
+
 }
 */
+
 
 Skieur::~Skieur() {
 	// TODO Auto-generated destructor stub
