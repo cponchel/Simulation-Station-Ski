@@ -16,6 +16,7 @@ Skieur::Skieur() {
 	niveauS=0;
 	heureArrivee=0;
 	heureDepart=0;
+	nbPassagesLR=0;
 	tempsTrajet=0;
 	tempsAttente=0;
 	tempsTotalPistes=0;
@@ -117,6 +118,12 @@ void Skieur::setHeureArrivee(int lHeureArrivee){
 void Skieur::setHeureDepart(int lHeureDepart){
 	heureDepart=lHeureDepart;
 }
+
+void Skieur::setNbPassagesLR(int nbPas)
+{
+	nbPassagesLR=nbPas;
+}
+
 void Skieur::setArcActuel(Arc arcA){
 	arcActuel=arcA;
 }
@@ -155,7 +162,9 @@ int Skieur:: getHeureArrivee(){
 int Skieur:: getHeureDepart(){
 	return heureDepart;
 }
-
+int Skieur::getNbPassagesLR(){
+	return nbPassagesLR;
+}
 Arc Skieur::getArcActuel(){
 	return arcActuel;
 }
@@ -176,27 +185,41 @@ int Skieur:: getTempsTotalRemontee(){
 int Skieur:: getTempsTotalRepos(){
 	return tempsTotalRepos;
 }
-/*
+
 void Skieur::determinerArcSuivant(){
-	vector<int> proba;
+		vector<int> proba;
 
-	for(int i=0;getArcActuel().getSuivants().size();i++)
-	{
-		if(getNiveauS()>=getArcActuel().getSuivants()[i].getNiveau()) // on place l'indice de l'arc dans un tab si le Skieur est apte a emprunter l'arc
+		for(int i=0;getArcActuel().getSuivants().size();i++)
 		{
-			proba.push_back(i);
+			if(getNiveauS()>=getArcActuel().getSuivants()[i].getNiveau()) // on place l'indice de l'arc dans un tab si le Skieur est apte a emprunter l'arc
+			{
+				if(typeid(getArcActuel().getSuivants()[i])==typeid(LieuRestauration))
+				{
+					if((getArcActuel().getSuivants()[i].getNbPersonneA()<getArcActuel().getSuivants()[i].getCapaciteResto())&&(getNbPassagesLR()<2))
+					{
+						proba.push_back(i);
+					}
+				}
+				else
+				{
+				proba.push_back(i);
+				}
+			}
 		}
+		int temp=rand()%proba.size(); // on choisit au hasard un indice ind du tableau compris entre 0 et tab.size() exclus
+
+		// mise à jour de l'arc actuel
+		setArcActuel(getArcActuel().getSuivants()[proba[temp]]); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
+
 	}
-	int temp=rand()%proba.size(); // on choisit au hasard un indice ind du tableau compris entre 0 et tab.size() exclus
-
-	// mise à jour de l'arc actuel
-	setArcActuel(getArcActuel().getSuivants()[proba[temp]]); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
-
-}
 
 void Skieur::emprunterArcSuivant()
 {
 	determinerArcSuivant();
+	if(typeid(getArcActuel())==typeid(LieuRestauration))
+	{
+		setNbPassagesLR(getNbPassagesLR()+1);
+	}
 	setTempsTrajet(getArcActuel().calculerTempsTrajet());
 	setTempsAttente(getArcActuel().calculerTempsAttente());
 
@@ -216,22 +239,23 @@ void Skieur::emprunterArcSuivant()
 void Skieur::seDeplacer(){
 	if (getTempsAttente()>0)
 	{
-		tempsAttente--;
-	}
-	else if (getTempsAttente()==0){
+		setTempsAttente(getTempsAttente()-1);
+		if (getTempsAttente()==0){
 		getArcActuel().setNbPersonneEnAttente(getArcActuel().getNbPersonneEnAttente()-1);
+		getArcActuel().setNbPersonneA(getArcActuel().getNbPersonneA()+1);
 	}
-	if (getTempsTrajet()>0)
+	else if (getTempsTrajet()>0)
 	{
-		tempsTrajet--;
+		setTempsTrajet(getTempsTrajet()-1);
 	}
 	else if (getTempsTrajet()==0){
+			getArcActuel().setNbPersonneA(getArcActuel().getNbPersonneA()-1);
 			emprunterArcSuivant();
 		}
 
 
 }
-*/
+
 
 
 Skieur::~Skieur() {

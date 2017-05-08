@@ -168,6 +168,11 @@ public:
 	* \fn virtual ~Arc()
 	* Destructeur d'Arc
 	*/
+		//virtual void setCapaciteResto(int)=0;
+
+
+
+	int getCapaciteResto();
 	virtual ~Arc();
 };
 

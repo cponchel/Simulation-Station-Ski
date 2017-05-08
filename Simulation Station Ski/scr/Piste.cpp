@@ -51,3 +51,13 @@ int Piste::calculerTempsAttente()
 {
 	return 0;
 }
+
+int Piste::getNbPersonneEnAttente()
+{
+	return 0;
+}
+
+void Piste::setNbPersonneEnAttente(int nbPers)
+{
+
+}

@@ -58,6 +58,28 @@ void Arc::setSuivants(vector<Arc> lesArcsSuivants){
 void Arc::setNbPersonneA(int nbPers){
 	nbPersonneA=nbPers;
 }
+int Arc::calculerTempsAttente()
+{
+	return 0;
+}
+int Arc::getNiveau()
+{
+	return 0;
+}
+int Arc::getNbPersonneEnAttente()
+{
+	return 0;
+}
+
+void Arc::setNbPersonneEnAttente(int a)
+{
+
+}
+
+int Arc::getCapaciteResto()
+{
+	return 0;
+}
 
 int Arc:: calculerTempsTrajet(){
 	//heure actuelle - heure de depart sur le début de l'arc

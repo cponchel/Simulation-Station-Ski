@@ -23,14 +23,17 @@ Telesiege::Telesiege(string leNom, bool ouverture, int tm, vector <Arc> lesArcsS
 Telesiege::~Telesiege() {
 	// TODO Auto-generated destructor stub
 }
-
+int Telesiege::getCapaciteSiege(){
+	return capaciteSiege;
+}
 int Telesiege::calculerTempsAttente()
 {
-	return (nbPersonneEnAttente%capaciteSiege)*frequence;
+	return (getNbPersonneEnAttente()%getCapaciteSiege())*getFrequence();
 }
 
-int Telesiege::calculerTempsTrajet()
+/*int Telesiege::calculerTempsTrajet()
 {
 	return getTempsMoyen();
 }
+*/
 

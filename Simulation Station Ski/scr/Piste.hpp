@@ -57,6 +57,11 @@ public:
 	 * renvoie 0 car temps attente pour une piste est nul
 	 */
 	int calculerTempsAttente();
+
+	int getNbPersonneEnAttente();
+
+	void setNbPersonneEnAttente(int);
+
 };
 
 #endif /* SCR_PISTE_HPP_ */

@@ -14,6 +14,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
+#include <typeinfo>
+#include "LieuRestauration.hpp"
 
 namespace std{
 
@@ -34,6 +36,7 @@ class Skieur {
 	int niveauS;
 	int heureArrivee;
 	int heureDepart;
+	int nbPassagesLR;
 	Arc arcActuel;
 	int tempsTrajet;
 	int tempsAttente;
@@ -105,6 +108,12 @@ public:
 	*/
 	int getHeureDepart();
 	/**
+		 * \fn int getNbPassagesLR()
+		 * return int
+		 * Retourne le nb de passages par un lieu de restauration du Skieur
+		 */
+	int getNbPassagesLR();
+	/**
 	 * \fn Arc getArcActuel()
 	 * \return Arc
 	 * Retourne l'arc sur lequel se trouve le Skieur
@@ -168,6 +177,13 @@ public:
 	* Modifie l'heure a laquelle le Skieur part
 	*/
 	void setHeureDepart(int) ;
+	/**
+		 * \fn void setNbPassagesLR(int)
+		 * \param int
+		 * Modifie le nb de passages par un lieu de Restauration du Skieur
+		 */
+
+	void setNbPassagesLR(int);
 	/**
 	 * \fn void setArcActuel(Arc)
 	 * \param Arc

@@ -58,6 +58,11 @@ public:
 	 * modifie le nombre de personne en attente
 	 */
 	void setNbPersonneEnAttente(int);
+
+	int calculerTempsTrajet();
+	virtual int calculerTempsAttente();
+
+	int getCapaciteResto();
 	virtual ~RemonteMecanique();
 };
 

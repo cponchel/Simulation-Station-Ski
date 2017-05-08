@@ -24,11 +24,11 @@ Teleski::~Teleski() {
 
 int Teleski::calculerTempsAttente()
 {
-	return nbPersonneEnAttente*frequence;
+	return getNbPersonneEnAttente()*getFrequence();
 }
 
-int Teleski::calculerTempsTrajet()
+/*int Teleski::calculerTempsTrajet()
 {
 	return getTempsMoyen();
-}
+}*/
 

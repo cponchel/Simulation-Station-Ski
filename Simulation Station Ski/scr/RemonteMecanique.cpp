@@ -59,3 +59,18 @@ void RemonteMecanique::setNbPersonneEnAttente(int nbPers)
 {
 	nbPersonneEnAttente=nbPers;
 }
+
+int RemonteMecanique::getCapaciteResto()
+{
+	return 0;
+}
+
+int RemonteMecanique::calculerTempsAttente()
+{
+	return 0;
+}
+
+int RemonteMecanique::calculerTempsTrajet()
+{
+	return getTempsMoyen();
+}

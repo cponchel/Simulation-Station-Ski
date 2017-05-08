@@ -27,6 +27,8 @@ public:
 
 	Telesiege(string, bool, int, vector <Arc>,int,int,int);
 	virtual ~Telesiege();
+
+	int getCapaciteSiege();
 	/**
 	 * \fn int calculerTempsAttente()
 	 * return int

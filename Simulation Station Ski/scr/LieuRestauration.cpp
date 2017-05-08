@@ -27,12 +27,22 @@ int LieuRestauration::getCapaciteResto()
 	return capaciteResto;
 }
 
-void LieuRestauration::setCapaciteResto(int cap)
+/*void LieuRestauration::setCapaciteResto(int cap)
 {
 	capaciteResto=cap;
 }
+*/
 
 int LieuRestauration::calculerTempsTrajet()
 {
 	return getTempsMoyen() +rand()%1800; //temps entre 10 et 40 min
+}
+
+int LieuRestauration::calculerTempsAttente()
+{
+	return 0;
+}
+int LieuRestauration::getNbPersonneEnAttente()
+{
+	return 0;
 }

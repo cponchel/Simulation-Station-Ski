@@ -43,7 +43,7 @@ public:
 	 * \fn setCapaciteResto
 	 * modifie la valeur capaciteResto
 	 */
-	void setCapaciteResto(int);
+	//void setCapaciteResto(int);
 	/**
 	 * \fn int calculerTempsTrajet()
 	 * return int
@@ -56,6 +56,8 @@ public:
 	 * renvoie 0 car si LieuRestauration complet le skieur fait une piste
 	 */
 	int calculerTempsAttente();
+
+	int getNbPersonneEnAttente();
 };
 
 #endif /* SCR_LIEURESTAURATION_HPP_ */
