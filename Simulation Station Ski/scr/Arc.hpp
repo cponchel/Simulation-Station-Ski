@@ -105,7 +105,12 @@ public:
 	* Retourne le nombre de personne en attente sur l'arc
 	*/
 	virtual int getNbPersonneEnAttente();
-
+	/**
+	* \fn int getFrequence()
+	* \return int
+	* Retourne la frequence de la remontee mecanique
+	*/
+	virtual int getFrequence();
 	/**
 	* \fn void setNom(string)
 	* \param string
@@ -162,7 +167,7 @@ public:
 	* \brief Retourne le temps d'attente
 	* le temps est exprim� en secondes
 	*/
-	int calculerTempsAttente();
+	virtual int calculerTempsAttente();
 
 	/**
 	* \fn virtual ~Arc()

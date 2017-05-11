@@ -22,6 +22,7 @@ Skieur::Skieur() {
 	tempsTotalPistes=0;
 	tempsTotalRemontee=0;
 	tempsTotalRepos=0;
+	tempsTotalAttente=0;
 	Arc arcHorsStation;
 	arcActuel = &arcHorsStation;
 
@@ -39,6 +40,7 @@ Skieur::Skieur(string leNom,string lePrenom,int leNiveau,int lHeureArrivee){
 	tempsTotalPistes=0;
 	tempsTotalRemontee=0;
 	tempsTotalRepos=0;
+	tempsTotalAttente=0;
 	nbPassagesLR=0;
 	Arc arcHorsStation;
 	arcActuel = &arcHorsStation;
@@ -54,6 +56,7 @@ Skieur::Skieur(int dureeOuverture,vector<Arc*> arcsDep){
 	tempsTotalPistes=0;
 	tempsTotalRemontee=0;
 	tempsTotalRepos=0;
+	tempsTotalAttente=0;
 	nbPassagesLR=0;
 	arcsDepart = arcsDep;
 	arcActuel = new Arc();
@@ -197,6 +200,10 @@ int Skieur:: getTempsTotalRemontee(){
 int Skieur:: getTempsTotalRepos(){
 	return tempsTotalRepos;
 }
+int Skieur:: getTempsTotalAttente(){
+	return tempsTotalAttente;
+}
+
 
 void Skieur::determinerArcSuivant(){
 		vector<int> proba;
@@ -238,7 +245,7 @@ void Skieur::determinerArcSuivant(){
 
 	}
 
-void Skieur::emprunterArcSuivant()
+void Skieur::emprunterArcSuivant(int instant)
 {
 	determinerArcSuivant();
 
@@ -262,15 +269,20 @@ void Skieur::emprunterArcSuivant()
 
 
 
-void Skieur::seDeplacer(){
+void Skieur::seDeplacer(int instant){
 
 	if (getTempsAttente()>0)
 	{
-		setTempsAttente(getTempsAttente()-1);
-		if (getTempsAttente()==0){
-			getArcActuel()->setNbPersonneEnAttente(getArcActuel()->getNbPersonneEnAttente()-1);
-			getArcActuel()->setNbPersonneA(getArcActuel()->getNbPersonneA()+1);
+		tempsTotalAttente++;
+		//Si on peut monter dans la remontee mecanique
+		if(instant%arcActuel->getFrequence()==0){
+			tempsAttente--;
+			if (getTempsAttente()==0){
+				getArcActuel()->setNbPersonneEnAttente(getArcActuel()->getNbPersonneEnAttente()-1);
+				getArcActuel()->setNbPersonneA(getArcActuel()->getNbPersonneA()+1);
+			}
 		}
+
 	}
 	else if (getTempsTrajet()>0)
 	{
@@ -279,7 +291,7 @@ void Skieur::seDeplacer(){
 	else if (getTempsTrajet()==0){
 		getArcActuel()->setNbPersonneA(getArcActuel()->getNbPersonneA()-1);
 
-		emprunterArcSuivant();
+		emprunterArcSuivant(instant);
 	}
 
 

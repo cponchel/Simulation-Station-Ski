@@ -465,7 +465,7 @@ void Station::deplacerSkieurs(){
 	for(int i=0;i<getNombreDeSkieurs();i++){
 		// Si le skieur est arrive il se deplace, sinon rien
 		if(getSkieur(i).getHeureArrivee()<=tempsActuel){
-			skieurs[i].seDeplacer();
+			skieurs[i].seDeplacer(tempsActuel);
 		}
 
 	}
@@ -724,8 +724,8 @@ int Station::tempsMoyenAttente(){
 	int compte = 0;
 	for(int i=0;i<getNombreDeSkieurs();i++){
 		// Si le skieur est deja arrivee
-		if(getSkieur(i).getHeureArrivee() < getTempsActuel()){
-			//somme += getSkieur(i).getTempsTotalAttente();
+		if(getSkieur(i).getHeureArrivee() <= getTempsActuel()){
+			somme += getSkieur(i).getTempsTotalAttente();
 			compte++;
 		}
 	}

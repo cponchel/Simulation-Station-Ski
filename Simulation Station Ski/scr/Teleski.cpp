@@ -23,7 +23,7 @@ Teleski::~Teleski() {
 
 int Teleski::calculerTempsAttente()
 {
-	return getNbPersonneEnAttente()*getFrequence();
+	return getNbPersonneEnAttente()*getFrequence()+1;
 }
 
 /*int Teleski::calculerTempsTrajet()

@@ -44,6 +44,7 @@ class Skieur {
 	int tempsTotalPistes;
 	int tempsTotalRemontee;
 	int tempsTotalRepos;
+	int tempsTotalAttente;
 	vector<Arc*> arcsDepart;
 
 public:
@@ -153,6 +154,13 @@ public:
 	int getTempsTotalPistes() ;
 
 	/**
+	* \fn int getTempsTotalAttente()
+	* \return int
+	* Retourne le temps que le skieur passe à attendre
+	* Le temps est exprime en seconde
+	*/
+	int getTempsTotalAttente() ;
+	/**
 	* \fn int getTempsTotalRemontee()
 	* \return int
 	* Retourne le temps total pendant lequel le skieur a pris une remontee
@@ -254,7 +262,7 @@ public:
 	* \brief Permet d'emprunter l'arc suivant
 	* en faisant appel a determinerArcSuivant()
 	*/
-	void emprunterArcSuivant();
+	void emprunterArcSuivant(int instant);
 
 	/**
 	* \fn seDeplacer()
@@ -264,7 +272,7 @@ public:
 	* on emprunte l'arc suivant si le temps de trajet est nul
 	*
 	*/
-	void seDeplacer();
+	void seDeplacer(int instant);
 
 
 	void partir();

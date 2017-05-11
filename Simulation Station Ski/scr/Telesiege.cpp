@@ -24,7 +24,7 @@ int Telesiege::getCapaciteSiege(){
 }
 int Telesiege::calculerTempsAttente()
 {
-	return (getNbPersonneEnAttente()%getCapaciteSiege())*getFrequence();
+	return (getNbPersonneEnAttente()%getCapaciteSiege())*getFrequence()+1;
 }
 
 /*int Telesiege::calculerTempsTrajet()

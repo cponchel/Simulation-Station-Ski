@@ -66,6 +66,10 @@ int Arc::getNiveau()
 {
 	return 0;
 }
+int Arc::getFrequence()
+{
+	return 1;
+}
 int Arc::getNbPersonneEnAttente()
 {
 	return 0;
