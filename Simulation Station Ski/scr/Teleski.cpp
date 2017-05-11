@@ -7,15 +7,14 @@
 
 #include "Teleski.hpp"
 
-Teleski::Teleski() {
-	RemonteMecanique();
-	// TODO Auto-generated constructor stub
+Teleski::Teleski():RemonteMecanique() {
+
 
 }
 
-Teleski::Teleski(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int niv,int freq)
+Teleski::Teleski(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int niv,int freq):RemonteMecanique(leNom,ouverture,tm,lesArcsSuivant,niv,freq)
 {
-	RemonteMecanique(leNom,ouverture,tm,lesArcsSuivant,niv,freq);
+
 }
 
 Teleski::~Teleski() {

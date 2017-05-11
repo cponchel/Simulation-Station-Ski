@@ -7,16 +7,12 @@
 
 #include "Telesiege.hpp"
 
-Telesiege::Telesiege() {
-	RemonteMecanique();
+Telesiege::Telesiege():RemonteMecanique() {
 	capaciteSiege=4;
-
-	// TODO Auto-generated constructor stub
 }
 
-Telesiege::Telesiege(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int niv,int freq, int capSiege)
+Telesiege::Telesiege(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int niv,int freq, int capSiege):RemonteMecanique(leNom,ouverture,tm,lesArcsSuivant,niv,freq)
 {
-	RemonteMecanique(leNom,ouverture,tm,lesArcsSuivant,niv,freq);
 	capaciteSiege=capSiege;
 }
 

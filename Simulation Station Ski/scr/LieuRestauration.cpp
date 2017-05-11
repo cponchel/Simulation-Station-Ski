@@ -7,14 +7,14 @@
 
 #include "LieuRestauration.hpp"
 
-LieuRestauration::LieuRestauration()
+LieuRestauration::LieuRestauration():Arc()
 {
-	Arc();
+
 	capaciteResto=30;
 }
 
-LieuRestauration::LieuRestauration(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int cap) {
-	Arc(leNom,ouverture,tm,lesArcsSuivant);
+LieuRestauration::LieuRestauration(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int cap):Arc(leNom,ouverture,tm,lesArcsSuivant) {
+
 	capaciteResto=cap;
 }
 
