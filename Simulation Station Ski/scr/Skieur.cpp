@@ -56,8 +56,7 @@ Skieur::Skieur(int dureeOuverture,vector<Arc*> arcsDep){
 	tempsTotalRepos=0;
 	nbPassagesLR=0;
 	arcsDepart = arcsDep;
-	Arc arcHorsStation;
-	arcActuel = &arcHorsStation;
+	arcActuel = new Arc();
 
 
 	//nomS au hasard
@@ -203,9 +202,11 @@ void Skieur::determinerArcSuivant(){
 		vector<int> proba;
 
 		// Si on est sur un arc ferme, ca signifie qu'on est sur aucun arc
+
 		if(getArcActuel()->getOuvert()){
-			for(int i=0;getArcActuel()->getSuivants().size();i++)
+			for(int i=0;i<getArcActuel()->getSuivants().size();i++)
 			{
+
 				if(getNiveauS()>=getArcActuel()->getSuivants()[i]->getNiveau()) // on place l'indice de l'arc dans un tab si le Skieur est apte a emprunter l'arc
 				{
 					if(typeid(getArcActuel()->getSuivants()[i])==typeid(LieuRestauration))
@@ -240,6 +241,7 @@ void Skieur::determinerArcSuivant(){
 void Skieur::emprunterArcSuivant()
 {
 	determinerArcSuivant();
+
 	if(typeid(getArcActuel())==typeid(LieuRestauration))
 	{
 		setNbPassagesLR(getNbPassagesLR()+1);
@@ -276,6 +278,7 @@ void Skieur::seDeplacer(){
 	}
 	else if (getTempsTrajet()==0){
 		getArcActuel()->setNbPersonneA(getArcActuel()->getNbPersonneA()-1);
+
 		emprunterArcSuivant();
 	}
 

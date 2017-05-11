@@ -10,7 +10,7 @@
 
 
 Arc::Arc() {
-	nom="";
+	nom="Arc hors station";
 	ouvert=false;
 	tempsMoyen=0;
 	nbPersonneA=0;
@@ -83,7 +83,7 @@ int Arc::getCapaciteResto()
 
 int Arc:: calculerTempsTrajet(){
 	//heure actuelle - heure de depart sur le d�but de l'arc
-
+	return tempsMoyen;
 
 
 }

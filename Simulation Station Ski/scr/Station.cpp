@@ -355,7 +355,7 @@ void Station::initArcs(){
 	 * 4 char pour le temps moyen passe sur l'arc, puis un espace
 	 * 2 char pour chaque arc suivant (son numéro), puis un espace
 	 */
-	int k=0;
+
 	while(getline(fichier,ligne)){
 		// Lecture du nom de l'arc
 		nomArc = ligne.substr(3,25);
@@ -389,24 +389,26 @@ void Station::initArcs(){
 
 		// Création de l'arc
 		switch(type){
-			case 1 : 	{Piste piste(nomArc, ouvert, tempsMoyen, tmp, niveau);
-						arcs.push_back(&piste);
-						cout << piste.getNiveau() << endl;
-						cout << arcs[k]->getNiveau() << endl;
+			case 1 : 	{
+						arcs.push_back(new Piste(nomArc, ouvert, tempsMoyen, tmp, niveau));
+						//cout << piste.getNiveau() << endl;
+
 						break;}
-			case 2 : 	{Teleski tk(nomArc, ouvert, tempsMoyen, tmp, niveau, frequence);
-						arcs.push_back(&tk);
+			case 2 : 	{
+						arcs.push_back(new Teleski(nomArc, ouvert, tempsMoyen, tmp, niveau, frequence));
 						break;}
-			case 3 : 	{Telesiege tg(nomArc, ouvert, tempsMoyen, tmp,niveau,frequence, capacite);
-						arcs.push_back(&tg);
+			case 3 : 	{
+						arcs.push_back(new Telesiege(nomArc, ouvert, tempsMoyen, tmp,niveau,frequence, capacite));
 						break;}
-			case 4 : 	{LieuRestauration lr(nomArc, ouvert, tempsMoyen, tmp,capacite);
-						arcs.push_back(&lr);
+			case 4 : 	{
+						arcs.push_back(new LieuRestauration(nomArc, ouvert, tempsMoyen, tmp,capacite));
 						break;}
 		}
-		k++;
+
+
 		for(int i=0;i<arcs.size();i++){
-			//cout << arcs[i].getNiveau() << endl;
+		//	cout << arcs[i]->getNiveau() << endl;
+		//	cout << arcs[i]->getNom() << endl;
 		}
 
 
@@ -458,12 +460,12 @@ void Station::deplacerSkieurs(){
 /*
 	Skieur monSkieur = getSkieur(13);
 	cout << monSkieur.getTempsTrajet() << endl;
-	cout << monSkieur.getArcActuel().getNom() << endl;
+	cout << monSkieur.getArcActuel()->getNom() << endl;
 */
 	for(int i=0;i<getNombreDeSkieurs();i++){
 		// Si le skieur est arrive il se deplace, sinon rien
 		if(getSkieur(i).getHeureArrivee()<=tempsActuel){
-			getSkieur(i).seDeplacer();
+			skieurs[i].seDeplacer();
 		}
 
 	}

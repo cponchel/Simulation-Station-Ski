@@ -97,14 +97,14 @@ public:
 	* \return int
 	* Retourne le nombre de personne sur l'arc
 	*/
-	int getNbPersonneA();
+	virtual int getNbPersonneA();
 
 	/**
 	* \fn int getNbPersonneEnAttente()
 	* \return int
 	* Retourne le nombre de personne en attente sur l'arc
 	*/
-	int getNbPersonneEnAttente();
+	virtual int getNbPersonneEnAttente();
 
 	/**
 	* \fn void setNom(string)
