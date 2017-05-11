@@ -54,15 +54,22 @@ int main(){
 
 	//TEST afficheTableauAdmin()
 
+
+
 	cout << "**afficheTableauAdmin()**" << endl;
+	vector<Arc*> parcs;
 	vector<Arc> arcs;
-	Arc arc1("Premier Arc",true,0,arcs);
+	Arc arc1("Premier Arc",true,0,parcs);
+	parcs.push_back(&arc1);
+	Arc arc2("Second Arc",true,0,parcs);
+	parcs.push_back(&arc2);
 	arcs.push_back(arc1);
-	Arc arc2("Second Arc",true,0,arcs);
 	arcs.push_back(arc2);
 	station.afficheTableauAdmin(arcs,50,12);
-	station.afficheTableauAdmin(arcs,50,12);
-	station.afficheTableauAdmin(arcs,50,12);
+
+	cout << "**initialisation des arcs, verif que les pointeurs fonctinnent bien**" << endl;
+	cout << station.getArcs()[5].getSuivants()[0]->getNom() << " = " << station.getArcs()[8].getNom() << endl;
+	cout << station.getArcs()[5].getSuivants()[0]->getSuivants()[0]->getNom() << " = " << station.getArcs()[44].getNom() << endl;
 
 
 	return 0;

@@ -11,7 +11,7 @@ Telesiege::Telesiege():RemonteMecanique() {
 	capaciteSiege=4;
 }
 
-Telesiege::Telesiege(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int niv,int freq, int capSiege):RemonteMecanique(leNom,ouverture,tm,lesArcsSuivant,niv,freq)
+Telesiege::Telesiege(string leNom, bool ouverture, int tm, vector <Arc*> lesArcsSuivant,int niv,int freq, int capSiege):RemonteMecanique(leNom,ouverture,tm,lesArcsSuivant,niv,freq)
 {
 	capaciteSiege=capSiege;
 }

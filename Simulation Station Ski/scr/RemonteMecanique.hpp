@@ -24,7 +24,7 @@ public:
 	 * \fn RemonteMecanique(int,int)
 	 * constructeur de RemonteMecanique initialisant niveauMinPistes et frequence
 	 */
-	RemonteMecanique(string, bool,int,vector <Arc>,int,int);
+	RemonteMecanique(string, bool,int,vector <Arc*>,int,int);
 	/**
 	 * \fn int getNiveau()
 	 * return int

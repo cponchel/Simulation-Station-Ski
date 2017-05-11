@@ -11,7 +11,7 @@
 
 #include <string>
 #include <vector>
-#include <string>
+#include <functional>
 using namespace std;
 /**
  * \class Station
@@ -19,7 +19,7 @@ using namespace std;
  * \brief Arc est la classe mere de Piste, RemonteeMecanique
  * Telesiege et Teleski
  * \author Cynthia Rasamimanananivo
- * \author Clémentine Chevalier
+ * \author Clï¿½mentine Chevalier
  * \version 1.0
  * \date avril 2017
  */
@@ -28,7 +28,7 @@ class Arc {
 	string nom;
 	bool ouvert;
 	int tempsMoyen;
-	vector <Arc> suivants;
+	vector<Arc*> suivants;
 	int nbPersonneA;
 
 public:
@@ -48,7 +48,7 @@ public:
 	* les arcs suivants (la prochaine piste, ou le prochain lieu de restauration
 	* ou le prochain teleski par exemple)
 	*/
-	Arc(string,bool,int,vector<Arc>);
+	Arc(string,bool,int,vector<Arc*>);
 
 
 
@@ -81,14 +81,14 @@ public:
 	* \return vector <Arc>
 	* \brief Retourne l'arc suivant
 	*/
-	vector <Arc>& getSuivants();
+	vector <Arc*>& getSuivants();
 
 
 
 	/**
 	* \fn int getNiveau()
 	* \return int
-	* Retourne le niveau associé à l'arc
+	* Retourne le niveau associï¿½ ï¿½ l'arc
 	*/
 	int getNiveau();
 
@@ -123,7 +123,7 @@ public:
 	/**
 	* \fn void setTempsMoyen(int)
 	* \param int
-	* \brief Permet de modifier le temps moyen passé sur l'arc
+	* \brief Permet de modifier le temps moyen passï¿½ sur l'arc
 	*/
 	void setTempsMoyen(int);
 
@@ -132,7 +132,7 @@ public:
 	* \param vector<Arc>
 	* \brief Permet de modifier l'arc suivant sur lequel on va pointer
 	*/
-	void setSuivants(vector<Arc>);
+	void setSuivants(vector<Arc*>&);
 
 	/**
 	* \fn void setNbPersonneA(int)
@@ -152,7 +152,7 @@ public:
 	* \fn void calculerTempsTrajet()
 	* \return int
 	* \brief Retourne le temps de trajet
-	* le temps est exprimé en secondes
+	* le temps est exprimï¿½ en secondes
 	*/
 	int calculerTempsTrajet();
 
@@ -160,7 +160,7 @@ public:
 	* \fn void calculerTempsAttente()
 	* \return int
 	* \brief Retourne le temps d'attente
-	* le temps est exprimé en secondes
+	* le temps est exprimï¿½ en secondes
 	*/
 	int calculerTempsAttente();
 

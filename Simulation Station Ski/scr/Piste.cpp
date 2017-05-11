@@ -8,7 +8,7 @@
 #include "Piste.hpp"
 
 
-Piste::Piste(string leNom, bool ouverture, int tm, vector<Arc> lesArcsSuivant, int niv):Arc(leNom,ouverture,tm,lesArcsSuivant) {
+Piste::Piste(string leNom, bool ouverture, int tm, vector<Arc*> lesArcsSuivant, int niv):Arc(leNom,ouverture,tm,lesArcsSuivant) {
 	niveau=niv;
 }
 

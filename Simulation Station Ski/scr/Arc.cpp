@@ -17,7 +17,7 @@ Arc::Arc() {
 
 }
 
-Arc::Arc(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant) {
+Arc::Arc(string leNom, bool ouverture, int tm, vector <Arc*> lesArcsSuivant) {
 	nom=leNom;
 	ouvert=ouverture;
 	tempsMoyen=tm;
@@ -34,7 +34,7 @@ bool Arc::getOuvert(){
 int Arc:: getTempsMoyen(){
 	return tempsMoyen;
 }
-vector <Arc>& Arc:: getSuivants(){
+vector <Arc*>& Arc:: getSuivants(){
 	return suivants;
 }
 
@@ -51,7 +51,7 @@ void Arc::setOuvert(bool ouverture){
 void Arc::setTempsMoyen(int tmoyen){
 	tempsMoyen=tmoyen;
 }
-void Arc::setSuivants(vector<Arc> lesArcsSuivants){
+void Arc::setSuivants(vector<Arc*> & lesArcsSuivants){
 	suivants=lesArcsSuivants;
 }
 
@@ -82,7 +82,7 @@ int Arc::getCapaciteResto()
 }
 
 int Arc:: calculerTempsTrajet(){
-	//heure actuelle - heure de depart sur le début de l'arc
+	//heure actuelle - heure de depart sur le dï¿½but de l'arc
 
 
 

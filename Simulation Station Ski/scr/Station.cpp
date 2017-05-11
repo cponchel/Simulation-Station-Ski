@@ -383,15 +383,12 @@ void Station::initArcs(){
 		tmp = ligne.substr(41,4);
 		tempsMoyen = atoi(tmp.c_str());
 
-		cout << nomArc << " " << type << " " << niveau << " " << frequence << " " << capacite << endl;
-
-		vector<Arc> tmp;
+		vector<Arc*> tmp;
 
 		// Création de l'arc
 		switch(type){
 			case 1 : 	{Piste piste(nomArc, ouvert, tempsMoyen, tmp, niveau);
 						arcs.push_back(piste);
-						cout << piste.getNom();
 						break;}
 			case 2 : 	{Teleski tk(nomArc, ouvert, tempsMoyen, tmp, niveau, frequence);
 						arcs.push_back(tk);
@@ -404,9 +401,6 @@ void Station::initArcs(){
 						break;}
 		}
 
-		for(int k=0;k<arcs.size();k++){
-			cout << arcs[k].getNom();
-		}
 
 	}
 
@@ -429,21 +423,14 @@ void Station::initArcs(){
 		int nbSuivants = (tailleSuivants+1)/3;
 		int suivant;
 
-		vector<Arc> lesSuivants;
+
 
 		for(int i=0;i<nbSuivants;i++){
 			tmp = suivants.substr(3*i,2);
 			suivant = atoi(tmp.c_str());
-			cout << suivant << " ";
-			cout << arcs[suivant].getNom();
-			lesSuivants.push_back(arcs[suivant]);
+			arcs[nbArc].getSuivants().push_back(&arcs[suivant]);
 		}
-		arcs[nbArc].setSuivants(lesSuivants);
 
-		for(int j=0;j<arcs[nbArc].getSuivants().size();j++){
-			cout << arcs[nbArc].getSuivants()[j].getNom() << " " << endl;
-		}
-		cout << endl;
 
 		nbArc++;
 	}

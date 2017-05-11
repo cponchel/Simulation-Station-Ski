@@ -31,7 +31,7 @@ public:
 	 * Constructeur de Piste
 	 * initialise le niveau de la Piste
 	 */
-	Piste(string,bool,int,vector<Arc>,int);
+	Piste(string,bool,int,vector<Arc*>,int);
 	/**
 	 * \fn int getNiveau()
 	 * return int

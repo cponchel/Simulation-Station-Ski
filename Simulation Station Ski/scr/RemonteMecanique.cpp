@@ -18,7 +18,7 @@ RemonteMecanique::RemonteMecanique():Arc() {
 }
 
 
-RemonteMecanique::RemonteMecanique(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int niv,int f):Arc(leNom,ouverture,tm,lesArcsSuivant)
+RemonteMecanique::RemonteMecanique(string leNom, bool ouverture, int tm, vector <Arc*> lesArcsSuivant,int niv,int f):Arc(leNom,ouverture,tm,lesArcsSuivant)
 {
 	niveauMinPistes=niv;
 	frequence=f;

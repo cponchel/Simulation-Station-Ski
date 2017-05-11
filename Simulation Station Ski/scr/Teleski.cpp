@@ -12,7 +12,7 @@ Teleski::Teleski():RemonteMecanique() {
 
 }
 
-Teleski::Teleski(string leNom, bool ouverture, int tm, vector <Arc> lesArcsSuivant,int niv,int freq):RemonteMecanique(leNom,ouverture,tm,lesArcsSuivant,niv,freq)
+Teleski::Teleski(string leNom, bool ouverture, int tm, vector <Arc*> lesArcsSuivant,int niv,int freq):RemonteMecanique(leNom,ouverture,tm,lesArcsSuivant,niv,freq)
 {
 
 }

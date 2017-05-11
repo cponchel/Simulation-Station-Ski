@@ -31,7 +31,7 @@ public:
 	 * Constructeur LieuRestauration
 	 * initialise la capacite maximale du LieuRestauration
 	 */
-	LieuRestauration(string,bool,int,vector<Arc>,int);
+	LieuRestauration(string,bool,int,vector<Arc*>,int);
 	virtual ~LieuRestauration();
 	/**
 	 * \fn getCapaciteResto()

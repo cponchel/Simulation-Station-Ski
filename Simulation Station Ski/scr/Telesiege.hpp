@@ -25,7 +25,7 @@ public:
 	 * constructeur de Telesige
 	 */
 
-	Telesiege(string, bool, int, vector <Arc>,int,int,int);
+	Telesiege(string, bool, int, vector <Arc*>,int,int,int);
 	virtual ~Telesiege();
 
 	int getCapaciteSiege();

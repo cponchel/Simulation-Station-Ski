@@ -201,11 +201,11 @@ void Skieur::determinerArcSuivant(){
 
 			for(int i=0;getArcActuel().getSuivants().size();i++)
 			{
-				if(getNiveauS()>=getArcActuel().getSuivants()[i].getNiveau()) // on place l'indice de l'arc dans un tab si le Skieur est apte a emprunter l'arc
+				if(getNiveauS()>=getArcActuel().getSuivants()[i]->getNiveau()) // on place l'indice de l'arc dans un tab si le Skieur est apte a emprunter l'arc
 				{
 					if(typeid(getArcActuel().getSuivants()[i])==typeid(LieuRestauration))
 					{
-						if((getArcActuel().getSuivants()[i].getNbPersonneA()<getArcActuel().getSuivants()[i].getCapaciteResto())&&(getNbPassagesLR()<2))
+						if((getArcActuel().getSuivants()[i]->getNbPersonneA()<getArcActuel().getSuivants()[i]->getCapaciteResto())&&(getNbPassagesLR()<2))
 						{
 							proba.push_back(i);
 						}
@@ -219,7 +219,7 @@ void Skieur::determinerArcSuivant(){
 			int temp=rand()%proba.size(); // on choisit au hasard un indice ind du tableau compris entre 0 et tab.size() exclus
 
 			// mise à jour de l'arc actuel
-			setArcActuel(getArcActuel().getSuivants()[proba[temp]]); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
+			setArcActuel(*(getArcActuel().getSuivants()[proba[temp]])); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
 
 		}
 		else{
