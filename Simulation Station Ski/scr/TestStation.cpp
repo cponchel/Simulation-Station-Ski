@@ -68,8 +68,8 @@ int main(){
 	station.afficheTableauAdmin(arcs,50,12);
 
 	cout << "**initialisation des arcs, verif que les pointeurs fonctinnent bien**" << endl;
-	cout << station.getArcs()[5].getSuivants()[0]->getNom() << " = " << station.getArcs()[8].getNom() << endl;
-	cout << station.getArcs()[5].getSuivants()[0]->getSuivants()[0]->getNom() << " = " << station.getArcs()[44].getNom() << endl;
+	cout << station.getArcs()[5]->getSuivants()[0]->getNom() << " = " << station.getArcs()[8]->getNom() << endl;
+	cout << station.getArcs()[5]->getSuivants()[0]->getSuivants()[0]->getNom() << " = " << station.getArcs()[44]->getNom() << endl;
 
 
 	return 0;

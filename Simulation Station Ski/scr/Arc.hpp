@@ -90,7 +90,7 @@ public:
 	* \return int
 	* Retourne le niveau associ� � l'arc
 	*/
-	int getNiveau();
+	virtual int getNiveau();
 
 	/**
 	* \fn int getNbPersonneA()

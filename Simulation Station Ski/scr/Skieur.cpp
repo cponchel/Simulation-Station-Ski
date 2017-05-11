@@ -22,6 +22,8 @@ Skieur::Skieur() {
 	tempsTotalPistes=0;
 	tempsTotalRemontee=0;
 	tempsTotalRepos=0;
+	Arc arcHorsStation;
+	arcActuel = &arcHorsStation;
 
 
 }
@@ -38,12 +40,14 @@ Skieur::Skieur(string leNom,string lePrenom,int leNiveau,int lHeureArrivee){
 	tempsTotalRemontee=0;
 	tempsTotalRepos=0;
 	nbPassagesLR=0;
+	Arc arcHorsStation;
+	arcActuel = &arcHorsStation;
 }
 
 
 
 //constructeur au hasard
-Skieur::Skieur(int dureeOuverture,vector<Arc> arcsDep){
+Skieur::Skieur(int dureeOuverture,vector<Arc*> arcsDep){
 
 	tempsTrajet=0;
 	tempsAttente=0;
@@ -52,6 +56,8 @@ Skieur::Skieur(int dureeOuverture,vector<Arc> arcsDep){
 	tempsTotalRepos=0;
 	nbPassagesLR=0;
 	arcsDepart = arcsDep;
+	Arc arcHorsStation;
+	arcActuel = &arcHorsStation;
 
 
 	//nomS au hasard
@@ -127,7 +133,7 @@ void Skieur::setNbPassagesLR(int nbPas)
 	nbPassagesLR=nbPas;
 }
 
-void Skieur::setArcActuel(Arc arcA){
+void Skieur::setArcActuel(Arc *arcA){
 	arcActuel=arcA;
 }
 
@@ -158,7 +164,7 @@ int Skieur::getNiveauS(){
 	return niveauS;
 }
 
-vector<Arc> Skieur::getArcsDepart() const{
+vector<Arc*> Skieur::getArcsDepart(){
 	return arcsDepart;
 }
 
@@ -172,7 +178,7 @@ int Skieur:: getHeureDepart(){
 int Skieur::getNbPassagesLR(){
 	return nbPassagesLR;
 }
-Arc Skieur::getArcActuel(){
+Arc* Skieur::getArcActuel(){
 	return arcActuel;
 }
 int Skieur::getTempsTrajet(){
@@ -197,15 +203,14 @@ void Skieur::determinerArcSuivant(){
 		vector<int> proba;
 
 		// Si on est sur un arc ferme, ca signifie qu'on est sur aucun arc
-		if(getArcActuel().getOuvert()){
-
-			for(int i=0;getArcActuel().getSuivants().size();i++)
+		if(getArcActuel()->getOuvert()){
+			for(int i=0;getArcActuel()->getSuivants().size();i++)
 			{
-				if(getNiveauS()>=getArcActuel().getSuivants()[i]->getNiveau()) // on place l'indice de l'arc dans un tab si le Skieur est apte a emprunter l'arc
+				if(getNiveauS()>=getArcActuel()->getSuivants()[i]->getNiveau()) // on place l'indice de l'arc dans un tab si le Skieur est apte a emprunter l'arc
 				{
-					if(typeid(getArcActuel().getSuivants()[i])==typeid(LieuRestauration))
+					if(typeid(getArcActuel()->getSuivants()[i])==typeid(LieuRestauration))
 					{
-						if((getArcActuel().getSuivants()[i]->getNbPersonneA()<getArcActuel().getSuivants()[i]->getCapaciteResto())&&(getNbPassagesLR()<2))
+						if((getArcActuel()->getSuivants()[i]->getNbPersonneA()<getArcActuel()->getSuivants()[i]->getCapaciteResto())&&(getNbPassagesLR()<2))
 						{
 							proba.push_back(i);
 						}
@@ -216,16 +221,17 @@ void Skieur::determinerArcSuivant(){
 					}
 				}
 			}
-			int temp=rand()%proba.size(); // on choisit au hasard un indice ind du tableau compris entre 0 et tab.size() exclus
+			//int temp=rand()%proba.size(); // on choisit au hasard un indice ind du tableau compris entre 0 et tab.size() exclus
 
 			// mise à jour de l'arc actuel
-			setArcActuel(*(getArcActuel().getSuivants()[proba[temp]])); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
+			setArcActuel(getArcActuel()->getSuivants()[0]); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
 
 		}
 		else{
 			// On prend au hasard un arc dans la liste des arcs de depart possibles
 			int indiceDep=rand()%(getArcsDepart().size());
 			setArcActuel(getArcsDepart()[indiceDep]);
+
 		}
 
 
@@ -238,17 +244,17 @@ void Skieur::emprunterArcSuivant()
 	{
 		setNbPassagesLR(getNbPassagesLR()+1);
 	}
-	setTempsTrajet(getArcActuel().calculerTempsTrajet());
-	setTempsAttente(getArcActuel().calculerTempsAttente());
+	setTempsTrajet(getArcActuel()->calculerTempsTrajet());
+	setTempsAttente(getArcActuel()->calculerTempsAttente());
 
 	//mise a jour du nb de personnes sur l'arc
 	if(getTempsAttente()>0)
 	{
-		getArcActuel().setNbPersonneEnAttente(getArcActuel().getNbPersonneEnAttente()+1);
+		getArcActuel()->setNbPersonneEnAttente(getArcActuel()->getNbPersonneEnAttente()+1);
 	}
 	else
 	{
-		getArcActuel().setNbPersonneA(getArcActuel().getNbPersonneA()+1);
+		getArcActuel()->setNbPersonneA(getArcActuel()->getNbPersonneA()+1);
 	}
 }
 
@@ -260,18 +266,19 @@ void Skieur::seDeplacer(){
 	{
 		setTempsAttente(getTempsAttente()-1);
 		if (getTempsAttente()==0){
-			getArcActuel().setNbPersonneEnAttente(getArcActuel().getNbPersonneEnAttente()-1);
-			getArcActuel().setNbPersonneA(getArcActuel().getNbPersonneA()+1);
+			getArcActuel()->setNbPersonneEnAttente(getArcActuel()->getNbPersonneEnAttente()-1);
+			getArcActuel()->setNbPersonneA(getArcActuel()->getNbPersonneA()+1);
 		}
+	}
 	else if (getTempsTrajet()>0)
 	{
 		setTempsTrajet(getTempsTrajet()-1);
 	}
 	else if (getTempsTrajet()==0){
-			getArcActuel().setNbPersonneA(getArcActuel().getNbPersonneA()-1);
-			emprunterArcSuivant();
-		}
+		getArcActuel()->setNbPersonneA(getArcActuel()->getNbPersonneA()-1);
+		emprunterArcSuivant();
 	}
+
 
 
 }

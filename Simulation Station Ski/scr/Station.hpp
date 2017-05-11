@@ -38,8 +38,8 @@ class Station {
 	int tempsActuel;
 	int frequenceAffichage;
 	vector<Skieur> skieurs;
-	vector<Arc> arcs;
-	vector<Arc> arcsDepart; //les arcs par lesquels les skieurs peuvent arriver
+	vector<Arc*> arcs;
+	vector<Arc*> arcsDepart; //les arcs par lesquels les skieurs peuvent arriver
 	int static const NB_MIN_SKIEURS = 10;
 	int static const NB_MAX_SKIEURS = 1000;
 	int static const DUREE_MIN = 1000; //16'40''
@@ -109,13 +109,13 @@ public:
 	 * \return vector<Arc>
 	 * Retourne la liste des Arcs par lesquels ls skieurs peuvent arriver
 	 */
-	vector<Arc> getArcsDepart() const;
+	vector<Arc*> getArcsDepart() const;
 	/**
 	 * \fn vector<Arc> getArcsDepart() const
 	 * \return vector<Skieur>
 	 * Retourne la liste des Arcs
 	 */
-	vector<Arc> getArcs() const;
+	vector<Arc*> getArcs() const;
 	/**
 	 * \fn int demanderInt()
 	 * \return int

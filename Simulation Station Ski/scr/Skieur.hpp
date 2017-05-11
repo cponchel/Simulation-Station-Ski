@@ -38,13 +38,13 @@ class Skieur {
 	int heureArrivee;
 	int heureDepart;
 	int nbPassagesLR;
-	Arc arcActuel;
+	Arc* arcActuel;
 	int tempsTrajet;
 	int tempsAttente;
 	int tempsTotalPistes;
 	int tempsTotalRemontee;
 	int tempsTotalRepos;
-	vector<Arc> arcsDepart;
+	vector<Arc*> arcsDepart;
 
 public:
 
@@ -72,7 +72,7 @@ public:
 	* avec un nom au hasard, un prenom au hasard et un niveau au hasard et une heure d'arrivee et une heure depart exprimees en seconde au hasard
 	*
 	*/
-	Skieur(int dureeOuverture,vector<Arc> arcsDep);
+	Skieur(int dureeOuverture,vector<Arc*> arcsDep);
 
 	/**
 	* \fn string getNomS()
@@ -101,7 +101,7 @@ public:
 	 * \return vector<Arc>
 	 * Retourne la liste des Arcs par lesquels ls skieurs peuvent arriver
 	 */
-	vector<Arc> getArcsDepart() const;
+	vector<Arc*> getArcsDepart();
 
 	/**
 	* \fn int getHeureArrivee()
@@ -127,7 +127,7 @@ public:
 	 * \return Arc
 	 * Retourne l'arc sur lequel se trouve le Skieur
 	 */
-	Arc getArcActuel();
+	Arc* getArcActuel();
 	/**
 	* \fn int getTempsTrajet()
 	* \return int
@@ -198,7 +198,7 @@ public:
 	 * \param Arc
 	 * Modifie l'arc surquel se trouve le Skieur
 	 */
-	void setArcActuel(Arc);
+	void setArcActuel(Arc*);
 
 	/**
 	* \fn void setTempsTrajet(int)

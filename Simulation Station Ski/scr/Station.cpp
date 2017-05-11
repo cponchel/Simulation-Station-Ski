@@ -104,11 +104,11 @@ Skieur Station::getSkieur(int i) const{
 	return skieurs[i];
 }
 
-vector<Arc> Station::getArcs() const{
+vector<Arc*> Station::getArcs() const{
 	return arcs;
 }
 
-vector<Arc> Station::getArcsDepart() const{
+vector<Arc*> Station::getArcsDepart() const{
 	return arcsDepart;
 }
 
@@ -355,6 +355,7 @@ void Station::initArcs(){
 	 * 4 char pour le temps moyen passe sur l'arc, puis un espace
 	 * 2 char pour chaque arc suivant (son numéro), puis un espace
 	 */
+	int k=0;
 	while(getline(fichier,ligne)){
 		// Lecture du nom de l'arc
 		nomArc = ligne.substr(3,25);
@@ -383,22 +384,29 @@ void Station::initArcs(){
 		tmp = ligne.substr(41,4);
 		tempsMoyen = atoi(tmp.c_str());
 
+
 		vector<Arc*> tmp;
 
 		// Création de l'arc
 		switch(type){
 			case 1 : 	{Piste piste(nomArc, ouvert, tempsMoyen, tmp, niveau);
-						arcs.push_back(piste);
+						arcs.push_back(&piste);
+						cout << piste.getNiveau() << endl;
+						cout << arcs[k]->getNiveau() << endl;
 						break;}
 			case 2 : 	{Teleski tk(nomArc, ouvert, tempsMoyen, tmp, niveau, frequence);
-						arcs.push_back(tk);
+						arcs.push_back(&tk);
 						break;}
 			case 3 : 	{Telesiege tg(nomArc, ouvert, tempsMoyen, tmp,niveau,frequence, capacite);
-						arcs.push_back(tg);
+						arcs.push_back(&tg);
 						break;}
 			case 4 : 	{LieuRestauration lr(nomArc, ouvert, tempsMoyen, tmp,capacite);
-						arcs.push_back(lr);
+						arcs.push_back(&lr);
 						break;}
+		}
+		k++;
+		for(int i=0;i<arcs.size();i++){
+			//cout << arcs[i].getNiveau() << endl;
 		}
 
 
@@ -428,7 +436,7 @@ void Station::initArcs(){
 		for(int i=0;i<nbSuivants;i++){
 			tmp = suivants.substr(3*i,2);
 			suivant = atoi(tmp.c_str());
-			arcs[nbArc].getSuivants().push_back(&arcs[suivant]);
+			arcs[nbArc]->getSuivants().push_back(arcs[suivant]);
 		}
 
 
@@ -443,13 +451,18 @@ void Station::initArcs(){
 	arcsDepart.push_back(getArcs()[0]);
 
 
+
 }
 
 void Station::deplacerSkieurs(){
-
+/*
+	Skieur monSkieur = getSkieur(13);
+	cout << monSkieur.getTempsTrajet() << endl;
+	cout << monSkieur.getArcActuel().getNom() << endl;
+*/
 	for(int i=0;i<getNombreDeSkieurs();i++){
 		// Si le skieur est arrive il se deplace, sinon rien
-		if(getSkieur(i).getHeureArrivee()>=tempsActuel){
+		if(getSkieur(i).getHeureArrivee()<=tempsActuel){
 			getSkieur(i).seDeplacer();
 		}
 
@@ -697,7 +710,7 @@ int Station::skieursEnStation(){
 		 * Car le seul arc ferme sur lequel il peut se trouver est l'arc construit via le constructeur Arc()
 		 * Le skieur se voit atttribuer cet arc uniquement quand il n'est pas dans la station
 		 */
-		if(getSkieur(i).getArcActuel().getOuvert() != false){
+		if(getSkieur(i).getArcActuel()->getOuvert() != false){
 			res++;
 		}
 	}
