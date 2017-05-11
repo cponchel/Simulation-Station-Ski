@@ -1,100 +1,100 @@
-0	Moreau Maryam 	 	 Niveau 2, 0h22'32''-2h31'55''
-1	Petit Tony 	 	 Niveau 1, 0h36'13''-2h4'9''
-2	Cordier Céline 	 	 Niveau 3, 1h16'50''-2h34'19''
-3	Michaud Matthieu 	 	 Niveau 3, 0h50'14''-3h12'52''
-4	Leclerc Bryan 	 	 Niveau 4, 0h32'0''-3h7'9''
-5	Roy Lyna 	 	 Niveau 4, 1h0'28''-2h41'7''
-6	Ponchel Camille 	 	 Niveau 3, 1h18'59''-2h44'18''
-7	Caron Jules 	 	 Niveau 1, 0h25'22''-3h3'31''
-8	Bouvier Tanguy 	 	 Niveau 2, 0h25'57''-2h31'59''
-9	Henry Grégory 	 	 Niveau 1, 1h14'10''-2h38'35''
-10	Boucher Baptiste 	 	 Niveau 4, 0h18'56''-2h46'20''
-11	Herve Lyna 	 	 Niveau 3, 1h3'39''-3h13'16''
-12	Thomas Sébastien 	 	 Niveau 1, 1h3'52''-2h55'27''
-13	Barre Xuan 	 	 Niveau 2, 0h1'5''-2h15'13''
-14	Langlois Kenza 	 	 Niveau 3, 0h47'58''-2h15'45''
-15	Roche Clémence 	 	 Niveau 1, 0h49'25''-2h14'3''
-16	Tessier Julie 	 	 Niveau 1, 0h35'56''-2h19'38''
-17	Fernandez Marine 	 	 Niveau 4, 0h12'8''-3h29'14''
-18	Marie Valentine 	 	 Niveau 1, 0h43'31''-2h22'48''
-19	Vasseur Mégane 	 	 Niveau 3, 0h24'2''-2h44'54''
-20	Etienne Dimitri 	 	 Niveau 3, 0h47'46''-2h52'58''
-21	Muller Elina 	 	 Niveau 3, 0h47'36''-2h41'57''
-22	Guyot Cédric 	 	 Niveau 2, 0h2'26''-2h51'20''
-23	Liu Nour 	 	 Niveau 2, 0h37'55''-3h4'4''
-24	Bouchet Hugo 	 	 Niveau 4, 0h36'15''-2h38'37''
-25	Olivier Julie 	 	 Niveau 4, 0h3'7''-2h45'9''
-26	Guerin Luna 	 	 Niveau 2, 0h33'6''-2h52'33''
-27	Le Roux Dylan 	 	 Niveau 4, 1h16'44''-2h36'59''
-28	Chevalier Alix 	 	 Niveau 1, 0h3'39''-2h40'29''
-29	Besson Apolline 	 	 Niveau 1, 0h14'25''-2h58'28''
-30	Perrier Fabien 	 	 Niveau 1, 0h44'52''-2h25'23''
-31	Marie Xuan 	 	 Niveau 4, 1h24'35''-3h2'1''
-32	Fournier Léane 	 	 Niveau 1, 0h15'55''-2h7'8''
-33	Schneider Jules 	 	 Niveau 1, 0h35'41''-3h17'14''
-34	Olivier Valentin 	 	 Niveau 4, 0h53'27''-2h10'56''
-35	Marchal Céline 	 	 Niveau 2, 0h25'37''-2h37'39''
-36	Sanchez Gaétan 	 	 Niveau 2, 0h50'51''-2h30'28''
-37	Laurent Laura 	 	 Niveau 2, 1h6'33''-3h7'38''
-38	Le Goff Coralie 	 	 Niveau 4, 0h14'2''-2h23'13''
-39	Ponchel Mickael 	 	 Niveau 4, 0h37'33''-2h38'48''
-40	Gautier Pauline 	 	 Niveau 4, 1h20'8''-2h42'43''
-41	Legrand Anaïs 	 	 Niveau 1, 0h28'2''-2h5'4''
-42	Pierre Léane 	 	 Niveau 2, 0h21'3''-3h1'57''
-43	Garnier Paul 	 	 Niveau 4, 0h59'38''-2h44'30''
-44	Lemoine Nicolas 	 	 Niveau 1, 0h38'40''-2h52'5''
-45	Lefevre Julien 	 	 Niveau 4, 0h16'8''-2h49'14''
-46	Lejeune Emmy 	 	 Niveau 3, 1h28'21''-3h27'44''
-47	Pelletier Ludovic 	 	 Niveau 1, 0h16'33''-3h29'8''
-48	Chevallier Margaux 	 	 Niveau 4, 1h12'48''-2h39'3''
-49	Bouvier Matthieu 	 	 Niveau 3, 0h21'55''-3h25'11''
-50	Roux Laura 	 	 Niveau 2, 0h17'28''-2h5'30''
-51	Pierre Jérémy 	 	 Niveau 1, 0h22'10''-2h14'4''
-52	Pichon Nour 	 	 Niveau 1, 0h29'30''-3h20'16''
-53	Marechal Paul 	 	 Niveau 2, 0h28'53''-2h57'42''
-54	Herve Juliette 	 	 Niveau 1, 0h22'12''-2h54'59''
-55	Gauthier Victoire 	 	 Niveau 4, 1h33'47''-3h9'33''
-56	Aubry Louis 	 	 Niveau 2, 0h32'39''-2h28'14''
-57	Thomas Grégory 	 	 Niveau 2, 1h12'20''-3h4'59''
-58	Schneider Tanguy 	 	 Niveau 2, 0h13'38''-3h7'48''
-59	Lucas Baptiste 	 	 Niveau 3, 0h36'40''-2h14'44''
-60	Fabre Livia 	 	 Niveau 1, 0h17'6''-3h15'42''
-61	Klein Louise 	 	 Niveau 1, 1h15'15''-2h56'19''
-62	Dubois Chloé 	 	 Niveau 1, 0h48'29''-3h2'52''
-63	Bouchet Simon 	 	 Niveau 3, 1h20'38''-2h55'42''
-64	Dupont Thomas 	 	 Niveau 2, 0h27'43''-3h6'12''
-65	Mallet Audrey 	 	 Niveau 4, 1h41'4''-3h25'21''
-66	Caron Mélanie 	 	 Niveau 1, 1h12'58''-3h7'47''
-67	Leclercq Damien 	 	 Niveau 3, 1h6'10''-3h16'24''
-68	Marie Mélissa 	 	 Niveau 3, 1h17'50''-3h14'29''
-69	Lopez Fanny 	 	 Niveau 1, 0h31'26''-2h54'52''
-70	Hamon Victoria 	 	 Niveau 2, 0h11'42''-2h39'45''
-71	Caron Maeva 	 	 Niveau 3, 0h52'30''-3h21'38''
-72	Legrand Stéphane 	 	 Niveau 1, 0h46'19''-2h19'50''
-73	Besson Audrey 	 	 Niveau 1, 0h37'1''-2h12'12''
-74	Guerin Pauline 	 	 Niveau 4, 0h13'45''-3h19'29''
-75	Benoit Victoria 	 	 Niveau 4, 0h40'32''-3h7'40''
-76	Besson Livia 	 	 Niveau 2, 1h8'35''-3h13'25''
-77	Guichard Quentin 	 	 Niveau 2, 0h23'14''-3h26'1''
-78	Louis Assia 	 	 Niveau 1, 0h58'55''-2h53'22''
-79	Dumas Gabriel 	 	 Niveau 2, 0h50'33''-2h40'42''
-80	Barthelemy Morgan 	 	 Niveau 1, 0h8'0''-2h41'48''
-81	Andre Juliette 	 	 Niveau 1, 0h5'44''-2h19'13''
-82	Michel David 	 	 Niveau 2, 0h41'6''-2h54'8''
-83	Humbert Thibaut 	 	 Niveau 3, 0h59'37''-2h6'8''
-84	Louis Xuan 	 	 Niveau 1, 0h5'1''-2h33'17''
-85	Reynaud Kevin 	 	 Niveau 2, 0h26'5''-2h56'3''
-86	Michaud Manël 	 	 Niveau 3, 0h13'50''-2h48'45''
-87	Laporte Tristan 	 	 Niveau 1, 0h38'23''-3h5'57''
-88	Carlier Valentine 	 	 Niveau 3, 0h11'20''-2h15'21''
-89	Klein Margaux 	 	 Niveau 4, 0h8'43''-2h30'50''
-90	Le Gall Maxime 	 	 Niveau 3, 1h1'15''-2h4'57''
-91	Royer Noémie 	 	 Niveau 3, 0h9'21''-2h33'48''
-92	Rey Julie 	 	 Niveau 4, 0h27'16''-2h12'18''
-93	Humbert Axel 	 	 Niveau 3, 1h6'32''-2h22'19''
-94	Jacquet Damien 	 	 Niveau 1, 0h33'19''-3h0'29''
-95	Guichard Lila 	 	 Niveau 2, 0h10'46''-3h22'23''
-96	Perrot Alexandre 	 	 Niveau 3, 0h13'34''-2h26'11''
-97	Hubert Thibaut 	 	 Niveau 1, 0h51'17''-2h18'12''
-98	Tessier Arnaud 	 	 Niveau 2, 0h41'37''-2h33'10''
-99	Dupont Rémi 	 	 Niveau 2, 0h19'24''-2h40'26''
+Moreau Maryam - niveau : 2 - heure d'arrivee : 1352 - heure de depart : 9115
+Petit Tony - niveau : 1 - heure d'arrivee : 2173 - heure de depart : 7449
+Cordier Céline - niveau : 3 - heure d'arrivee : 4610 - heure de depart : 9259
+Michaud Matthieu - niveau : 3 - heure d'arrivee : 3014 - heure de depart : 11572
+Leclerc Bryan - niveau : 4 - heure d'arrivee : 1920 - heure de depart : 11229
+Roy Lyna - niveau : 4 - heure d'arrivee : 3628 - heure de depart : 9667
+Ponchel Camille - niveau : 3 - heure d'arrivee : 4739 - heure de depart : 9858
+Caron Jules - niveau : 1 - heure d'arrivee : 1522 - heure de depart : 11011
+Bouvier Tanguy - niveau : 2 - heure d'arrivee : 1557 - heure de depart : 9119
+Henry Grégory - niveau : 1 - heure d'arrivee : 4450 - heure de depart : 9515
+Boucher Baptiste - niveau : 4 - heure d'arrivee : 1136 - heure de depart : 9980
+Herve Lyna - niveau : 3 - heure d'arrivee : 3819 - heure de depart : 11596
+Thomas Sébastien - niveau : 1 - heure d'arrivee : 3832 - heure de depart : 10527
+Barre Xuan - niveau : 2 - heure d'arrivee : 65 - heure de depart : 8113
+Langlois Kenza - niveau : 3 - heure d'arrivee : 2878 - heure de depart : 8145
+Roche Clémence - niveau : 1 - heure d'arrivee : 2965 - heure de depart : 8043
+Tessier Julie - niveau : 1 - heure d'arrivee : 2156 - heure de depart : 8378
+Fernandez Marine - niveau : 4 - heure d'arrivee : 728 - heure de depart : 12554
+Marie Valentine - niveau : 1 - heure d'arrivee : 2611 - heure de depart : 8568
+Vasseur Mégane - niveau : 3 - heure d'arrivee : 1442 - heure de depart : 9894
+Etienne Dimitri - niveau : 3 - heure d'arrivee : 2866 - heure de depart : 10378
+Muller Elina - niveau : 3 - heure d'arrivee : 2856 - heure de depart : 9717
+Guyot Cédric - niveau : 2 - heure d'arrivee : 146 - heure de depart : 10280
+Liu Nour - niveau : 2 - heure d'arrivee : 2275 - heure de depart : 11044
+Bouchet Hugo - niveau : 4 - heure d'arrivee : 2175 - heure de depart : 9517
+Olivier Julie - niveau : 4 - heure d'arrivee : 187 - heure de depart : 9909
+Guerin Luna - niveau : 2 - heure d'arrivee : 1986 - heure de depart : 10353
+Le Roux Dylan - niveau : 4 - heure d'arrivee : 4604 - heure de depart : 9419
+Chevalier Alix - niveau : 1 - heure d'arrivee : 219 - heure de depart : 9629
+Besson Apolline - niveau : 1 - heure d'arrivee : 865 - heure de depart : 10708
+Perrier Fabien - niveau : 1 - heure d'arrivee : 2692 - heure de depart : 8723
+Marie Xuan - niveau : 4 - heure d'arrivee : 5075 - heure de depart : 10921
+Fournier Léane - niveau : 1 - heure d'arrivee : 955 - heure de depart : 7628
+Schneider Jules - niveau : 1 - heure d'arrivee : 2141 - heure de depart : 11834
+Olivier Valentin - niveau : 4 - heure d'arrivee : 3207 - heure de depart : 7856
+Marchal Céline - niveau : 2 - heure d'arrivee : 1537 - heure de depart : 9459
+Sanchez Gaétan - niveau : 2 - heure d'arrivee : 3051 - heure de depart : 9028
+Laurent Laura - niveau : 2 - heure d'arrivee : 3993 - heure de depart : 11258
+Le Goff Coralie - niveau : 4 - heure d'arrivee : 842 - heure de depart : 8593
+Ponchel Mickael - niveau : 4 - heure d'arrivee : 2253 - heure de depart : 9528
+Gautier Pauline - niveau : 4 - heure d'arrivee : 4808 - heure de depart : 9763
+Legrand Anaïs - niveau : 1 - heure d'arrivee : 1682 - heure de depart : 7504
+Pierre Léane - niveau : 2 - heure d'arrivee : 1263 - heure de depart : 10917
+Garnier Paul - niveau : 4 - heure d'arrivee : 3578 - heure de depart : 9870
+Lemoine Nicolas - niveau : 1 - heure d'arrivee : 2320 - heure de depart : 10325
+Lefevre Julien - niveau : 4 - heure d'arrivee : 968 - heure de depart : 10154
+Lejeune Emmy - niveau : 3 - heure d'arrivee : 5301 - heure de depart : 12464
+Pelletier Ludovic - niveau : 1 - heure d'arrivee : 993 - heure de depart : 12548
+Chevallier Margaux - niveau : 4 - heure d'arrivee : 4368 - heure de depart : 9543
+Bouvier Matthieu - niveau : 3 - heure d'arrivee : 1315 - heure de depart : 12311
+Roux Laura - niveau : 2 - heure d'arrivee : 1048 - heure de depart : 7530
+Pierre Jérémy - niveau : 1 - heure d'arrivee : 1330 - heure de depart : 8044
+Pichon Nour - niveau : 1 - heure d'arrivee : 1770 - heure de depart : 12016
+Marechal Paul - niveau : 2 - heure d'arrivee : 1733 - heure de depart : 10662
+Herve Juliette - niveau : 1 - heure d'arrivee : 1332 - heure de depart : 10499
+Gauthier Victoire - niveau : 4 - heure d'arrivee : 5627 - heure de depart : 11373
+Aubry Louis - niveau : 2 - heure d'arrivee : 1959 - heure de depart : 8894
+Thomas Grégory - niveau : 2 - heure d'arrivee : 4340 - heure de depart : 11099
+Schneider Tanguy - niveau : 2 - heure d'arrivee : 818 - heure de depart : 11268
+Lucas Baptiste - niveau : 3 - heure d'arrivee : 2200 - heure de depart : 8084
+Fabre Livia - niveau : 1 - heure d'arrivee : 1026 - heure de depart : 11742
+Klein Louise - niveau : 1 - heure d'arrivee : 4515 - heure de depart : 10579
+Dubois Chloé - niveau : 1 - heure d'arrivee : 2909 - heure de depart : 10972
+Bouchet Simon - niveau : 3 - heure d'arrivee : 4838 - heure de depart : 10542
+Dupont Thomas - niveau : 2 - heure d'arrivee : 1663 - heure de depart : 11172
+Mallet Audrey - niveau : 4 - heure d'arrivee : 6064 - heure de depart : 12321
+Caron Mélanie - niveau : 1 - heure d'arrivee : 4378 - heure de depart : 11267
+Leclercq Damien - niveau : 3 - heure d'arrivee : 3970 - heure de depart : 11784
+Marie Mélissa - niveau : 3 - heure d'arrivee : 4670 - heure de depart : 11669
+Lopez Fanny - niveau : 1 - heure d'arrivee : 1886 - heure de depart : 10492
+Hamon Victoria - niveau : 2 - heure d'arrivee : 702 - heure de depart : 9585
+Caron Maeva - niveau : 3 - heure d'arrivee : 3150 - heure de depart : 12098
+Legrand Stéphane - niveau : 1 - heure d'arrivee : 2779 - heure de depart : 8390
+Besson Audrey - niveau : 1 - heure d'arrivee : 2221 - heure de depart : 7932
+Guerin Pauline - niveau : 4 - heure d'arrivee : 825 - heure de depart : 11969
+Benoit Victoria - niveau : 4 - heure d'arrivee : 2432 - heure de depart : 11260
+Besson Livia - niveau : 2 - heure d'arrivee : 4115 - heure de depart : 11605
+Guichard Quentin - niveau : 2 - heure d'arrivee : 1394 - heure de depart : 12361
+Louis Assia - niveau : 1 - heure d'arrivee : 3535 - heure de depart : 10402
+Dumas Gabriel - niveau : 2 - heure d'arrivee : 3033 - heure de depart : 9642
+Barthelemy Morgan - niveau : 1 - heure d'arrivee : 480 - heure de depart : 9708
+Andre Juliette - niveau : 1 - heure d'arrivee : 344 - heure de depart : 8353
+Michel David - niveau : 2 - heure d'arrivee : 2466 - heure de depart : 10448
+Humbert Thibaut - niveau : 3 - heure d'arrivee : 3577 - heure de depart : 7568
+Louis Xuan - niveau : 1 - heure d'arrivee : 301 - heure de depart : 9197
+Reynaud Kevin - niveau : 2 - heure d'arrivee : 1565 - heure de depart : 10563
+Michaud Manël - niveau : 3 - heure d'arrivee : 830 - heure de depart : 10125
+Laporte Tristan - niveau : 1 - heure d'arrivee : 2303 - heure de depart : 11157
+Carlier Valentine - niveau : 3 - heure d'arrivee : 680 - heure de depart : 8121
+Klein Margaux - niveau : 4 - heure d'arrivee : 523 - heure de depart : 9050
+Le Gall Maxime - niveau : 3 - heure d'arrivee : 3675 - heure de depart : 7497
+Royer Noémie - niveau : 3 - heure d'arrivee : 561 - heure de depart : 9228
+Rey Julie - niveau : 4 - heure d'arrivee : 1636 - heure de depart : 7938
+Humbert Axel - niveau : 3 - heure d'arrivee : 3992 - heure de depart : 8539
+Jacquet Damien - niveau : 1 - heure d'arrivee : 1999 - heure de depart : 10829
+Guichard Lila - niveau : 2 - heure d'arrivee : 646 - heure de depart : 12143
+Perrot Alexandre - niveau : 3 - heure d'arrivee : 814 - heure de depart : 8771
+Hubert Thibaut - niveau : 1 - heure d'arrivee : 3077 - heure de depart : 8292
+Tessier Arnaud - niveau : 2 - heure d'arrivee : 2497 - heure de depart : 9190
+Dupont Rémi - niveau : 2 - heure d'arrivee : 1164 - heure de depart : 9626

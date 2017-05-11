@@ -26,6 +26,7 @@ namespace std{
  * \author Cynthia Rasamimanananivo
  * \author Clémentine Chevalier
  * \author Xuan Liu
+ * \author Colette Ponchel
  * \version 1.0
  * \date avril 2017
  */
@@ -43,6 +44,7 @@ class Skieur {
 	int tempsTotalPistes;
 	int tempsTotalRemontee;
 	int tempsTotalRepos;
+	vector<Arc> arcsDepart;
 
 public:
 
@@ -70,7 +72,7 @@ public:
 	* avec un nom au hasard, un prenom au hasard et un niveau au hasard et une heure d'arrivee et une heure depart exprimees en seconde au hasard
 	*
 	*/
-	Skieur(int dureeOuverture);
+	Skieur(int dureeOuverture,vector<Arc> arcsDep);
 
 	/**
 	* \fn string getNomS()
@@ -93,6 +95,13 @@ public:
 	* Retourne le niveau du Skieur
 	*/
 	int getNiveauS();
+
+	/**
+	 * \fn vector<Arc> getArcs() const
+	 * \return vector<Arc>
+	 * Retourne la liste des Arcs par lesquels ls skieurs peuvent arriver
+	 */
+	vector<Arc> getArcsDepart() const;
 
 	/**
 	* \fn int getHeureArrivee()
@@ -264,6 +273,10 @@ public:
 	* Destructeur de Station
 	*/
 	virtual ~Skieur();
+	/**
+	 * surchage de l'operateur << pour l'affichage d'un skieur
+	 */
+	friend ostream& operator<<(ostream&, Skieur const&);
 };
 
 } /* namespace std */

@@ -14,6 +14,10 @@
 #include <vector>
 #include <fstream>
 #include "Arc.hpp"
+#include "LieuRestauration.hpp"
+#include "Piste.hpp"
+#include "Teleski.hpp"
+#include "Telesiege.hpp"
 #include <stddef.h>
 
 class Skieur;
@@ -35,6 +39,7 @@ class Station {
 	int frequenceAffichage;
 	vector<Skieur> skieurs;
 	vector<Arc> arcs;
+	vector<Arc> arcsDepart; //les arcs par lesquels les skieurs peuvent arriver
 	int static const NB_MIN_SKIEURS = 10;
 	int static const NB_MAX_SKIEURS = 1000;
 	int static const DUREE_MIN = 1000; //16'40''
@@ -101,6 +106,12 @@ public:
 	Skieur getSkieur(int) const;
 	/**
 	 * \fn vector<Arc> getArcs() const
+	 * \return vector<Arc>
+	 * Retourne la liste des Arcs par lesquels ls skieurs peuvent arriver
+	 */
+	vector<Arc> getArcsDepart() const;
+	/**
+	 * \fn vector<Arc> getArcsDepart() const
 	 * \return vector<Skieur>
 	 * Retourne la liste des Arcs
 	 */

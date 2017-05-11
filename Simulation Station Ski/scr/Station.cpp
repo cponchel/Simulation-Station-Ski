@@ -108,6 +108,10 @@ vector<Arc> Station::getArcs() const{
 	return arcs;
 }
 
+vector<Arc> Station::getArcsDepart() const{
+	return arcsDepart;
+}
+
 int Station::demanderInt(int min, int max){
 	string input = "";
 	const char* inputchar;
@@ -296,19 +300,21 @@ void Station::lancerSimulation(){
 	}
 
 	/*
-	 * Création des skieurs
-	 */
-	for(int i=premier;i<nombreDeSkieurs;i++){
-		Skieur skieur(getDureeOuverture());
-		skieurs.push_back(skieur);
-		fichier << i << "\t" << getSkieur(i).getNomS() << " " << getSkieur(i).getPrenomS() << " \t \t Niveau " << getSkieur(i).getNiveauS() << ", " << secondesEnTemps(getSkieur(i).getHeureArrivee())[0] << "h" << secondesEnTemps(getSkieur(i).getHeureArrivee())[1] << "'" << secondesEnTemps(getSkieur(i).getHeureArrivee())[2] << "''" << "-" << secondesEnTemps(getSkieur(i).getHeureDepart())[0] << "h" << secondesEnTemps(getSkieur(i).getHeureDepart())[1] << "'" << secondesEnTemps(getSkieur(i).getHeureDepart())[2] << "''"  << endl;
-	}
-	fichier.close();
-
-	/*
 	 * Création des arcs
 	 */
 	initArcs();
+
+	/*
+	 * Création des skieurs
+	 */
+	for(int i=premier;i<nombreDeSkieurs;i++){
+		Skieur skieur(getDureeOuverture(),arcsDepart);
+		skieurs.push_back(skieur);
+		fichier << getSkieur(i) << endl;
+	}
+	fichier.close();
+
+
 	simulerStation();
 
 }
@@ -322,6 +328,8 @@ void Station::initArcs(){
 	int niveau;
 	int frequence;
 	int capacite;
+	bool ouvert;
+	int tempsMoyen;
 	Arc arc;
 	/*
 	 * Pour les types :
@@ -334,6 +342,8 @@ void Station::initArcs(){
 
 
 	/*
+	 * Creation des arcs
+	 *
 	 * Chaque ligne du fichier se compose ainsi :
 	 * 2 char pour son numéro, puis un espace
 	 * 25 char pour son nom, puis un espace
@@ -341,6 +351,8 @@ void Station::initArcs(){
 	 * 1 char pour son niveau, puis un espace
 	 * 2 char pour la fréquence, puis un espace
 	 * 2 char pour la capacité, puis un espace
+	 * 1 char pour l'ouverture/fermeture, puis un espace
+	 * 4 char pour le temps moyen passe sur l'arc, puis un espace
 	 * 2 char pour chaque arc suivant (son numéro), puis un espace
 	 */
 	while(getline(fichier,ligne)){
@@ -363,30 +375,97 @@ void Station::initArcs(){
 		tmp = ligne.substr(36,2);
 		capacite = atoi(tmp.c_str());
 
+		// Lecture de l'ouverture/fermeture
+		tmp = ligne.substr(39,1);
+		ouvert = atoi(tmp.c_str());
+
+		// Lecture du temps moyen
+		tmp = ligne.substr(41,4);
+		tempsMoyen = atoi(tmp.c_str());
+
 		cout << nomArc << " " << type << " " << niveau << " " << frequence << " " << capacite << endl;
 
+		vector<Arc> tmp;
 
 		// Création de l'arc
 		switch(type){
-		//case 1 : Piste arc(nomArc,niveau);break;
-		//case 2 : Teleski arc(nomArc,niveau,frequence);break;
-		//case 3 : Telesiege arc(nomArc,niveau,frequence,capacite);break;
-		//case 4 : LieuRestauration arc(nomArc,capacite);break;
+			case 1 : 	{Piste piste(nomArc, ouvert, tempsMoyen, tmp, niveau);
+						arcs.push_back(piste);
+						cout << piste.getNom();
+						break;}
+			case 2 : 	{Teleski tk(nomArc, ouvert, tempsMoyen, tmp, niveau, frequence);
+						arcs.push_back(tk);
+						break;}
+			case 3 : 	{Telesiege tg(nomArc, ouvert, tempsMoyen, tmp,niveau,frequence, capacite);
+						arcs.push_back(tg);
+						break;}
+			case 4 : 	{LieuRestauration lr(nomArc, ouvert, tempsMoyen, tmp,capacite);
+						arcs.push_back(lr);
+						break;}
 		}
 
-
-
-
+		for(int k=0;k<arcs.size();k++){
+			cout << arcs[k].getNom();
+		}
 
 	}
 
+
+	/*
+	 * On indique maintenant quels sont les arcs suivants de chaque arc
+	 */
+
+	// On retourne au debut du fichier
+	fichier.clear();
+	fichier.seekg(0, ios::beg);
+
+	int nbArc = 0;
+	while(getline(fichier,ligne)){
+		int tailleLigne = ligne.size();
+		int tailleSuivants = tailleLigne - 46;
+		string suivants = ligne.substr(46,tailleSuivants);
+		// Un arc prend 2 char, suivi d'un espace
+		// On simule l'espace a la fin avec le +1
+		int nbSuivants = (tailleSuivants+1)/3;
+		int suivant;
+
+		vector<Arc> lesSuivants;
+
+		for(int i=0;i<nbSuivants;i++){
+			tmp = suivants.substr(3*i,2);
+			suivant = atoi(tmp.c_str());
+			cout << suivant << " ";
+			cout << arcs[suivant].getNom();
+			lesSuivants.push_back(arcs[suivant]);
+		}
+		arcs[nbArc].setSuivants(lesSuivants);
+
+		for(int j=0;j<arcs[nbArc].getSuivants().size();j++){
+			cout << arcs[nbArc].getSuivants()[j].getNom() << " " << endl;
+		}
+		cout << endl;
+
+		nbArc++;
+	}
+
+
+
+
 	fichier.close();
+
+	arcsDepart.push_back(getArcs()[0]);
+
+
 }
 
 void Station::deplacerSkieurs(){
 
 	for(int i=0;i<getNombreDeSkieurs();i++){
-		//getSkieurs(i).seDeplacer();
+		// Si le skieur est arrive il se deplace, sinon rien
+		if(getSkieur(i).getHeureArrivee()>=tempsActuel){
+			getSkieur(i).seDeplacer();
+		}
+
 	}
 }
 
@@ -613,7 +692,6 @@ void Station::gestionAffichage(){
 		// Detection des arcs satures
 		vector<Arc> arcsSatures;
 		for(int i=0;i<getArcs().size();i++){
-			cout << "ici" << endl;
 			/*
 			if(getArcs()[i].estSature()){
 				arcsSatures.push_back(getArcs()[i];
