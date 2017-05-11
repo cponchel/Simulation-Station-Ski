@@ -41,9 +41,7 @@ Skieur::Skieur(string leNom,string lePrenom,int leNiveau,int lHeureArrivee){
 	tempsTotalRemontee=0;
 	tempsTotalRepos=0;
 	tempsTotalAttente=0;
-	nbPassagesLR=0;
-	Arc arcHorsStation;
-	arcActuel = &arcHorsStation;
+	arcActuel = new Arc();
 }
 
 
@@ -137,6 +135,10 @@ void Skieur::setNbPassagesLR(int nbPas)
 
 void Skieur::setArcActuel(Arc *arcA){
 	arcActuel=arcA;
+}
+
+void Skieur::setArcsDepart(vector<Arc*> ad){
+	arcsDepart = ad;
 }
 
 void Skieur::setTempsTrajet(int tTrajet){
@@ -245,9 +247,75 @@ void Skieur::determinerArcSuivant(){
 
 	}
 
-void Skieur::emprunterArcSuivant(int instant)
+void Skieur::choisirArcSuivant(){
+
+
+	vector<Arc*> listeChoix;
+	if(arcActuel->getOuvert()){
+		listeChoix = arcActuel->getSuivants();
+	}
+	else{
+		listeChoix = arcsDepart;
+	}
+
+
+	cout << "Vous avez terminé " << arcActuel->getNom() << "\nOu souhaitez vous aller ensuite ?" << endl;
+	for(int i=0;i<listeChoix.size();i++){
+		cout << "Entrez " << i << " pour : " << listeChoix[i]->getNom() << endl;
+	}
+	string input = "";
+	const char* inputchar;
+	int min=0,max=listeChoix.size()-1;
+	int choix = -1;
+	while(choix<min || choix>max){
+		try{
+		//On demande une chaine de caractère
+		cin >> input;
+		//On vérifie que chaque caractère est un chiffre avant de l'affecter à res
+		for (int i=0; i<input.size(); i++){
+				if (!isdigit(input[i])){
+					throw string("Entrée erronée");
+				}
+			}
+			//On caste le string en char* pour utiliser atoi()
+			//En effet stoi(...) ne fonctionne pas bien sous Eclipse
+			inputchar = input.c_str();
+			choix = atoi(inputchar);
+			//Test pour les limites
+			if(choix<min || choix >max){
+				throw string("Valeur hors-limite");
+			}
+		}
+		catch(string & s){
+			cout << "ERREUR : " << s << endl;
+		}
+	}
+
+	if(arcActuel->getOuvert()){
+		setArcActuel(getArcActuel()->getSuivants()[choix]);
+	}
+	else{
+		setArcActuel(getArcsDepart()[choix]);
+	}
+
+
+
+}
+
+
+void Skieur::emprunterArcSuivant(int instant,  string mode)
 {
-	determinerArcSuivant();
+	if(mode=="simuler"){
+		determinerArcSuivant();
+	}
+	else{
+		//else mode=="incarner"
+		choisirArcSuivant();
+		ofstream fichier("fichiers/bilan_skieur.txt",ios::out | ios::app);
+		fichier << instant << "\t" << getArcActuel()->getNom() << endl;
+		fichier.close();
+	}
+
 
 	if(typeid(getArcActuel())==typeid(LieuRestauration))
 	{
@@ -269,7 +337,7 @@ void Skieur::emprunterArcSuivant(int instant)
 
 
 
-void Skieur::seDeplacer(int instant){
+void Skieur::seDeplacer(int instant,  string mode){
 
 	if (getTempsAttente()>0)
 	{
@@ -291,7 +359,7 @@ void Skieur::seDeplacer(int instant){
 	else if (getTempsTrajet()==0){
 		getArcActuel()->setNbPersonneA(getArcActuel()->getNbPersonneA()-1);
 
-		emprunterArcSuivant(instant);
+		emprunterArcSuivant(instant,mode);
 	}
 
 

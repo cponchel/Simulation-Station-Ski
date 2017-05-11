@@ -97,4 +97,3 @@ Guichard Lila - niveau : 2 - heure d'arrivee : 646 - heure de depart : 12143
 Perrot Alexandre - niveau : 3 - heure d'arrivee : 814 - heure de depart : 8771
 Hubert Thibaut - niveau : 1 - heure d'arrivee : 3077 - heure de depart : 8292
 Tessier Arnaud - niveau : 2 - heure d'arrivee : 2497 - heure de depart : 9190
-Dupont Rémi - niveau : 2 - heure d'arrivee : 1164 - heure de depart : 9626

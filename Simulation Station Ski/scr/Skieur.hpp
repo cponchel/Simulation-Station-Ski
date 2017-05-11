@@ -98,11 +98,17 @@ public:
 	int getNiveauS();
 
 	/**
-	 * \fn vector<Arc> getArcs() const
+	 * \fn vector<Arc> getArcs()
 	 * \return vector<Arc>
 	 * Retourne la liste des Arcs par lesquels ls skieurs peuvent arriver
 	 */
 	vector<Arc*> getArcsDepart();
+	/**
+	 * \fn void setArcsDepart(vector<Arc*> );
+	 * \return vector<Arc>
+	 * change la valeur de arcsDepart
+	 */
+	void setArcsDepart(vector<Arc*> );
 
 	/**
 	* \fn int getHeureArrivee()
@@ -257,22 +263,27 @@ public:
 	void determinerArcSuivant();
 
 	/**
-	* \fn emprunterArcSuivant()
+	* \fn void emprunterArcSuivant(int instant)
 	* \param
 	* \brief Permet d'emprunter l'arc suivant
 	* en faisant appel a determinerArcSuivant()
 	*/
-	void emprunterArcSuivant(int instant);
+	void emprunterArcSuivant(int instant, string mode);
 
 	/**
-	* \fn seDeplacer()
+	* \fn void seDeplacer(int instant)
 	* \param
 	* \brief Permet de mettre a jour les temps totaux
 	* decrementer le nombre de personne en attente si le temps d'attente est nul
 	* on emprunte l'arc suivant si le temps de trajet est nul
 	*
 	*/
-	void seDeplacer(int instant);
+	void seDeplacer(int instant, string mode);
+	/**
+	 * \fn void choisirArcSuivant()
+	 * Ici c'est l'utilisateur qui choisit l'arc suivant
+	 */
+	void choisirArcSuivant();
 
 
 	void partir();

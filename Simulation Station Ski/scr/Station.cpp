@@ -170,6 +170,7 @@ int Station::demanderInt(){
 }
 
 void Station::modeUtilisateur() {
+
 	afficheTitre("Mode Utilisateur");
 	string input = "";
 	const char* inputchar;
@@ -223,6 +224,11 @@ void Station::modeUtilisateur() {
 	Skieur monSkieur(nom,prenom,niveau,tempsEnSecondes(h,m,s));
 	skieurs.push_back(monSkieur);
 	cout << "Bienvenue sur les pistes "<< getSkieur(0).getPrenomS() << " !"<< endl;
+
+	// On cree le fichier pour sauvegarder le bilan du skieur
+	ofstream fichier("fichiers/bilan_skieur.txt",ios::out | ios::trunc);
+	fichier << monSkieur << endl << endl;
+	fichier.close();
 
 	menuModifUtilisateur();
 }
@@ -291,13 +297,7 @@ void Station::lancerSimulation(){
 
 	int premier; //premier skieur a créer aléatoirement
 
-	if(mode=="Utilisateur"){
-		premier = 1;
 
-	}
-	else{
-		premier = 0;
-	}
 
 	/*
 	 * Création des arcs
@@ -307,6 +307,14 @@ void Station::lancerSimulation(){
 	/*
 	 * Création des skieurs
 	 */
+	if(mode=="Utilisateur"){
+		premier = 1;
+		skieurs[0].setArcsDepart(arcsDepart);
+
+	}
+	else{
+		premier = 0;
+	}
 	for(int i=premier;i<nombreDeSkieurs;i++){
 		Skieur skieur(getDureeOuverture(),arcsDepart);
 		skieurs.push_back(skieur);
@@ -462,10 +470,15 @@ void Station::deplacerSkieurs(){
 	cout << monSkieur.getTempsTrajet() << endl;
 	cout << monSkieur.getArcActuel()->getNom() << endl;
 */
-	for(int i=0;i<getNombreDeSkieurs();i++){
+	int premier = 0;
+	if(mode == "Utilisateur"){
+		premier = 1;
+		skieurs[0].seDeplacer(tempsActuel,"incarner");
+	}
+	for(int i=premier;i<getNombreDeSkieurs();i++){
 		// Si le skieur est arrive il se deplace, sinon rien
 		if(getSkieur(i).getHeureArrivee()<=tempsActuel){
-			skieurs[i].seDeplacer(tempsActuel);
+			skieurs[i].seDeplacer(tempsActuel,"simuler");
 		}
 
 	}
