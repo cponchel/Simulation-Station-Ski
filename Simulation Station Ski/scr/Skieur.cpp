@@ -35,6 +35,7 @@ Skieur::Skieur(string leNom,string lePrenom,int leNiveau,int lHeureArrivee){
 	niveauS=leNiveau;
 	heureArrivee=lHeureArrivee;
 	heureDepart=0;
+	nbPassagesLR=0;
 	tempsTrajet=0;
 	tempsAttente=0;
 	tempsTotalPistes=0;
@@ -231,10 +232,10 @@ void Skieur::determinerArcSuivant(){
 					}
 				}
 			}
-			//int temp=rand()%proba.size(); // on choisit au hasard un indice ind du tableau compris entre 0 et tab.size() exclus
+			int temp=rand()%proba.size(); // on choisit au hasard un indice ind du tableau compris entre 0 et tab.size() exclus
 
 			// mise à jour de l'arc actuel
-			setArcActuel(getArcActuel()->getSuivants()[0]); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
+			setArcActuel(getArcActuel()->getSuivants()[proba[temp]]); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
 
 		}
 		else{
