@@ -19,6 +19,7 @@
 #include "Teleski.hpp"
 #include "Telesiege.hpp"
 #include <stddef.h>
+#include <ctime>
 
 class Skieur;
 

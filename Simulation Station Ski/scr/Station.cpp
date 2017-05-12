@@ -284,7 +284,7 @@ void Station::modeAdministrateur(){
 				break;
 	case 3 :	modifierFrequenceAffichage();
 				break;
-	case 4 :	//gererArcs();
+	case 4 :	gererArcs();
 				break;
 	case 5 : 	lancerSimulation();
 				break;
@@ -293,16 +293,15 @@ void Station::modeAdministrateur(){
 
 void Station::lancerSimulation(){
 
+	srand(time(0));
+
 	ofstream fichier("fichiers/skieurs.txt",ios::out);
 
 	int premier; //premier skieur a créer aléatoirement
 
 
 
-	/*
-	 * Création des arcs
-	 */
-	initArcs();
+
 
 	/*
 	 * Création des skieurs
@@ -513,6 +512,12 @@ void Station::afficheTitre(string titre){
 }
 
 void Station::run(){
+
+	/*
+	 * Création des arcs
+	 */
+	initArcs();
+
 	/*
 	 * Affichage de l'accueil et lancement du menu suivant selon le mode choisi
 	 */
@@ -659,6 +664,45 @@ void Station::modifierFrequenceAffichage(){
 	modeAdministrateur();
 
 }
+
+void Station::gererArcs(){
+	/*
+	 * Affichage
+	 */
+	string titre = "Mode " + mode + " : Ouverture et fermeture des arcs";
+	afficheTitre(titre);
+	string ouvert;
+	for(int i=0;i<getArcs().size();i++){
+		if(getArcs()[i]->getOuvert()){
+			ouvert = "Ouvert";
+		}
+		else{
+			ouvert = "Ferme";
+		}
+		cout << i+1 << ")\t" << getArcs()[i]->getNom() << " :\t" << ouvert << endl;
+	}
+	cout << "Veuillez rentrer le numero d'un arc pour changer son ouverture.\nS'il est ferme, il sera ouvert, s'il est ouvert, il sera ferme." << endl;
+	cout << "Pour quitter ce menu, tapez 0" << endl;
+
+	int choix=-1;
+	while(choix<0 ||choix>getArcs().size()){
+		choix = demanderInt(0,getArcs().size());
+	}
+	if(choix==0){
+		/*
+		 * Retour au menu précédent
+		 */
+		modeAdministrateur();
+	}
+	else{
+		arcs[choix-1]->setOuvert(!getArcs()[choix-1]->getOuvert());
+		/*
+		 * On relance ce menu
+		 */
+		gererArcs();
+	}
+}
+
 
 void Station::sauvegarderParamFichier(){
 	ofstream fichier("fichiers/parametres_par_defaut.txt",ios::out | ios::trunc);
