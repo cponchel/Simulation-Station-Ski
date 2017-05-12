@@ -360,8 +360,12 @@ void Skieur::seDeplacer(int instant,  string mode){
 	}
 	else if (getTempsTrajet()==0){
 		getArcActuel()->setNbPersonneA(getArcActuel()->getNbPersonneA()-1);
-
-		emprunterArcSuivant(instant,mode);
+		if(getHeureDepart()<=instant){
+			partir();
+		}
+		else{
+			emprunterArcSuivant(instant,mode);
+		}
 	}
 
 
