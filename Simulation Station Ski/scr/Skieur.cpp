@@ -29,12 +29,13 @@ Skieur::Skieur() {
 
 }
 
-Skieur::Skieur(string leNom,string lePrenom,int leNiveau,int lHeureArrivee){
+Skieur::Skieur(string leNom,string lePrenom,int leNiveau,int lHeureArrivee,int lHeureDepart){
 	nomS=leNom;
 	prenomS=lePrenom;
 	niveauS=leNiveau;
 	heureArrivee=lHeureArrivee;
-	heureDepart=0;
+	heureDepart=lHeureDepart;
+	nbPassagesLR=0;
 	tempsTrajet=0;
 	tempsAttente=0;
 	tempsTotalPistes=0;
@@ -231,16 +232,16 @@ void Skieur::determinerArcSuivant(){
 					}
 				}
 			}
-			//int temp=rand()%proba.size(); // on choisit au hasard un indice ind du tableau compris entre 0 et tab.size() exclus
+			int temp=rand()%proba.size(); // on choisit au hasard un indice ind du tableau compris entre 0 et tab.size() exclus
 
 			// mise à jour de l'arc actuel
-			setArcActuel(getArcActuel()->getSuivants()[0]); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
+			setArcActuel(arcActuel->getSuivants()[proba[temp]]); // l'arc actuel correspond à la case d'indice tab[ind] du vecteur arcSuivants
 
 		}
 		else{
 			// On prend au hasard un arc dans la liste des arcs de depart possibles
 			int indiceDep=rand()%(getArcsDepart().size());
-			setArcActuel(getArcsDepart()[indiceDep]);
+			setArcActuel(arcsDepart[indiceDep]);
 
 		}
 
@@ -251,8 +252,7 @@ void Skieur::determinerArcSuivant(){
 
 void Skieur::choisirArcSuivant(){
 
-	vector<int> indChoisie;
-	vector<Arc*> listeChoisie;
+	vector<int> indChoisi;
 	vector<Arc*> listeChoix;
 	if(arcActuel->getOuvert()){
 
@@ -261,23 +261,39 @@ void Skieur::choisirArcSuivant(){
 
 			if (getNiveauS()>=arcActuel->getSuivants()[i]->getNiveau())
 				{
-				//cout<< "on a considere le choix du niveau "<< arcActuel->getSuivants()[i]->getNiveau()<< endl;
 				listeChoix.push_back(arcActuel->getSuivants()[i]);
-				indChoisie.push_back(i);
+				indChoisi.push_back(i);
 				}
 		}
 	}
 
 	else{
 		listeChoix = arcsDepart;
+		for(int i=0;i<listeChoix.size();i++){
+			indChoisi.push_back(i);
+		}
 	}
 
 	cout << "Vous avez terminé " << arcActuel->getNom() << "\nOu souhaitez vous aller ensuite ?" << endl;
 
+	string nivPiste;
+	string type;
 	for(int i=0;i<listeChoix.size();i++)
 	{
-			{cout << "Entrez " << i << " pour : " << listeChoix[i]->getNom() << endl;
-			}
+		switch(listeChoix[i]->getNiveau()){
+		case 1 : nivPiste="1 (Verte)";break;
+		case 2 : nivPiste="2 (Bleue)";break;
+		case 3 : nivPiste="3 (Rouge)";break;
+		case 4 : nivPiste="4 (Noire)";break;
+		}
+
+		if(typeid(listeChoix[i])==typeid(LieuRestauration)) type="Lieu de restauration";
+		if(typeid(listeChoix[i])==typeid(Teleski)) type="Teleski";
+		if(typeid(listeChoix[i])==typeid(Telesiege)) type="Telesiege";
+		if(typeid(listeChoix[i])==typeid(Piste)) type="Piste";
+
+		cout << "Entrez " << i << " pour : " << listeChoix[i]->getNom() << "\t" << type << "\t Niveau minimum requis : " << nivPiste << endl;
+
 	}
 	string input = "";
 	const char* inputchar;
@@ -308,10 +324,10 @@ void Skieur::choisirArcSuivant(){
 	}
 
 	if(arcActuel->getOuvert()){
-		setArcActuel(getArcActuel()->getSuivants()[choix]);
+		setArcActuel(getArcActuel()->getSuivants()[indChoisi[choix]]);
 	}
 	else{
-		setArcActuel(getArcsDepart()[choix]);
+		setArcActuel(getArcsDepart()[indChoisi[choix]]);
 	}
 
 
@@ -344,11 +360,11 @@ void Skieur::emprunterArcSuivant(int instant,  string mode)
 	//mise a jour du nb de personnes sur l'arc
 	if(getTempsAttente()>0)
 	{
-		getArcActuel()->setNbPersonneEnAttente(getArcActuel()->getNbPersonneEnAttente()+1);
+		arcActuel->setNbPersonneEnAttente(getArcActuel()->getNbPersonneEnAttente()+1);
 	}
 	else
 	{
-		getArcActuel()->setNbPersonneA(getArcActuel()->getNbPersonneA()+1);
+		arcActuel->setNbPersonneA(getArcActuel()->getNbPersonneA()+1);
 	}
 }
 

@@ -16,6 +16,9 @@
 #include <fstream>
 #include <typeinfo>
 #include "LieuRestauration.hpp"
+#include "Teleski.hpp"
+#include "Telesiege.hpp"
+#include "Piste.hpp"
 
 namespace std{
 
@@ -56,15 +59,15 @@ public:
 	Skieur();
 
 	/**
-	* \fn Station(string,string,int,int)
-	* \param string, string, int,int
+	* \fn Station(string,string,int,int,int)
+	* \param string, string, int,int,int
 	* \brief Deuxieme constructeur surcharge qui
 	* permet de creer le skieur et l'initialser
 	* avec son nom, son prenom et son niveau
-	* et son heure d'arrivee exprimee en seconde
+	* et ses heures d'arrivee et depart exprimee en seconde
 	*
 	*/
-	Skieur(string,string,int,int);
+	Skieur(string,string,int,int,int);
 
 	/**
 	* \fn Station(int)
