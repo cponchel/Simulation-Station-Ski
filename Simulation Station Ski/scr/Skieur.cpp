@@ -251,19 +251,33 @@ void Skieur::determinerArcSuivant(){
 
 void Skieur::choisirArcSuivant(){
 
-
+	vector<int> indChoisie;
+	vector<Arc*> listeChoisie;
 	vector<Arc*> listeChoix;
 	if(arcActuel->getOuvert()){
-		listeChoix = arcActuel->getSuivants();
+
+		for(int i=0;i<getArcActuel()->getSuivants().size();i++)
+		{
+
+			if (getNiveauS()>=arcActuel->getSuivants()[i]->getNiveau())
+				{
+				//cout<< "on a considere le choix du niveau "<< arcActuel->getSuivants()[i]->getNiveau()<< endl;
+				listeChoix.push_back(arcActuel->getSuivants()[i]);
+				indChoisie.push_back(i);
+				}
+		}
 	}
+
 	else{
 		listeChoix = arcsDepart;
 	}
 
-
 	cout << "Vous avez terminé " << arcActuel->getNom() << "\nOu souhaitez vous aller ensuite ?" << endl;
-	for(int i=0;i<listeChoix.size();i++){
-		cout << "Entrez " << i << " pour : " << listeChoix[i]->getNom() << endl;
+
+	for(int i=0;i<listeChoix.size();i++)
+	{
+			{cout << "Entrez " << i << " pour : " << listeChoix[i]->getNom() << endl;
+			}
 	}
 	string input = "";
 	const char* inputchar;
@@ -303,6 +317,7 @@ void Skieur::choisirArcSuivant(){
 
 
 }
+
 
 
 void Skieur::emprunterArcSuivant(int instant,  string mode)
