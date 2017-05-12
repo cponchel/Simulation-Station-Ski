@@ -182,9 +182,23 @@ public:
 	*/
 	int getTempsTotalRepos() ;
 
-
+	/**
+	 * \fn void setNom(string)
+	 * param string
+	 * Modifie le nom du Skieur
+	 */
 	void setNomS(string);
+	/**
+	 * \fn void setPrenom(string)
+	 * param string
+	 * Modifie le prenom du Skieur
+	 */
 	void setPrenomS(string);
+	/**
+	 * \fn void setNiveau(int)
+	 * param int
+	 * Modifie le niveau du Skieur
+	 */
 	void setNiveauS(int);
 
 	/**

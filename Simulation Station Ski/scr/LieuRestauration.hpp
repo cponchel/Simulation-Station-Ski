@@ -51,13 +51,23 @@ public:
 	 */
 	int calculerTempsTrajet();
 	/**
-	 * \fn int calculerTempsAttente
+	 * \fn int calculerTempsAttente()
 	 * return int
 	 * renvoie 0 car si LieuRestauration complet le skieur fait une piste
 	 */
 	int calculerTempsAttente();
+	/**
+	 * \fn int getNbPersonneEnAttente()
+	 * return int
+	 * renvoie 0 car il n'y a pas d'attente pour LieuRestauration
+	 */
 
 	int getNbPersonneEnAttente();
+	/**
+	 * \fn bool estSature()
+	 * return bool
+	 * Retourne si l'arc est sature
+	 */
 
 	bool estSature();
 };

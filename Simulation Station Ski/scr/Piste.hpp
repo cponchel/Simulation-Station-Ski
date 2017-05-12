@@ -58,11 +58,20 @@ public:
 	 * renvoie 0 car temps attente pour une piste est nul
 	 */
 	int calculerTempsAttente();
+	/**
+	 * \fn int getNbPersonneEnAttente()
+	 * return int
+	 * renvoie 0 car il n'y a pas d'attente pour LieuRestauration
+	 */
 
 	int getNbPersonneEnAttente();
 
 	void setNbPersonneEnAttente(int);
-
+	/**
+	 * \fn bool estSature()
+	 * return bool
+	 * Retourne si l'arc est sature
+	 */
 	bool estSature();
 
 };

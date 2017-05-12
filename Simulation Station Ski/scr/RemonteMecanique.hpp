@@ -63,7 +63,11 @@ public:
 	virtual int calculerTempsAttente();
 
 	int getCapaciteResto();
-
+	/**
+	 * \fn bool estSature()
+	 * return bool
+	 * Retourne si l'arc est sature
+	 */
 	virtual bool estSature();
 	virtual ~RemonteMecanique();
 };

@@ -44,6 +44,11 @@ public:
 	 *
 	 */
 	int calculerTempsTrajet();
+	/**
+	 * \fn bool estSature()
+	 * return bool
+	 * Retourne si l'arc est sature
+	 */
 
 	bool estSature();
 };
