@@ -27,6 +27,18 @@ int Telesiege::calculerTempsAttente()
 	return (getNbPersonneEnAttente()%getCapaciteSiege())*getFrequence()+1;
 }
 
+bool Telesiege::estSature()
+{
+	if(getNbPersonneA()>NB_PERSONNES_SATURATION)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 /*int Telesiege::calculerTempsTrajet()
 {
 	return getTempsMoyen();

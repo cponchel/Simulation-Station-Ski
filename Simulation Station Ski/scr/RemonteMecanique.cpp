@@ -73,3 +73,8 @@ int RemonteMecanique::calculerTempsTrajet()
 {
 	return getTempsMoyen();
 }
+
+bool RemonteMecanique::estSature()
+{
+	return false;
+}

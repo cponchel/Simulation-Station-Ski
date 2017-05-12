@@ -62,3 +62,15 @@ void Piste::setNbPersonneEnAttente(int nbPers)
 {
 
 }
+
+bool Piste::estSature()
+{
+	if (getNbPersonneA()>CAPACITE)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

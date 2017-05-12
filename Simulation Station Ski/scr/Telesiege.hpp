@@ -13,6 +13,7 @@
 class Telesiege : public RemonteMecanique{
 public:
 	int capaciteSiege;
+	int static const NB_PERSONNES_SATURATION=20;
 public:
 	/**
 	 * \fn Telesiege()
@@ -43,6 +44,8 @@ public:
 	 *
 	 */
 	int calculerTempsTrajet();
+
+	bool estSature();
 };
 
 #endif /* TELESIEGE_HPP_ */

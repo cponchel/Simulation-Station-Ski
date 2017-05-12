@@ -10,6 +10,7 @@
 #include "RemonteMecanique.hpp"
 
 class Teleski : public RemonteMecanique {
+	int static const NB_PERSONNES_SATURATION=10;
 public:
 	/**
 	 * \fn Teleski()
@@ -34,6 +35,8 @@ public:
 	 * retourne le temps moyen
 	 */
 	int calculerTempsTrajet();
+
+	bool estSature();
 };
 
 #endif /* TELESKI_HPP_ */

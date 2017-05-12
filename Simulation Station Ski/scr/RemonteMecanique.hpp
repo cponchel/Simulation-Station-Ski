@@ -63,6 +63,8 @@ public:
 	virtual int calculerTempsAttente();
 
 	int getCapaciteResto();
+
+	virtual bool estSature();
 	virtual ~RemonteMecanique();
 };
 

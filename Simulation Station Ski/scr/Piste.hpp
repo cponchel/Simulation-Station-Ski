@@ -20,6 +20,7 @@
 
 class Piste : public Arc {
 	int niveau;
+	int static const CAPACITE=20;
 public:
 	/**
 	 * \Piste()
@@ -61,6 +62,8 @@ public:
 	int getNbPersonneEnAttente();
 
 	void setNbPersonneEnAttente(int);
+
+	bool estSature();
 
 };
 

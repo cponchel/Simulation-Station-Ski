@@ -31,6 +31,7 @@ class Arc {
 	vector<Arc*> suivants;
 	int nbPersonneA;
 
+
 public:
 	/**
 	* \fn Arc()
@@ -39,7 +40,7 @@ public:
 	Arc();
 
 	/**
-	* \fn Arc(string,bool,int,vector<Arc>)
+	* \fn Arc(string,bool,int,vector<Arc>,int)
 	* \param string,bool,int,vector<Arc>
 	* \brief Constructeur surcharge qui
 	* permet de creer l'Arc et l'initialiser
@@ -111,6 +112,8 @@ public:
 	* Retourne la frequence de la remontee mecanique
 	*/
 	virtual int getFrequence();
+
+
 	/**
 	* \fn void setNom(string)
 	* \param string
@@ -153,6 +156,7 @@ public:
 	*/
 	void setNbPersonneEnAttente(int);
 
+
 	/**
 	* \fn void calculerTempsTrajet()
 	* \return int
@@ -178,6 +182,13 @@ public:
 
 
 	int getCapaciteResto();
+	/**
+	 * \fn bool estSature()
+	 * return bool
+	 * Retourne si l'arc est sature
+	 */
+
+	virtual bool estSature();
 	virtual ~Arc();
 };
 

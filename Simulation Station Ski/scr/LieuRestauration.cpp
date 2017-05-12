@@ -46,3 +46,15 @@ int LieuRestauration::getNbPersonneEnAttente()
 {
 	return 0;
 }
+
+bool LieuRestauration::estSature()
+{
+	if(getNbPersonneA()==getCapaciteResto())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

@@ -26,6 +26,17 @@ int Teleski::calculerTempsAttente()
 	return getNbPersonneEnAttente()*getFrequence()+1;
 }
 
+bool Teleski::estSature()
+{
+	if(getNbPersonneA()>NB_PERSONNES_SATURATION)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 /*int Teleski::calculerTempsTrajet()
 {
 	return getTempsMoyen();

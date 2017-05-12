@@ -58,6 +58,8 @@ public:
 	int calculerTempsAttente();
 
 	int getNbPersonneEnAttente();
+
+	bool estSature();
 };
 
 #endif /* SCR_LIEURESTAURATION_HPP_ */
